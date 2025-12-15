@@ -45,7 +45,7 @@ export default function Hero({
   backgroundImageAlt = "Hero background"
 }: HeroProps) {
   return (
-    <section className="relative w-full overflow-hidden bg-amber-950">
+    <section className="relative w-full overflow-hidden bg-slate-900">
       {/* Background image with overlay */}
       <div className="relative w-full min-h-[500px] md:min-h-[600px] lg:min-h-screen overflow-hidden">
         {/* Background image */}

@@ -94,7 +94,7 @@ export default function Pricing() {
     <div id="pricing" className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-base/7 font-semibold text-amber-700">Pricing</h2>
+          <h2 className="text-base/7 font-semibold text-blue-600">Pricing</h2>
           <p className="mt-2 text-5xl font-semibold tracking-tight text-balance text-black sm:text-6xl">
             Flexible subscription models
           </p>
@@ -110,7 +110,7 @@ export default function Pricing() {
                 tier.mostPopular ? 'lg:z-10 lg:rounded-b-none' : 'lg:mt-8',
                 tierIdx === 0 ? '-mr-px lg:rounded-r-none' : '',
                 tierIdx === tiers.length - 1 ? '-ml-px lg:rounded-l-none' : '',
-                'flex flex-col justify-between rounded-3xl bg-amber-50 p-8 inset-ring inset-ring-amber-200 xl:p-10',
+                'flex flex-col justify-between rounded-3xl bg-blue-50 p-8 inset-ring inset-ring-blue-200 xl:p-10',
               )}
             >
               <div>
@@ -128,14 +128,14 @@ export default function Pricing() {
                   <h3
                     id={tier.id}
                     className={classNames(
-                      tier.mostPopular ? 'text-amber-800' : 'text-gray-900',
+                      tier.mostPopular ? 'text-blue-700' : 'text-slate-900',
                       'text-lg/8 font-semibold',
                     )}
                   >
                     {tier.name}
                   </h3>
                   {tier.mostPopular ? (
-                    <p className="rounded-full bg-amber-200 px-2.5 py-1 text-xs/5 font-semibold text-amber-800">
+                    <p className="rounded-full bg-blue-200 px-2.5 py-1 text-xs/5 font-semibold text-blue-700">
                       Most popular
                     </p>
                   ) : null}
@@ -148,7 +148,7 @@ export default function Pricing() {
                 <ul role="list" className="mt-8 space-y-3 text-sm/6 text-gray-700">
                   {tier.features.map((feature) => (
                     <li key={feature} className="flex gap-x-3">
-                      <CheckIcon aria-hidden="true" className="h-6 w-5 flex-none text-amber-700" />
+                      <CheckIcon aria-hidden="true" className="h-6 w-5 flex-none text-blue-600" />
                       {feature}
                     </li>
                   ))}
@@ -157,7 +157,7 @@ export default function Pricing() {
                 {/* Accordion for contract details */}
                 <button
                   onClick={() => toggleTier(tier.id)}
-                  className="mt-8 w-full flex items-center justify-between text-left text-sm/6 font-semibold text-amber-700 hover:text-amber-800 transition-colors"
+                  className="mt-8 w-full flex items-center justify-between text-left text-sm/6 font-semibold text-blue-600 hover:text-blue-700 transition-colors"
                 >
                   <span>Contract & Cancellation Details</span>
                   <ChevronDownIcon
@@ -170,10 +170,10 @@ export default function Pricing() {
                 </button>
 
                 {expandedTier === tier.id && (
-                  <ul role="list" className="mt-4 space-y-2 text-sm/6 text-gray-700 border-t border-amber-200 pt-4">
+                  <ul role="list" className="mt-4 space-y-2 text-sm/6 text-slate-700 border-t border-blue-200 pt-4">
                     {tier.details.map((detail) => (
                       <li key={detail} className="flex gap-x-3">
-                        <span className="text-amber-700">•</span>
+                        <span className="text-blue-600">•</span>
                         {detail}
                       </li>
                     ))}
