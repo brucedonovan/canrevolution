@@ -4,12 +4,12 @@ import { theme } from '@/lib/theme'
 
 const BookDemo = () => {
   return (
-    <section className="w-full py-24 md:py-32" style={{ backgroundColor: theme.background.dark }}>
+    <section className="w-full py-24 md:py-32" style={{ backgroundColor: theme.background.lightCard }}>
       <div className="max-w-4xl mx-auto px-6 md:px-12 text-center">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style={{ color: theme.text.onDark }}>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style={{ color: theme.text.onLight }}>
           Book a demo session
         </h1>
-        <p className="text-lg md:text-xl mb-12 max-w-2xl mx-auto" style={{ color: theme.text.mutedDark }}>
+        <p className="text-lg md:text-xl mb-12 max-w-2xl mx-auto" style={{ color: theme.text.muted }}>
           Let&apos;s discuss the options and how can(RE)volution machines can transform your business.
         </p>
         <a
