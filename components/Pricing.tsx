@@ -109,8 +109,9 @@ export default function Pricing() {
                   tierIdx === tiers.length - 1 ? '-ml-px lg:rounded-l-none' : ''
                 }`}
                 style={{
-                  backgroundColor: tier.mostPopular ? theme.background.lightCard : theme.background.light,
-                  borderColor: theme.border.light,
+                  backgroundColor: tier.mostPopular ? theme.background.dark : theme.background.lightCard,
+                  borderColor: tier.mostPopular ? theme.border.dark : theme.border.light,
+                  color: tier.mostPopular ? theme.text.onDark : theme.text.onLight,
                 }}
               >
                 <div>
@@ -128,7 +129,7 @@ export default function Pricing() {
                     <h3
                       id={tier.id}
                       className="text-lg/8 font-semibold"
-                      style={{ color: tier.mostPopular ? theme.primary.light : theme.text.onLight }}
+                      style={{ color: tier.mostPopular ? theme.text.onDark : theme.text.onLight }}
                     >
                       {tier.name}
                     </h3>
@@ -138,15 +139,15 @@ export default function Pricing() {
                       </p>
                     ) : null}
                   </div>
-                  <p style={{ color: theme.text.muted }} className="mt-4 text-sm/6">{tier.description}</p>
+                  <p style={{ color: tier.mostPopular ? theme.text.onDark : theme.text.muted }} className="mt-4 text-sm/6">{tier.description}</p>
                   <p className="mt-6 flex items-baseline gap-x-1">
-                    <span style={{ color: theme.text.onLight }} className="text-4xl font-semibold tracking-tight">{tier.priceMonthly}</span>
-                    <span style={{ color: theme.text.muted }} className="text-sm/6 font-semibold">/month</span>
+                    <span style={{ color: tier.mostPopular ? theme.text.onDark : theme.text.onLight }} className="text-4xl font-semibold tracking-tight">{tier.priceMonthly}</span>
+                    <span style={{ color: tier.mostPopular ? theme.text.onDark : theme.text.muted }} className="text-sm/6 font-semibold">/month</span>
                   </p>
-                  <ul role="list" className="mt-8 space-y-3 text-sm/6" style={{ color: theme.text.muted }}>
+                  <ul role="list" className="mt-8 space-y-3 text-sm/6" style={{ color: tier.mostPopular ? theme.text.onDark : theme.text.muted }}>
                     {tier.features.map((feature) => (
                       <li key={feature} className="flex gap-x-3">
-                        <Check aria-hidden="true" size={24} style={{ color: theme.primary.light }} />
+                        <Check aria-hidden="true" size={24} style={{ color: tier.mostPopular ? theme.primary.dark : theme.primary.light }} />
                         {feature}
                       </li>
                     ))}
@@ -156,7 +157,7 @@ export default function Pricing() {
                   <button
                     onClick={() => toggleTier(tier.id)}
                     className="mt-8 w-full flex items-center justify-between text-left text-sm/6 font-semibold transition-colors hover:opacity-70"
-                    style={{ color: theme.primary.light }}
+                    style={{ color: tier.mostPopular ? theme.primary.dark : theme.primary.light }}
                   >
                     <span>Contract & Cancellation Details</span>
                     <ChevronDown
@@ -169,10 +170,10 @@ export default function Pricing() {
                   </button>
 
                   {expandedTier === tier.id && (
-                    <ul role="list" className="mt-4 space-y-2 text-sm/6 border-t pt-4" style={{ color: theme.text.muted, borderTopColor: theme.border.light }}>
+                    <ul role="list" className="mt-4 space-y-2 text-sm/6 border-t pt-4" style={{ color: tier.mostPopular ? theme.text.onDark : theme.text.muted, borderTopColor: tier.mostPopular ? theme.border.dark : theme.border.light }}>
                       {tier.details.map((detail) => (
                         <li key={detail} className="flex gap-x-3">
-                          <span style={{ color: theme.primary.light }}>•</span>
+                          <span style={{ color: tier.mostPopular ? theme.primary.dark : theme.primary.light }}>•</span>
                           {detail}
                         </li>
                       ))}
