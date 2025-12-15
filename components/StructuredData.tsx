@@ -16,11 +16,9 @@ const StructuredData = () => {
     },
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Your Street Address',
-      addressLocality: 'Your City',
-      addressRegion: 'Your Region',
-      postalCode: 'Your Postal Code',
-      addressCountry: 'Your Country',
+      streetAddress: 'Portugal',
+      addressLocality: 'Lisbon',
+      addressCountry: 'PT',
     },
   };
 
@@ -50,7 +48,7 @@ const StructuredData = () => {
     description:
       'Beverage canning machine solutions for cafés, shops, and businesses.',
     url: 'https://canrevolution.com',
-    telephone: '+1-XXX-XXX-XXXX',
+    telephone: '+351-XXX-XXXX',
     priceRange: '€€€',
     sameAs: ['https://www.instagram.com/can.revolution'],
   };
