@@ -25,7 +25,7 @@ interface CalculationResult {
 const PLANS: Record<string, Plan> = {
   small: { limit: 500, fee: 500, extra: 0.6 },
   medium: { limit: 1500, fee: 1000, extra: 0.55 },
-  large: { limit: 4000, fee: 2000, extra: 0.55 },
+  large: { limit: 4000, fee: 2000, extra: 0.50 },
 }
 
 const formatMoney = (value: number): string => {
@@ -68,10 +68,9 @@ const FormInput: React.FC<{
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 transition-all"
+        className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all"
         style={{
           borderColor: theme.border.light,
-          borderWidth: '1px',
           color: theme.text.onLight,
           backgroundColor: theme.background.light,
           paddingLeft: prefix ? '1.75rem' : '1rem',
@@ -100,16 +99,15 @@ const PlanSelector: React.FC<{
       <label style={{ color: theme.text.onLight }} className="block text-sm font-semibold mb-4">
         Subscription Plan
       </label>
-      <fieldset aria-label="Plan selection" className="-space-y-px rounded-md" style={{ backgroundColor: theme.background.light + '50' }}>
-        {plans.map((plan, index) => (
+      <fieldset aria-label="Plan selection" className="space-y-0 rounded-md overflow-hidden border" style={{ borderColor: theme.border.light }}>
+        {plans.map((plan) => (
           <label
             key={plan.id}
             aria-label={plan.name}
             aria-description={plan.description}
-            className="group flex border p-4 cursor-pointer transition-colors"
+            className="flex border-b p-4 cursor-pointer transition-colors last:border-b-0"
             style={{
-              borderColor: theme.border.light,
-              borderRadius: `${index === 0 ? '0.375rem 0.375rem 0 0' : index === plans.length - 1 ? '0 0 0.375rem 0.375rem' : '0'}`,
+              borderBottomColor: theme.border.light,
               backgroundColor: selected === plan.id ? theme.primary.light + '10' : 'transparent',
             }}
           >
@@ -119,24 +117,16 @@ const PlanSelector: React.FC<{
               name="plan-selection"
               type="radio"
               onChange={(e) => onChange(e.target.value)}
-              className="relative mt-0.5 size-4 shrink-0 appearance-none rounded-full before:absolute before:inset-1 before:rounded-full not-checked:before:hidden checked:before:block focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-50"
+              className="mt-0.5 shrink-0"
               style={{
-                borderWidth: '1.5px',
-                borderColor: selected === plan.id ? theme.primary.light : theme.border.light,
-                backgroundColor: selected === plan.id ? theme.primary.light : 'transparent',
-                outlineColor: theme.primary.light,
-              } as React.CSSProperties}
+                accentColor: theme.primary.light,
+              }}
             />
-            <style>{`
-              input[type="radio"]:checked::before {
-                background-color: ${theme.background.light};
-              }
-            `}</style>
             <span className="ml-3 flex flex-col">
-              <span className="block text-sm font-medium" style={{ color: selected === plan.id ? theme.text.onLight : theme.primary.light }}>
+              <span className="text-sm font-medium" style={{ color: selected === plan.id ? theme.text.onLight : theme.primary.light }}>
                 {plan.name}
               </span>
-              <span className="block text-sm" style={{ color: selected === plan.id ? theme.text.muted : theme.primary.light + 'cc' }}>
+              <span className="text-sm" style={{ color: selected === plan.id ? theme.text.muted : theme.primary.light + 'cc' }}>
                 {plan.description}
               </span>
             </span>
@@ -164,16 +154,12 @@ const FormSection: React.FC<{
   onVolumeChange,
 }) => (
   <div
-    className="lg:col-span-1 rounded-2xl p-8 h-full"
+    className="lg:col-span-1 rounded-2xl p-8 h-full border"
     style={{
       backgroundColor: theme.background.lightCard,
       borderColor: theme.border.light,
-      border: `1px solid ${theme.border.light}`,
     }}
   >
-    <h3 style={{ color: theme.text.onLight }} className="text-xl font-bold mb-8">
-      Your Scenario
-    </h3>
 
     <form className="space-y-8">
       <PlanSelector selected={selectedPackage} onChange={onPackageChange} />
@@ -201,12 +187,7 @@ const FormSection: React.FC<{
 // Results Summary Cards Component
 const SummaryCards: React.FC<{ result: CalculationResult }> = ({ result }) => (
   <div className="grid md:grid-cols-2 gap-4">
-    <div
-      className="rounded-lg p-4"
-      style={{
-        backgroundColor: theme.background.light,
-      }}
-    >
+    <div className="rounded-lg p-4" style={{ backgroundColor: theme.background.light }}>
       <p style={{ color: theme.text.muted }} className="text-sm mb-1">
         Monthly Revenue
       </p>
@@ -215,12 +196,7 @@ const SummaryCards: React.FC<{ result: CalculationResult }> = ({ result }) => (
       </p>
     </div>
 
-    <div
-      className="rounded-lg p-4"
-      style={{
-        backgroundColor: theme.background.light,
-      }}
-    >
+    <div className="rounded-lg p-4" style={{ backgroundColor: theme.background.light }}>
       <p style={{ color: theme.text.muted }} className="text-sm mb-1">
         Monthly Costs
       </p>
@@ -233,12 +209,7 @@ const SummaryCards: React.FC<{ result: CalculationResult }> = ({ result }) => (
 
 // Profit Highlight Component
 const ProfitHighlight: React.FC<{ result: CalculationResult }> = ({ result }) => (
-  <div
-    className="rounded-lg p-6"
-    style={{
-      backgroundColor: result.isPositive ? theme.primary.light + '20' : '#fee2e2',
-    }}
-  >
+  <div className="rounded-lg p-6" style={{ backgroundColor: result.isPositive ? theme.primary.light + '20' : '#fee2e2' }}>
     <p style={{ color: theme.text.muted }} className="text-sm mb-2">
       Net Profit
     </p>
@@ -280,12 +251,7 @@ const Recommendations: React.FC<{ result: CalculationResult }> = ({ result }) =>
   }
 
   return (
-    <div
-      className="rounded-lg p-4 flex items-start gap-3"
-      style={{
-        backgroundColor: theme.background.light,
-      }}
-    >
+    <div className="rounded-lg p-4 flex items-start gap-3" style={{ backgroundColor: theme.background.light }}>
       <Check className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: theme.primary.light }} />
       <p style={{ color: theme.text.muted }} className="text-sm">
         This is the most cost-effective plan for your volume
@@ -299,11 +265,11 @@ const ResultsSection: React.FC<{ result: CalculationResult | null }> = ({ result
   if (!result) {
     return (
       <div
-        className="rounded-2xl p-12 h-full flex items-center justify-center"
+        className="rounded-2xl p-12 h-full flex items-center justify-center border-2"
         style={{
           backgroundColor: theme.background.lightCard,
           borderColor: theme.border.light,
-          border: `2px dashed ${theme.border.light}`,
+          borderStyle: 'dashed',
         }}
       >
         <p style={{ color: theme.text.muted }} className="text-center text-lg font-medium">
@@ -315,11 +281,10 @@ const ResultsSection: React.FC<{ result: CalculationResult | null }> = ({ result
 
   return (
     <div
-      className="rounded-2xl p-8"
+      className="rounded-2xl p-8 border-2"
       style={{
         backgroundColor: theme.background.lightCard,
         borderColor: result.isPositive ? theme.primary.light : '#ef4444',
-        border: `2px solid ${result.isPositive ? theme.primary.light : '#ef4444'}`,
       }}
     >
       <div className="space-y-6">
