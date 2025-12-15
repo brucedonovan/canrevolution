@@ -86,7 +86,7 @@ export default function Features() {
           </div>
 
           {/* Right column - Accordion */}
-          <div>
+          <div className="lg:mt-32">
             <div style={{ borderTopColor: theme.primary.light }} className="border-t">
               {accordionItems.map((item, index) => (
                 <AccordionItem
