@@ -3,6 +3,7 @@
 import { useState, useCallback, useMemo } from "react";
 import { Check, AlertCircle, Plus, Minus } from "lucide-react";
 import { theme } from "@/lib/theme";
+import { collectRoutesUsingEdgeRuntime } from "next/dist/build/utils";
 
 interface Plan {
   limit: number;
@@ -99,7 +100,7 @@ const FormInput: React.FC<{
     <div>
       <label
         htmlFor={id}
-        style={{ color: theme.text.onDark }}
+        style={{ color: theme.text.mutedDark }}
         className="block text-sm font-semibold mb-2"
       >
         {label}
@@ -108,7 +109,7 @@ const FormInput: React.FC<{
         <div className="relative flex-1">
           {prefix && (
             <span
-              style={{ color: theme.text.onLight }}
+              style={{ color: theme.text.mutedDark }}
               className="absolute left-3 top-1/2 -translate-y-1/2 font-medium"
             >
               {prefix}
