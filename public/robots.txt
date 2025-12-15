@@ -1,0 +1,28 @@
+# can(RE)volution Robots.txt
+# Allow search engines to crawl your site
+
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /.next/
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Specific rules for Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Specific rules for other crawlers
+User-agent: *
+Crawl-delay: 1
+Request-rate: 1/10
+
+# Sitemaps
+Sitemap: https://canrevolution.com/sitemap.xml
+Sitemap: https://canrevolution.com/pt/sitemap.xml

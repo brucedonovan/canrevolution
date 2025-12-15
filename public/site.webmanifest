@@ -1,0 +1,51 @@
+{
+  "name": "can(RE)volution | Revolutionary Beverage Canning Machines",
+  "short_name": "can(RE)volution",
+  "description": "Professional on-the-spot beverage canning machines for cafés, shops, and businesses.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "categories": ["business", "industrial", "equipment"],
+  "screenshots": [
+    {
+      "src": "/images/hero-bg.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Book a Demo",
+      "short_name": "Book Demo",
+      "description": "Schedule a demo session with can(RE)volution",
+      "url": "/appointments",
+      "icons": [
+        {
+          "src": "/images/logo.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
