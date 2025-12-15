@@ -10,7 +10,7 @@ const BookDemo = () => {
           Book a demo session
         </h1>
         <p className="text-lg md:text-xl mb-12 max-w-2xl mx-auto" style={{ color: theme.text.mutedDark }}>
-          Let's discuss the options and how can(RE)volution machines can transform your business.
+          Let&apos;s discuss the options and how can(RE)volution machines can transform your business.
         </p>
         <a
           href="/appointments"
