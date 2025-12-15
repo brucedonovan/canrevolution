@@ -7,9 +7,9 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { theme } from '@/lib/theme'
 
 const navigation = [
-  { name: 'Product', href: '#product' },
   { name: 'Features', href: '#features' },
   { name: 'Pricing', href: '#pricing' },
+  { name: 'Feasability Calculator', href: '#calculator' },
 ]
 
 export default function Header() {
@@ -46,15 +46,22 @@ export default function Header() {
 
       <header className="relative z-50">
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8 max-w-7xl mx-auto">
-          <div className="flex lg:flex-1">
+          <div className="flex items-center gap-x-12">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">can(RE)volution</span>
               <img
                 alt="can(RE)volution"
                 src="/images/logo.png"
-                className="h-8 w-auto"
+                className="h-16 w-auto"
               />
             </Link>
+            <div className="hidden lg:flex lg:gap-x-12">
+              {navigation.map((item) => (
+                <a key={item.name} href={item.href} className="text-sm/6 font-semibold transition-colors" style={{ color: theme.text.onDark }}>
+                  {item.name}
+                </a>
+              ))}
+            </div>
           </div>
           <div className="flex lg:hidden">
             <button
@@ -67,14 +74,7 @@ export default function Header() {
               <Bars3Icon aria-hidden="true" className="size-6" />
             </button>
           </div>
-          <div className="hidden lg:flex lg:gap-x-12">
-            {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm/6 font-semibold transition-colors" style={{ color: theme.text.onDark }}>
-                {item.name}
-              </a>
-            ))}
-          </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <div className="hidden lg:flex">
             <Link href="/appointments" className="text-sm/6 font-semibold transition-colors" style={{ color: theme.text.onDark }}>
               Book a Demo <span aria-hidden="true">→</span>
             </Link>
