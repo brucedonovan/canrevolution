@@ -15,6 +15,16 @@ const navigation = [
 export default function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#')) {
+      e.preventDefault()
+      const element = document.querySelector(href)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+  }
+
   return (
     <header className="relative z-50 bg-transparent">
       <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8 max-w-7xl mx-auto">
@@ -31,7 +41,7 @@ export default function NavBar() {
         {/* Center navigation */}
         <div className="hidden lg:flex lg:gap-x-12 absolute left-1/2 transform -translate-x-1/2">
           {navigation.map((item) => (
-            <a key={item.name} href={item.href} className="text-sm/6 font-semibold transition-colors hover:opacity-75" style={{ color: theme.text.onDark }}>
+            <a key={item.name} href={item.href} onClick={(e) => handleNavClick(e, item.href)} className="text-sm/6 font-semibold transition-colors hover:opacity-75" style={{ color: theme.text.onDark }}>
               {item.name}
             </a>
           ))}
@@ -81,16 +91,19 @@ export default function NavBar() {
             </button>
           </div>
           <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y flex flex-col h-[calc(100vh-150px)]" style={{ borderTopColor: theme.border.dark, borderBottomColor: theme.border.dark }}>
+            <div className="flex flex-col h-[calc(100vh-150px)]">
               {/* Navigation links at top */}
               <div className="space-y-2 py-6">
                 {navigation.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
+                    onClick={(e) => {
+                      handleNavClick(e, item.href)
+                      setMobileMenuOpen(false)
+                    }}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:bg-white/5 transition-colors"
                     style={{ color: theme.text.onDark }}
-                    onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
                   </a>
