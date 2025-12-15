@@ -1,199 +1,189 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { CheckIcon } from '@heroicons/react/20/solid'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import { useState } from 'react'
 
-interface PricingPlan {
-  name: string;
-  price: string;
-  originalPrice?: string;
-  image: string;
-  imageAlt: string;
-  features: string[];
-  details: string[];
-  popular?: boolean;
+interface PricingTier {
+  name: string
+  id: string
+  href: string
+  priceMonthly: string
+  description: string
+  features: string[]
+  details: string[]
+  image: string
+  mostPopular: boolean
 }
 
-const pricingPlans: PricingPlan[] = [
+const tiers: PricingTier[] = [
   {
     name: 'Starter Plan',
-    price: '€500',
+    id: 'tier-starter',
+    href: '/appointments',
+    priceMonthly: '€500',
+    description: 'Perfect for cafés and small shops just getting started with beverage canning.',
     image: '/images/pricing-starter.png',
-    imageAlt:
-      'Top view of three unopened soda cans arranged in a triangle on a dark surface.',
     features: [
-      'Machine Rental including installation and maintenance',
-      '500 cans and lids delivered on-site every month',
-    ],
-    details: [
-      'Month-to-month contracts',
-      '1 month notice when cancelling the subscription',
-    ],
-  },
-  {
-    name: 'Growth Plan',
-    price: '€1000',
-    originalPrice: '€1250',
-    image: '/images/pricing-growth.png',
-    imageAlt:
-      'Top view of eleven silver soda cans arranged in a pattern on a black surface.',
-    features: [
-      'Machine Rental including installation and maintenance',
-      '500 cans and lids delivered on-site every month',
-      'Cans professionally branded with your logo (subject to signing a 12 month contract)',
-      'Machine screen customisable with your company branding/colors (subject to signing a 12 month contract)',
+      'Machine Rental including installation',
+      '500 cans and lids delivered monthly',
     ],
     details: [
       'Month-to-month contracts',
       '1 month notice when cancelling',
-      'Note: Contracts of 12 months+ get branding benefits',
     ],
-    popular: true,
+    mostPopular: false,
+  },
+  {
+    name: 'Growth Plan',
+    id: 'tier-growth',
+    href: '/appointments',
+    priceMonthly: '€1000',
+    description: 'Best for established businesses wanting professional branding on cans.',
+    image: '/images/pricing-growth.png',
+    features: [
+      'Machine Rental including installation',
+      '500 cans and lids delivered monthly',
+      'Cans professionally branded with your logo',
+      'Machine screen customisable with branding',
+      'Marketing automations support',
+    ],
+    details: [
+      'Month-to-month or 12+ month contracts',
+      'Logo branding included only with 12 month minimum',
+      '1 month notice when cancelling',
+    ],
+    mostPopular: true,
   },
   {
     name: 'Scale Plan',
-    price: '€2000',
-    originalPrice: '€2500',
+    id: 'tier-scale',
+    href: '/appointments',
+    priceMonthly: '€2000',
+    description: 'Enterprise solution for high-volume operations with full customization.',
     image: '/images/pricing-scale.png',
-    imageAlt: 'Several rows of unopened aluminum cans viewed from above.',
     features: [
-      'Machine Rental including installation and maintenance',
-      '500 cans and lids delivered on-site every month',
-      'Cans professionally branded with your logo',
-      'Machine screen customisable with your company branding/colors',
+      'Machine Rental including installation',
+      '500 cans and lids delivered monthly',
+      'Cans professionally branded with logo',
+      'Machine screen fully customisable',
+      'Dedicated account manager',
+      'Priority setup and onboarding',
     ],
     details: [
       '12-24 month contracts',
       '3 month notice when cancelling',
+      'Dedicated account manager included',
     ],
+    mostPopular: false,
   },
-];
+]
 
-const AccordionItem: React.FC<{
-  title: string;
-  details: string[];
-  isOpen: boolean;
-  onToggle: () => void;
-}> = ({ title, details, isOpen, onToggle }) => {
-  return (
-    <div className="border-b border-gray-300">
-      <button
-        onClick={onToggle}
-        className="w-full py-3 px-0 flex items-center justify-between text-left hover:opacity-70 transition-opacity"
-      >
-        <h4 className="text-sm font-semibold text-gray-800">{title}</h4>
-        <ChevronDown
-          size={14}
-          className={`text-gray-800 transition-transform flex-shrink-0 ${
-            isOpen ? 'rotate-180' : ''
-          }`}
-        />
-      </button>
-      {isOpen && (
-        <div className="pb-4">
-          <ul className="space-y-2 text-xs text-gray-700">
-            {details.map((detail, idx) => (
-              <li key={idx} className="flex gap-2">
-                <span className="flex-shrink-0">•</span>
-                <span>{detail}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
-  );
-};
-
-const PricingCard: React.FC<{
-  plan: PricingPlan;
-}> = ({ plan }) => {
-  const [openAccordion, setOpenAccordion] = useState(false);
-
-  return (
-    <div
-      className={`relative rounded-2xl overflow-hidden transition-transform hover:scale-105 ${
-        plan.popular ? 'ring-2 ring-black scale-105' : 'bg-gray-50'
-      }`}
-    >
-      {/* Popular Badge */}
-      {plan.popular && (
-        <div className="absolute top-4 right-4 bg-black text-white px-3 py-1 rounded-full text-xs font-semibold">
-          Popular
-        </div>
-      )}
-
-      <div className="p-6 md:p-8 bg-white">
-        {/* Image */}
-        <div className="w-20 h-20 rounded-full overflow-hidden mb-6 bg-gray-200">
-          <img
-            src={plan.image}
-            alt={plan.imageAlt}
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        {/* Plan Name */}
-        <h3 className="text-xl font-bold text-black mb-4">{plan.name}</h3>
-
-        {/* Price */}
-        <div className="mb-6">
-          <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-black">{plan.price}</span>
-            <span className="text-sm text-gray-600">monthly</span>
-          </div>
-          {plan.originalPrice && (
-            <p className="text-sm text-gray-500 line-through mt-1">
-              {plan.originalPrice}
-            </p>
-          )}
-        </div>
-
-        {/* Features */}
-        <ul className="space-y-3 mb-6">
-          {plan.features.map((feature, idx) => (
-            <li key={idx} className="flex gap-3 text-sm text-gray-700">
-              <span className="text-black font-bold flex-shrink-0">•</span>
-              <span>{feature}</span>
-            </li>
-          ))}
-        </ul>
-
-        {/* Accordion */}
-        <AccordionItem
-          title="Duration & Details"
-          details={plan.details}
-          isOpen={openAccordion}
-          onToggle={() => setOpenAccordion(!openAccordion)}
-        />
-      </div>
-    </div>
-  );
-};
+function classNames(...classes: (string | boolean | undefined | null)[]) {
+  return classes.filter(Boolean).join(' ')
+}
 
 export default function Pricing() {
+  const [expandedTier, setExpandedTier] = useState<string | null>(null)
+
+  const toggleTier = (tierId: string) => {
+    setExpandedTier(expandedTier === tierId ? null : tierId)
+  }
+
   return (
-    <section className="relative w-full bg-gray-100 text-black py-16 md:py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-        {/* Section Title and Description */}
-        <div className="max-w-2xl mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Flexible, transparent monthly subscription models
-          </h2>
-          <p className="text-base md:text-lg text-gray-700">
-            We offer a flexible monthly subscription based on expected usage. If
-            you ever need more cans and lids simply reach out and we will get
-            some delivered at a flat per can rate.
+    <div id="pricing" className="bg-white py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="text-base/7 font-semibold text-indigo-600">Pricing</h2>
+          <p className="mt-2 text-5xl font-semibold tracking-tight text-balance text-black sm:text-6xl">
+            Flexible subscription models
           </p>
         </div>
+        <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-gray-600 sm:text-xl/8">
+          Choose an affordable plan that's packed with the best features for your beverage business. Scale up anytime or downsize with just one month's notice.
+        </p>
+        <div className="isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+          {tiers.map((tier, tierIdx) => (
+            <div
+              key={tier.id}
+              className={classNames(
+                tier.mostPopular ? 'lg:z-10 lg:rounded-b-none' : 'lg:mt-8',
+                tierIdx === 0 ? '-mr-px lg:rounded-r-none' : '',
+                tierIdx === tiers.length - 1 ? '-ml-px lg:rounded-l-none' : '',
+                'flex flex-col justify-between rounded-3xl bg-gray-100 p-8 inset-ring inset-ring-gray-200 xl:p-10',
+              )}
+            >
+              <div>
+                {/* Pricing Tier Image */}
+                <div className="mb-6 flex justify-center">
+                  <div className="h-48 w-48 overflow-hidden rounded-full bg-gray-200">
+                    <img
+                      src={tier.image}
+                      alt={tier.name}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                </div>
+                <div className="flex items-center justify-between gap-x-4">
+                  <h3
+                    id={tier.id}
+                    className={classNames(
+                      tier.mostPopular ? 'text-indigo-600' : 'text-black',
+                      'text-lg/8 font-semibold',
+                    )}
+                  >
+                    {tier.name}
+                  </h3>
+                  {tier.mostPopular ? (
+                    <p className="rounded-full bg-indigo-100 px-2.5 py-1 text-xs/5 font-semibold text-indigo-600">
+                      Most popular
+                    </p>
+                  ) : null}
+                </div>
+                <p className="mt-4 text-sm/6 text-gray-600">{tier.description}</p>
+                <p className="mt-6 flex items-baseline gap-x-1">
+                  <span className="text-4xl font-semibold tracking-tight text-black">{tier.priceMonthly}</span>
+                  <span className="text-sm/6 font-semibold text-gray-600">/month</span>
+                </p>
+                <ul role="list" className="mt-8 space-y-3 text-sm/6 text-gray-700">
+                  {tier.features.map((feature) => (
+                    <li key={feature} className="flex gap-x-3">
+                      <CheckIcon aria-hidden="true" className="h-6 w-5 flex-none text-indigo-600" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
 
-        {/* Pricing Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
-          {pricingPlans.map((plan, idx) => (
-            <PricingCard key={idx} plan={plan} />
+                {/* Accordion for contract details */}
+                <button
+                  onClick={() => toggleTier(tier.id)}
+                  className="mt-8 w-full flex items-center justify-between text-left text-sm/6 font-semibold text-indigo-600 hover:text-indigo-700 transition-colors"
+                >
+                  <span>Contract & Cancellation Details</span>
+                  <ChevronDownIcon
+                    aria-hidden="true"
+                    className={classNames(
+                      expandedTier === tier.id ? 'rotate-180' : '',
+                      'h-5 w-5 transition-transform duration-200',
+                    )}
+                  />
+                </button>
+
+                {expandedTier === tier.id && (
+                  <ul role="list" className="mt-4 space-y-2 text-sm/6 text-gray-700 border-t border-gray-300 pt-4">
+                    {tier.details.map((detail) => (
+                      <li key={detail} className="flex gap-x-3">
+                        <span className="text-indigo-600">•</span>
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
           ))}
         </div>
       </div>
-    </section>
-  );
+    </div>
+  )
 }

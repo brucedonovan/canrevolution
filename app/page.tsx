@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Header from '@/components/Header';
-import Hero from '@/components/Hero';
 import Features from '@/components/Features';
 import ProductCarousel from '@/components/ProductCarousel';
 import MachineSpecs from '@/components/MachineSpecs';
@@ -18,7 +17,6 @@ export default function Home() {
     <>
       <StructuredData />
       <Header />
-      <Hero />
       <Features />
       <ProductCarousel />
       <MachineSpecs />
