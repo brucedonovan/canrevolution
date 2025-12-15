@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useCallback, useMemo } from 'react'
-import { Check, AlertCircle } from 'lucide-react'
+import { Check, AlertCircle, Plus, Minus } from 'lucide-react'
 import { theme } from '@/lib/theme'
 
 interface Plan {
@@ -51,37 +51,95 @@ const FormInput: React.FC<{
   placeholder: string
   helper: string
   prefix?: string
-}> = ({ label, id, value, onChange, placeholder, helper, prefix }) => (
-  <div>
-    <label htmlFor={id} style={{ color: theme.text.onLight }} className="block text-sm font-semibold mb-2">
-      {label}
-    </label>
-    <div className="relative">
-      {prefix && (
-        <span style={{ color: theme.text.muted }} className="absolute left-3 top-1/2 -translate-y-1/2">
-          {prefix}
-        </span>
-      )}
-      <input
-        id={id}
-        type="text"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder}
-        className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all"
-        style={{
-          borderColor: theme.border.light,
-          color: theme.text.onLight,
-          backgroundColor: theme.background.light,
-          paddingLeft: prefix ? '1.75rem' : '1rem',
-        }}
-      />
+  isNumeric?: boolean
+  min?: number
+  max?: number
+  decimals?: number
+}> = ({ label, id, value, onChange, placeholder, helper, prefix, isNumeric = false, min = 0, max = Infinity, decimals = 0 }) => {
+  const numValue = isNumeric ? parseNumber(value) : null
+
+  const clampAndFormat = (val: number): string => {
+    const clamped = Math.max(min, Math.min(max, val))
+    return decimals > 0 ? clamped.toFixed(decimals) : String(Math.round(clamped))
+  }
+
+  const handleIncrement = () => {
+    if (isNumeric) {
+      const current = numValue || 0
+      const step = id.includes('charge') ? 0.05 : 100
+      const newValue = current + step
+      onChange(clampAndFormat(newValue))
+    }
+  }
+
+  const handleDecrement = () => {
+    if (isNumeric) {
+      const current = numValue || 0
+      const step = id.includes('charge') ? 0.05 : 100
+      const newValue = current - step
+      onChange(clampAndFormat(newValue))
+    }
+  }
+
+  return (
+    <div>
+      <label htmlFor={id} style={{ color: theme.text.onDark }} className="block text-sm font-semibold mb-2">
+        {label}
+      </label>
+      <div className="relative flex items-center">
+        <div className="relative flex-1">
+          {prefix && (
+            <span style={{ color: theme.text.onLight }} className="absolute left-3 top-1/2 -translate-y-1/2 font-medium">
+              {prefix}
+            </span>
+          )}
+          <input
+            id={id}
+            type="text"
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            placeholder={placeholder}
+            className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all text-lg font-semibold"
+            style={{
+              borderColor: theme.border.light,
+              color: theme.text.onLight,
+              backgroundColor: theme.background.light,
+              paddingLeft: prefix ? '1.75rem' : '1rem',
+              paddingRight: isNumeric ? '3.5rem' : '1rem',
+            }}
+          />
+        </div>
+        {isNumeric && (
+          <div className="absolute right-0 top-0 h-full flex items-center pr-1">
+            <button
+              type="button"
+              onClick={handleDecrement}
+              className="inline-flex items-center justify-center p-4 transition-colors rounded hover:opacity-75"
+              style={{
+                color: theme.primary.light,
+              }}
+            >
+              <Minus size={22} strokeWidth={3} />
+            </button>
+            <button
+              type="button"
+              onClick={handleIncrement}
+              className="inline-flex items-center justify-center p-4 transition-colors rounded hover:opacity-75"
+              style={{
+                color: theme.primary.light,
+              }}
+            >
+              <Plus size={22} strokeWidth={3} />
+            </button>
+          </div>
+        )}
+      </div>
+      <p style={{ color: theme.text.mutedDark }} className="text-xs mt-2">
+        {helper}
+      </p>
     </div>
-    <p style={{ color: theme.text.muted }} className="text-xs mt-2">
-      {helper}
-    </p>
-  </div>
-)
+  )
+}
 
 // Plan Selector Component
 const PlanSelector: React.FC<{
@@ -89,26 +147,27 @@ const PlanSelector: React.FC<{
   onChange: (plan: string) => void
 }> = ({ selected, onChange }) => {
   const plans = [
-    { id: 'small', name: 'Small Plan', description: '500 cans @ €500/mo' },
-    { id: 'medium', name: 'Medium Plan', description: '1500 cans @ €1000/mo' },
-    { id: 'large', name: 'Large Plan', description: '4000 cans @ €2000/mo' },
+    { id: 'small', name: 'Small Plan', limit: '500 cans', fee: '€500/mo' },
+    { id: 'medium', name: 'Medium Plan', limit: '1500 cans', fee: '€1000/mo' },
+    { id: 'large', name: 'Large Plan', limit: '4000 cans', fee: '€2000/mo' },
   ]
 
   return (
     <div>
-      <label style={{ color: theme.text.onLight }} className="block text-sm font-semibold mb-4">
+      <label style={{ color: theme.text.mutedDark }} className="block text-sm font-semibold mb-4">
         Subscription Plan
       </label>
-      <fieldset aria-label="Plan selection" className="space-y-0 rounded-md overflow-hidden border" style={{ borderColor: theme.border.light }}>
+      <fieldset aria-label="Plan selection" className="space-y-3">
         {plans.map((plan) => (
           <label
             key={plan.id}
             aria-label={plan.name}
-            aria-description={plan.description}
-            className="flex border-b p-4 cursor-pointer transition-colors last:border-b-0"
+            aria-description={`${plan.limit}, ${plan.fee}`}
+            className="group relative block rounded-lg border px-6 py-4 cursor-pointer transition-all has-checked:outline-2 has-checked:-outline-offset-2 has-focus-visible:outline-3 has-focus-visible:-outline-offset-1"
             style={{
-              borderBottomColor: theme.border.light,
+              borderColor: selected === plan.id ? theme.primary.light : theme.border.light,
               backgroundColor: selected === plan.id ? theme.primary.light + '10' : 'transparent',
+              outlineColor: theme.primary.light,
             }}
           >
             <input
@@ -117,19 +176,32 @@ const PlanSelector: React.FC<{
               name="plan-selection"
               type="radio"
               onChange={(e) => onChange(e.target.value)}
-              className="mt-0.5 shrink-0"
+              className="absolute inset-0 appearance-none focus:outline-none"
               style={{
                 accentColor: theme.primary.light,
               }}
             />
-            <span className="ml-3 flex flex-col">
-              <span className="text-sm font-medium" style={{ color: selected === plan.id ? theme.text.onLight : theme.primary.light }}>
-                {plan.name}
+            <div className="flex justify-between items-start">
+              <span className="flex flex-col text-sm">
+                <span className="font-medium" style={{ color: selected === plan.id ? theme.text.onDark : theme.text.mutedDark }}>
+                  {plan.name}
+                </span>
+                <span style={{ color: selected === plan.id ? theme.text.mutedDark : theme.text.muted }} className="text-xs mt-1">
+                  {plan.limit} • {plan.fee}
+                </span>
               </span>
-              <span className="text-sm" style={{ color: selected === plan.id ? theme.text.muted : theme.primary.light + 'cc' }}>
-                {plan.description}
+              <span
+                className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0"
+                style={{
+                  borderColor: selected === plan.id ? theme.primary.light : theme.border.light,
+                  backgroundColor: selected === plan.id ? theme.primary.light : 'transparent',
+                }}
+              >
+                {selected === plan.id && (
+                  <span className="w-2 h-2 bg-white rounded-full" />
+                )}
               </span>
-            </span>
+            </div>
           </label>
         ))}
       </fieldset>
@@ -153,35 +225,31 @@ const FormSection: React.FC<{
   onChargeChange,
   onVolumeChange,
 }) => (
-  <div
-    className="lg:col-span-1 rounded-2xl p-8 h-full border"
-    style={{
-      backgroundColor: theme.background.lightCard,
-      borderColor: theme.border.light,
-    }}
-  >
-
-    <form className="space-y-8">
-      <PlanSelector selected={selectedPackage} onChange={onPackageChange} />
-      <FormInput
-        label="Markup Per Can"
-        id="extra-charge"
-        value={extraCharge}
-        onChange={onChargeChange}
-        placeholder="0.50"
-        helper="How much extra per can?"
-        prefix="€"
-      />
-      <FormInput
-        label="Monthly Volume"
-        id="cans-month"
-        value={cansPerMonth}
-        onChange={onVolumeChange}
-        placeholder="1000"
-        helper="Expected cans per month"
-      />
-    </form>
-  </div>
+  <form className="space-y-8">
+    <PlanSelector selected={selectedPackage} onChange={onPackageChange} />
+    <FormInput
+      label="Markup Per Can"
+      id="extra-charge"
+      value={extraCharge}
+      onChange={onChargeChange}
+      placeholder="0.50"
+      helper="How much extra per can?"
+      prefix="€"
+      isNumeric={true}
+      min={0.5}
+      max={2.5}
+      decimals={2}
+    />
+    <FormInput
+      label="Monthly Volume"
+      id="cans-month"
+      value={cansPerMonth}
+      onChange={onVolumeChange}
+      placeholder="1000"
+      helper="Expected cans per month"
+      isNumeric={true}
+    />
+  </form>
 )
 
 // Results Summary Cards Component
@@ -213,7 +281,6 @@ const ProfitHighlight: React.FC<{ result: CalculationResult }> = ({ result }) =>
     className="rounded-lg p-6"
     style={{
       backgroundColor: result.isPositive ? '#dcfce7' : '#fee2e2',
-      borderLeft: `4px solid ${result.isPositive ? '#22c55e' : '#dc2626'}`,
     }}
   >
     <p
@@ -298,7 +365,7 @@ const ResultsSection: React.FC<{ result: CalculationResult | null }> = ({ result
 
   return (
     <div
-      className="rounded-2xl p-8 border-2"
+      className="rounded-2xl p-8 border-2 lg:mt-10 h-full flex flex-col"
       style={{
         backgroundColor: theme.background.lightCard,
         borderColor: result.isPositive ? theme.primary.light : '#ef4444',
@@ -392,17 +459,19 @@ const ProfitCalculator = () => {
         </div>
 
         {/* Calculator Container */}
-        <div className="grid lg:grid-cols-3 gap-8">
-          <FormSection
-            selectedPackage={selectedPackage}
-            extraCharge={extraCharge}
-            cansPerMonth={cansPerMonth}
-            onPackageChange={handlePackageChange}
-            onChargeChange={handleChargeChange}
-            onVolumeChange={handleVolumeChange}
-          />
+        <div className="grid lg:grid-cols-2 gap-8 lg:items-start">
+          <div className="lg:col-span-1 flex flex-col h-full">
+            <FormSection
+              selectedPackage={selectedPackage}
+              extraCharge={extraCharge}
+              cansPerMonth={cansPerMonth}
+              onPackageChange={handlePackageChange}
+              onChargeChange={handleChargeChange}
+              onVolumeChange={handleVolumeChange}
+            />
+          </div>
 
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-1 h-full">
             <ResultsSection result={result} />
           </div>
         </div>
