@@ -315,9 +315,9 @@ const ResultsSection: React.FC<{ result: CalculationResult | null }> = ({ result
 
 // Main Calculator Component
 const ProfitCalculator = () => {
-  const [selectedPackage, setSelectedPackage] = useState<string>('')
-  const [extraCharge, setExtraCharge] = useState<string>('')
-  const [cansPerMonth, setCansPerMonth] = useState<string>('')
+  const [selectedPackage, setSelectedPackage] = useState<string>('medium')
+  const [extraCharge, setExtraCharge] = useState<string>('0.85')
+  const [cansPerMonth, setCansPerMonth] = useState<string>('1500')
 
   // Memoized calculation
   const result = useMemo<CalculationResult | null>(() => {
