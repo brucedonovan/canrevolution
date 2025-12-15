@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, X, Play, Square } from 'lucide-react';
 import { theme } from '@/lib/theme';
 
 interface AccordionItem {
@@ -75,7 +75,8 @@ const AccordionItem: React.FC<{
 };
 
 export default function MachineSpecs() {
-  const [openIndex, setOpenIndex] = useState(-1);
+  const [openIndex, setOpenIndex] = useState(0);
+  const [showDemo, setShowDemo] = useState(false);
 
   const handleToggle = (index: number) => {
     setOpenIndex(openIndex === index ? -1 : index);
@@ -92,24 +93,46 @@ export default function MachineSpecs() {
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
           {/* Left Column - Image and Button */}
-          <div className="flex flex-col items-center gap-8">
-            {/* Circular Image */}
-            <div className="w-full max-w-sm aspect-square rounded-full overflow-hidden bg-gray-900 flex items-center justify-center">
-              <img
-                src="/images/machine.png"
-                alt="Coffee vending machine with a display screen showing coffee beans, dispensing a clear glass cup"
-                className="w-full h-full object-cover"
-              />
+          <div className="flex flex-col items-center gap-6">
+            {/* Circular Image/Video with Overlaid Button */}
+            <div className="w-full max-w-sm aspect-square rounded-full overflow-visible flex items-center justify-center relative" style={{ backgroundColor: theme.background.dark }}>
+              {!showDemo ? (
+                <img
+                  src="/images/machine.png"
+                  alt="Coffee vending machine with a display screen showing coffee beans, dispensing a clear glass cup"
+                  className="w-full h-full object-cover rounded-full"
+                />
+              ) : (
+                <div className="relative w-full h-full flex items-center justify-center rounded-full overflow-hidden">
+                  <video
+                    autoPlay
+                    controls
+                    onEnded={() => setShowDemo(false)}
+                    className="w-full h-full object-contain"
+                  >
+                    <source src="/videos/demo.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                  <button
+                    onClick={() => setShowDemo(false)}
+                    className="absolute top-4 right-4 p-2 rounded-full bg-black/60 hover:bg-black/80 transition-colors z-10"
+                    aria-label="Close video"
+                  >
+                    <X size={24} style={{ color: theme.text.onDark }} />
+                  </button>
+                </div>
+              )}
+              
+              {/* Overlaid Demo/Stop Button */}
+              <button
+                onClick={() => setShowDemo(!showDemo)}
+                className="absolute bottom-0 right-6 p-4 rounded-full hover:scale-110 transition-transform shadow-lg z-20 flex items-center justify-center"
+                style={{ backgroundColor: theme.primary.light, color: theme.background.dark }}
+                aria-label={showDemo ? 'Stop video' : 'Play demo'}
+              >
+                {showDemo ? <Square size={28} fill="currentColor" /> : <Play size={28} fill="currentColor" />}
+              </button>
             </div>
-
-            {/* Demo Button */}
-            <a
-              href="/demo-video"
-              className="px-8 py-3 font-semibold rounded hover:opacity-90 transition-opacity inline-block"
-              style={{ backgroundColor: theme.primary.light, color: theme.background.dark }}
-            >
-              🍿 Demo
-            </a>
           </div>
 
           {/* Right Column - Accordion */}

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Dialog, DialogPanel } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Menu, X } from 'lucide-react'
 import { theme } from '@/lib/theme'
 
 const navigation = [
@@ -71,7 +71,7 @@ export default function Header() {
               style={{ color: theme.text.onDark }}
             >
               <span className="sr-only">Open main menu</span>
-              <Bars3Icon aria-hidden="true" className="size-6" />
+              <Menu aria-hidden="true" size={24} />
             </button>
           </div>
           <div className="hidden lg:flex">
@@ -99,7 +99,7 @@ export default function Header() {
                 style={{ color: theme.text.onDark }}
               >
                 <span className="sr-only">Close menu</span>
-                <XMarkIcon aria-hidden="true" className="size-6" />
+                <X aria-hidden="true" size={24} />
               </button>
             </div>
             <div className="mt-6 flow-root">

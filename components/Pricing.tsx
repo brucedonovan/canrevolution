@@ -1,7 +1,6 @@
 'use client'
 
-import { CheckIcon } from '@heroicons/react/20/solid'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import { Check, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 import { theme } from '@/lib/theme'
 
@@ -147,7 +146,7 @@ export default function Pricing() {
                   <ul role="list" className="mt-8 space-y-3 text-sm/6" style={{ color: theme.text.muted }}>
                     {tier.features.map((feature) => (
                       <li key={feature} className="flex gap-x-3">
-                        <CheckIcon aria-hidden="true" className="h-6 w-5 flex-none" style={{ color: theme.primary.light }} />
+                        <Check aria-hidden="true" size={24} style={{ color: theme.primary.light }} />
                         {feature}
                       </li>
                     ))}
@@ -160,9 +159,10 @@ export default function Pricing() {
                     style={{ color: theme.primary.light }}
                   >
                     <span>Contract & Cancellation Details</span>
-                    <ChevronDownIcon
+                    <ChevronDown
                       aria-hidden="true"
-                      className={`h-5 w-5 transition-transform duration-200 ${
+                      size={20}
+                      className={`transition-transform duration-200 ${
                         expandedTier === tier.id ? 'rotate-180' : ''
                       }`}
                     />
