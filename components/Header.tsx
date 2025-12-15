@@ -134,7 +134,7 @@ export default function Header() {
       </header>
 
       {/* Hero Section */}
-      <div className="relative isolate pt-14 pb-32 md:pb-48 lg:pb-56 overflow-hidden">
+      <div className="relative isolate pt-8 pb-32 md:pb-48 lg:pb-56 overflow-visible">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
             <div className="text-left">
@@ -159,6 +159,19 @@ export default function Header() {
             </div>
           </div>
         </div>
+
+        {/* Curved bottom divider */}
+        <svg
+          className="absolute bottom-0 left-0 w-full"
+          viewBox="0 0 1440 60"
+          preserveAspectRatio="none"
+          style={{ height: '60px' }}
+        >
+          <path
+            d="M 0,30 Q 720,60 1440,30 L 1440,60 L 0,60 Z"
+            style={{ fill: theme.background.light }}
+          />
+        </svg>
       </div>
     </div>
   )
