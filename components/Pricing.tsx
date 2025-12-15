@@ -80,10 +80,6 @@ const tiers: PricingTier[] = [
   },
 ]
 
-function classNames(...classes: (string | boolean | undefined | null)[]) {
-  return classes.filter(Boolean).join(' ')
-}
-
 export default function Pricing() {
   const [expandedTier, setExpandedTier] = useState<string | null>(null)
 
@@ -108,12 +104,11 @@ export default function Pricing() {
             {tiers.map((tier, tierIdx) => (
               <div
                 key={tier.id}
-                className={classNames(
-                  tier.mostPopular ? 'lg:z-10 lg:rounded-b-none' : 'lg:mt-8',
-                  tierIdx === 0 ? '-mr-px lg:rounded-r-none' : '',
-                  tierIdx === tiers.length - 1 ? '-ml-px lg:rounded-l-none' : '',
-                  'flex flex-col justify-between rounded-3xl p-8 xl:p-10 inset-ring inset-ring-1'
-                )}
+                className={`flex flex-col justify-between rounded-3xl p-8 xl:p-10 inset-ring inset-ring-1 ${
+                  tier.mostPopular ? 'lg:z-10 lg:rounded-b-none' : 'lg:mt-8'
+                } ${tierIdx === 0 ? '-mr-px lg:rounded-r-none' : ''} ${
+                  tierIdx === tiers.length - 1 ? '-ml-px lg:rounded-l-none' : ''
+                }`}
                 style={{
                   backgroundColor: tier.mostPopular ? theme.background.lightCard : theme.background.light,
                   borderColor: theme.border.light,
@@ -167,10 +162,9 @@ export default function Pricing() {
                     <span>Contract & Cancellation Details</span>
                     <ChevronDownIcon
                       aria-hidden="true"
-                      className={classNames(
-                        expandedTier === tier.id ? 'rotate-180' : '',
-                        'h-5 w-5 transition-transform duration-200',
-                      )}
+                      className={`h-5 w-5 transition-transform duration-200 ${
+                        expandedTier === tier.id ? 'rotate-180' : ''
+                      }`}
                     />
                   </button>
 
