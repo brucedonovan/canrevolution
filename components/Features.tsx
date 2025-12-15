@@ -36,7 +36,7 @@ const AccordionItem: React.FC<{
     <div style={{ borderBottomColor: `var(--primary-light, ${theme.primary.light})` }} className="border-b">
       <button
         onClick={onToggle}
-        className="w-full py-4 px-0 flex items-center justify-between text-left hover:opacity-70 transition-opacity"
+        className="w-full py-4 flex items-center justify-between text-left hover:opacity-70 transition-opacity"
       >
         <h3 style={{ color: theme.text.onLight }} className="text-lg md:text-xl font-bold">
           {item.title}
@@ -66,7 +66,7 @@ export default function Features() {
   };
 
   return (
-    <section className="relative w-full text-slate-900 py-16 md:py-24 lg:py-32" style={{ backgroundColor: theme.background.light }}>
+    <section className="w-full py-16 md:py-24 lg:py-32" style={{ backgroundColor: theme.background.light }}>
       <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-16">
         {/* Section title */}
         <h2 style={{ color: theme.text.onLight }} className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
