@@ -75,31 +75,31 @@ const BookDemo = () => {
   return (
     <section className="relative w-full py-24 md:py-32 overflow-hidden">
       {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-black">
+      <div className="absolute inset-0 bg-amber-950">
         <canvas
           ref={canvasRef}
           className="absolute inset-0 w-full h-full opacity-100"
           style={{ mixBlendMode: 'multiply' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/40 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-amber-950/40 to-amber-950/60" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 md:px-8 max-w-4xl h-full flex flex-col justify-center items-center text-center">
         {/* Heading */}
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-amber-50 mb-6 leading-tight">
           Book a demo session
         </h1>
 
         {/* Description */}
-        <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-2xl leading-relaxed">
+        <p className="text-lg md:text-xl text-amber-100 mb-12 max-w-2xl leading-relaxed">
           Let's discuss the options and how can(RE)volution machines can transform your business.
         </p>
 
         {/* CTA Button */}
         <a
           href="/appointments"
-          className="inline-block px-10 py-4 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 active:scale-95"
+          className="inline-block px-10 py-4 bg-amber-700 text-amber-50 font-semibold rounded-lg hover:bg-amber-800 transition-all duration-300 transform hover:scale-105 active:scale-95"
         >
           Book now
         </a>

@@ -43,27 +43,27 @@ const AccordionItem: React.FC<{
   isFirst?: boolean;
 }> = ({ item, isOpen, onToggle, isFirst = false }) => {
   return (
-    <div className="border-b border-white/20">
+    <div className="border-b border-amber-800/50">
       <button
         onClick={onToggle}
         className="w-full py-4 px-0 flex items-center justify-between text-left hover:opacity-70 transition-opacity"
       >
-        <h3 className="text-lg md:text-xl font-semibold text-white">
+        <h3 className="text-lg md:text-xl font-semibold text-amber-50">
           {item.title}
         </h3>
         <ChevronDown
           size={18}
-          className={`text-white transition-transform flex-shrink-0 ${
+          className={`text-amber-400 transition-transform flex-shrink-0 ${
             isOpen ? 'rotate-180' : ''
           }`}
         />
       </button>
       {isOpen && (
         <div className="pb-6 pr-8">
-          <ul className="space-y-3 text-sm md:text-base text-gray-300">
+          <ul className="space-y-3 text-sm md:text-base text-amber-100">
             {item.content.map((point, idx) => (
               <li key={idx} className="flex gap-3">
-                <span className="text-white font-bold flex-shrink-0">•</span>
+                <span className="text-amber-400 font-bold flex-shrink-0">•</span>
                 <span>{point}</span>
               </li>
             ))}
@@ -82,10 +82,10 @@ export default function MachineSpecs() {
   };
 
   return (
-    <section className="relative w-full bg-black text-white py-16 md:py-24 lg:py-32">
+    <section className="relative w-full bg-amber-950 text-amber-50 py-16 md:py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         {/* Section Title */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-12 md:mb-16">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-12 md:mb-16 text-amber-50">
           What makes our machines unique?
         </h2>
 

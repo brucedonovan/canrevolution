@@ -33,17 +33,17 @@ const AccordionItem: React.FC<{
   isFirst?: boolean;
 }> = ({ item, isOpen, onToggle, isFirst = false }) => {
   return (
-    <div className="border-b border-black">
+    <div className="border-b border-amber-300">
       <button
         onClick={onToggle}
         className="w-full py-4 px-0 flex items-center justify-between text-left hover:opacity-70 transition-opacity"
       >
-        <h3 className="text-lg md:text-xl font-bold text-black">
+        <h3 className="text-lg md:text-xl font-bold text-amber-900">
           {item.title}
         </h3>
         <ChevronDown
           size={18}
-          className={`text-black transition-transform ${
+          className={`text-amber-700 transition-transform ${
             isOpen ? 'rotate-180' : ''
           }`}
         />
@@ -67,15 +67,15 @@ export default function Features() {
   };
 
   return (
-    <section className="relative w-full bg-white text-black py-16 md:py-24 lg:py-32">
+    <section className="relative w-full bg-white text-amber-950 py-16 md:py-24 lg:py-32">
       <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-16">
         {/* Section title */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-amber-900">
           What you can offer your customers
         </h2>
 
         {/* Subtitle */}
-        <p className="text-base md:text-lg text-gray-700 mb-12 max-w-2xl">
+        <p className="text-base md:text-lg text-amber-800 mb-12 max-w-2xl">
           Unlock a new level of service and stand out from the crowd. With{' '}
           <strong>Can(Re)volution</strong> solutions, your café becomes more
           than a place to grab a drink, it becomes an experience your customers
@@ -84,7 +84,7 @@ export default function Features() {
 
         {/* Accordion */}
         <div className="max-w-3xl">
-          <div className="border-t border-black">
+          <div className="border-t border-amber-300">
             {accordionItems.map((item, index) => (
               <AccordionItem
                 key={index}

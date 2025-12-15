@@ -89,12 +89,12 @@ const ProfitCalculator = () => {
   };
 
   return (
-    <section className="w-full bg-gray-50 py-16 md:py-24">
+    <section className="w-full bg-amber-50 py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-8 max-w-5xl">
         {/* Title */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Quick Profitability Calculator</h2>
-          <p className="text-gray-600 text-lg">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-amber-900">Quick Profitability Calculator</h2>
+          <p className="text-amber-700 text-lg">
             Discover your potential profit with our flexible subscription plans
           </p>
         </div>
@@ -102,14 +102,14 @@ const ProfitCalculator = () => {
         {/* Calculator Grid */}
         <div className="grid md:grid-cols-2 gap-8 md:gap-12">
           {/* Form Section */}
-          <div className="bg-white rounded-lg p-8 shadow-sm">
+          <div className="bg-white rounded-lg p-8 shadow-sm border border-amber-200">
             <form className="space-y-6">
               {/* Subscription Package */}
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-3">
+                <label className="block text-sm font-semibold text-amber-900 mb-3">
                   Subscription Package
                 </label>
-                <p className="text-sm text-gray-600 mb-4">
+                <p className="text-sm text-amber-700 mb-4">
                   Choose the subscription you are interested in
                 </p>
                 <div className="space-y-3">
@@ -125,9 +125,9 @@ const ProfitCalculator = () => {
                         value={option.id}
                         checked={selectedPackage === option.id}
                         onChange={(e) => setSelectedPackage(e.target.value)}
-                        className="w-4 h-4 text-blue-600"
+                        className="w-4 h-4 text-amber-600"
                       />
-                      <span className="ml-3 text-gray-700">{option.label}</span>
+                      <span className="ml-3 text-amber-900">{option.label}</span>
                     </label>
                   ))}
                 </div>
@@ -135,10 +135,10 @@ const ProfitCalculator = () => {
 
               {/* Extra Charge Per Can */}
               <div>
-                <label htmlFor="extra-charge" className="block text-sm font-semibold text-gray-900 mb-2">
+                <label htmlFor="extra-charge" className="block text-sm font-semibold text-amber-900 mb-2">
                   Extra Charge Per Can
                 </label>
-                <p className="text-sm text-gray-600 mb-3">
+                <p className="text-sm text-amber-700 mb-3">
                   How much do you intend to increase your beverage price for the to-go can?
                 </p>
                 <div className="relative">
