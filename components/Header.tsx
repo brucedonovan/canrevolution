@@ -22,7 +22,7 @@ export default function Header() {
         alt="can(RE)volution hero background"
         src="/images/hero-bg.png"
         className="absolute inset-0 -z-20 size-full object-cover"
-        style={{ objectPosition: '90% 50%' }}
+        style={{ objectPosition: '80% 50%' }}
       />
       <div className="absolute inset-0 -z-20 bg-black/40" />
 

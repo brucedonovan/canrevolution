@@ -1,7 +1,4 @@
 'use client';
-
-import React from 'react';
-import Image from 'next/image';
 import { theme } from '@/lib/theme';
 
 interface HeroProps {
@@ -10,34 +7,6 @@ interface HeroProps {
   backgroundImage?: string;
   backgroundImageAlt?: string;
 }
-
-const SectionDivider: React.FC = () => {
-  return (
-    <div className="relative w-full overflow-hidden">
-      <svg
-        viewBox="0 0 1 1"
-        preserveAspectRatio="none"
-        className="w-full"
-        style={{ height: '6vw', display: 'block' }}
-      >
-        <defs>
-          <clipPath id="section-divider-rounded" clipPathUnits="objectBoundingBox">
-            <path
-              d="M 0,0.3 Q 0.25,0.05 0.5,0.3 T 1,0.3 L 1,1 L 0,1 Z"
-              fill="white"
-            />
-          </clipPath>
-        </defs>
-        <rect
-          width="1"
-          height="1"
-          fill="white"
-          clipPath="url(#section-divider-rounded)"
-        />
-      </svg>
-    </div>
-  );
-};
 
 export default function Hero({
   title = "can(Re)volution",
@@ -55,7 +24,7 @@ export default function Hero({
           alt={backgroundImageAlt}
           className="absolute inset-0 w-full h-full object-cover"
           style={{
-            objectPosition: '76.95% 50.67%', // Focal point from Squarespace config
+            objectPosition: '80% 40%', // Focal point from Squarespace config
           }}
         />
 
