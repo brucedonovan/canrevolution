@@ -12,11 +12,7 @@ const navigation = [
   { name: 'Feasability Calculator', href: '#calculator' },
 ]
 
-interface NavBarProps {
-  showGradient?: boolean
-}
-
-export default function NavBar({ showGradient = false }: NavBarProps) {
+export default function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (

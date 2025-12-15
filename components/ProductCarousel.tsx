@@ -85,7 +85,7 @@ export default function ProductCarousel() {
         {/* CTA Button */}
         <div className="flex justify-center mt-12">
           <a
-            href="#"
+            href="#features"
             className="px-8 py-3 font-semibold rounded hover:opacity-90 transition-colors"
             style={{ backgroundColor: theme.primary.light, color: theme.background.dark }}
           >

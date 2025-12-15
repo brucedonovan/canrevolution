@@ -16,7 +16,7 @@ export default function Header() {
       />
       <div className="absolute inset-0 -z-20 bg-black/40" />
 
-      <NavBar showGradient={true} />
+      <NavBar />
 
       {/* Hero Section */}
       <div className="relative isolate pt-8 pb-32 md:pb-48 lg:pb-56 overflow-visible">

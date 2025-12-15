@@ -1,7 +1,6 @@
 import Script from 'next/script'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
-import { theme } from '@/lib/theme'
 
 export const metadata = {
   title: 'Book a Demo - can(RE)volution',
@@ -24,7 +23,7 @@ export default function AppointmentsPage() {
         {/* Back button header */}
         <header className="relative z-50 bg-transparent">
           <nav className="flex items-center justify-between p-6 lg:px-8 max-w-7xl mx-auto">
-            <Link href="/" className="inline-flex items-center gap-2 transition-colors hover:opacity-75" style={{ color: theme.text.onDark }}>
+            <Link href="/" className="inline-flex items-center gap-2 transition-colors hover:opacity-75 text-white">
               <ArrowLeft size={20} />
               <span className="font-semibold">Back</span>
             </Link>

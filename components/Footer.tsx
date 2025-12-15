@@ -6,6 +6,14 @@ import { theme } from '@/lib/theme';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const handleLinkHoverEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.currentTarget.style.color = theme.text.onDark;
+  };
+
+  const handleLinkHoverLeave = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.currentTarget.style.color = theme.text.mutedDark;
+  };
+
   return (
     <footer style={{ backgroundColor: theme.background.dark, color: theme.text.onDark }}>
       {/* Main Footer Section */}
@@ -24,7 +32,7 @@ const Footer = () => {
             </div>
 
             {/* Center - Spacer (empty on mobile) */}
-            <div className="hidden md:block" />
+            <div className="hidden md:flex flex-1" />
 
             {/* Right - Social section */}
             <div className="flex flex-col items-center md:items-end gap-3">
@@ -62,8 +70,8 @@ const Footer = () => {
                 href="/privacy"
                 className="transition-colors duration-200"
                 style={{ color: theme.text.mutedDark }}
-                onMouseEnter={(e) => e.currentTarget.style.color = theme.text.onDark}
-                onMouseLeave={(e) => e.currentTarget.style.color = theme.text.mutedDark}
+                onMouseEnter={handleLinkHoverEnter}
+                onMouseLeave={handleLinkHoverLeave}
               >
                 Privacy Policy
               </a>
@@ -71,8 +79,8 @@ const Footer = () => {
                 href="/terms"
                 className="transition-colors duration-200"
                 style={{ color: theme.text.mutedDark }}
-                onMouseEnter={(e) => e.currentTarget.style.color = theme.text.onDark}
-                onMouseLeave={(e) => e.currentTarget.style.color = theme.text.mutedDark}
+                onMouseEnter={handleLinkHoverEnter}
+                onMouseLeave={handleLinkHoverLeave}
               >
                 Terms of Service
               </a>
