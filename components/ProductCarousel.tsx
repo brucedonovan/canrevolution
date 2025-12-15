@@ -1,7 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { theme } from '@/lib/theme';
 
 interface CarouselItem {
   title: string;
@@ -38,108 +43,51 @@ const carouselItems: CarouselItem[] = [
 ];
 
 export default function ProductCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const goToPrevious = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? carouselItems.length - 1 : prevIndex - 1
-    );
-  };
-
-  const goToNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === carouselItems.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
   return (
-    <section className="relative w-full bg-white text-black py-16 md:py-24 lg:py-32">
+    <section style={{ backgroundColor: theme.background.light }} className="py-8 md:py-12 lg:py-16">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-        {/* Carousel Container */}
-        <div className="relative">
-          {/* Main Carousel */}
-          <div className="overflow-hidden rounded-lg">
-            <div className="relative w-full aspect-square md:aspect-video">
-              {carouselItems.map((item, index) => (
-                <div
-                  key={index}
-                  className={`absolute inset-0 transition-opacity duration-500 ${
-                    index === currentIndex ? 'opacity-100' : 'opacity-0'
-                  }`}
-                >
+        {/* Swiper Carousel */}
+        <div className="rounded-lg overflow-hidden">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            navigation={true}
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            loop={true}
+            spaceBetween={20}
+            slidesPerView={1}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+              },
+            }}
+            className="rounded-lg"
+          >
+            {carouselItems.map((item, index) => (
+              <SwiperSlide key={index}>
+                <div className="relative w-full aspect-square sm:aspect-[4/5] lg:aspect-[3/4] rounded-lg overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.imageAlt}
                     className="w-full h-full object-cover"
                   />
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Navigation Arrows - Desktop */}
-          <div className="hidden md:flex absolute inset-y-0 left-0 right-0 pointer-events-none items-center justify-between px-4">
-            <button
-              onClick={goToPrevious}
-              className="pointer-events-auto p-2 rounded-full bg-black/50 hover:bg-black/70 text-white transition-colors"
-              aria-label="Previous"
-            >
-              <ChevronLeft size={24} />
-            </button>
-            <button
-              onClick={goToNext}
-              className="pointer-events-auto p-2 rounded-full bg-black/50 hover:bg-black/70 text-white transition-colors"
-              aria-label="Next"
-            >
-              <ChevronRight size={24} />
-            </button>
-          </div>
-
-          {/* Navigation Arrows - Mobile */}
-          <div className="flex md:hidden gap-4 mt-4 justify-center">
-            <button
-              onClick={goToPrevious}
-              className="p-2 rounded-full bg-black text-white hover:bg-black/80 transition-colors"
-              aria-label="Previous"
-            >
-              <ChevronLeft size={20} />
-            </button>
-            <button
-              onClick={goToNext}
-              className="p-2 rounded-full bg-black text-white hover:bg-black/80 transition-colors"
-              aria-label="Next"
-            >
-              <ChevronRight size={20} />
-            </button>
-          </div>
-
-          {/* Indicators */}
-          <div className="flex justify-center gap-2 mt-6">
-            {carouselItems.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`h-2 transition-all ${
-                  index === currentIndex
-                    ? 'bg-black w-8'
-                    : 'bg-gray-400 w-2 hover:bg-gray-600'
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
+              </SwiperSlide>
             ))}
-          </div>
-
-          {/* Item Counter */}
-          <div className="text-center mt-4 text-sm text-gray-600">
-            Item {currentIndex + 1} of {carouselItems.length}
-          </div>
+          </Swiper>
         </div>
 
         {/* CTA Button */}
         <div className="flex justify-center mt-12">
           <a
             href="#"
-            className="px-8 py-3 bg-black text-white font-semibold rounded hover:bg-gray-800 transition-colors"
+            className="px-8 py-3 font-semibold rounded hover:opacity-90 transition-colors"
+            style={{ backgroundColor: theme.primary.light, color: theme.background.dark }}
           >
             Learn more about the options
           </a>
