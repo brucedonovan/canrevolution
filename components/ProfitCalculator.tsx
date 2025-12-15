@@ -209,19 +209,35 @@ const SummaryCards: React.FC<{ result: CalculationResult }> = ({ result }) => (
 
 // Profit Highlight Component
 const ProfitHighlight: React.FC<{ result: CalculationResult }> = ({ result }) => (
-  <div className="rounded-lg p-6" style={{ backgroundColor: result.isPositive ? theme.primary.light + '20' : '#fee2e2' }}>
-    <p style={{ color: theme.text.muted }} className="text-sm mb-2">
-      Net Profit
+  <div
+    className="rounded-lg p-6"
+    style={{
+      backgroundColor: result.isPositive ? '#dcfce7' : '#fee2e2',
+      borderLeft: `4px solid ${result.isPositive ? '#22c55e' : '#dc2626'}`,
+    }}
+  >
+    <p
+      className="text-sm mb-2 font-medium"
+      style={{
+        color: result.isPositive ? '#15803d' : '#991b1b',
+      }}
+    >
+      {result.isPositive ? 'Net Profit' : 'Net Loss'}
     </p>
     <p
       className="text-4xl font-bold"
       style={{
-        color: result.isPositive ? theme.primary.light : '#dc2626',
+        color: result.isPositive ? '#16a34a' : '#dc2626',
       }}
     >
       {formatMoney(Math.abs(result.profit))}
     </p>
-    <p style={{ color: theme.text.muted }} className="text-sm mt-3">
+    <p
+      className="text-sm mt-3"
+      style={{
+        color: result.isPositive ? '#22c55e' : '#fca5a5',
+      }}
+    >
       {formatMoney(result.profitPerCan)} per can • {formatMoney(result.yearlyProfit)}/year
     </p>
   </div>
@@ -236,7 +252,7 @@ const Recommendations: React.FC<{ result: CalculationResult }> = ({ result }) =>
           <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: theme.primary.light }} />
           <div>
             <p style={{ color: theme.text.onLight }} className="font-semibold mb-3">
-              💡 We found a better plan for you
+              We found a better plan for you
             </p>
             <ul className="space-y-2">
               {result.recommendations.map((rec: string, idx: number) => (
@@ -255,7 +271,7 @@ const Recommendations: React.FC<{ result: CalculationResult }> = ({ result }) =>
     <div className="border-l-4 p-4 rounded-lg flex gap-3" style={{ borderLeftColor: theme.primary.light, backgroundColor: theme.primary.light + '10' }}>
       <Check className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: theme.primary.light }} />
       <p style={{ color: theme.text.onLight }} className="text-sm font-medium">
-        ✓ This is the most cost-effective plan for your volume
+        This is the most cost-effective plan for your volume
       </p>
     </div>
   )
@@ -274,7 +290,7 @@ const ResultsSection: React.FC<{ result: CalculationResult | null }> = ({ result
         }}
       >
         <p style={{ color: theme.text.muted }} className="text-center text-lg font-medium">
-          ✓ Fill in all fields to see your profit calculation
+          Complete all fields to see your profit calculation
         </p>
       </div>
     )
