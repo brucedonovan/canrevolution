@@ -68,30 +68,35 @@ export default function Features() {
   return (
     <section className="w-full py-16 md:py-24 lg:py-32" style={{ backgroundColor: theme.background.light }}>
       <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-16">
-        {/* Section title */}
-        <h2 style={{ color: theme.text.onLight }} className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-          What you can offer your customers
-        </h2>
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          {/* Left column - Text */}
+          <div>
+            {/* Section title */}
+            <h2 style={{ color: theme.text.onLight }} className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+              What you can offer your customers
+            </h2>
 
-        {/* Subtitle */}
-        <p style={{ color: theme.text.muted }} className="text-base md:text-lg mb-12 max-w-2xl">
-          Unlock a new level of service and stand out from the crowd. With{' '}
-          <strong>Can(Re)volution</strong> solutions, your café becomes more
-          than a place to grab a drink, it becomes an experience your customers
-          can take anywhere. Here's what you can offer:
-        </p>
+            {/* Subtitle */}
+            <p style={{ color: theme.text.muted }} className="text-base md:text-lg max-w-2xl">
+              Unlock a new level of service and stand out from the crowd. With{' '}
+              <strong>Can(Re)volution</strong> solutions, your café becomes more
+              than a place to grab a drink, it becomes an experience your customers
+              can take anywhere. Here's what you can offer:
+            </p>
+          </div>
 
-        {/* Accordion */}
-        <div className="max-w-3xl">
-          <div style={{ borderTopColor: theme.primary.light }} className="border-t">
-            {accordionItems.map((item, index) => (
-              <AccordionItem
-                key={index}
-                item={item}
-                isOpen={openIndex === index}
-                onToggle={() => handleToggle(index)}
-              />
-            ))}
+          {/* Right column - Accordion */}
+          <div>
+            <div style={{ borderTopColor: theme.primary.light }} className="border-t">
+              {accordionItems.map((item, index) => (
+                <AccordionItem
+                  key={index}
+                  item={item}
+                  isOpen={openIndex === index}
+                  onToggle={() => handleToggle(index)}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
