@@ -379,7 +379,7 @@ const ProfitCalculator = () => {
   }, [])
 
   return (
-    <section className="w-full py-16 md:py-24" style={{ backgroundColor: theme.background.dark }}>
+    <section id="calculator" className="w-full py-16 md:py-24" style={{ backgroundColor: theme.background.dark }}>
       <div className="container mx-auto px-4 md:px-8 max-w-6xl">
         {/* Header */}
         <div className="text-center mb-16">

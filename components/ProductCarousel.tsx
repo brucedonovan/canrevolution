@@ -45,6 +45,31 @@ const carouselItems: CarouselItem[] = [
 export default function ProductCarousel() {
   return (
     <section style={{ backgroundColor: theme.background.light }} className="py-8 md:py-12 lg:py-16">
+      <style>{`
+        .swiper-button-next,
+        .swiper-button-prev {
+          color: ${theme.primary.light} !important;
+          background-color: rgba(0, 0, 0, 0.1) !important;
+          width: 44px !important;
+          height: 44px !important;
+          border-radius: 6px !important;
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+          background-color: rgba(0, 0, 0, 0.2) !important;
+        }
+
+        .swiper-pagination-bullet {
+          background-color: ${theme.border.light} !important;
+          opacity: 0.6 !important;
+        }
+
+        .swiper-pagination-bullet-active {
+          background-color: ${theme.primary.light} !important;
+          opacity: 1 !important;
+        }
+      `}</style>
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         {/* Swiper Carousel */}
         <div className="rounded-lg overflow-hidden">
@@ -80,17 +105,6 @@ export default function ProductCarousel() {
               </SwiperSlide>
             ))}
           </Swiper>
-        </div>
-
-        {/* CTA Button */}
-        <div className="flex justify-center mt-12">
-          <a
-            href="#features"
-            className="px-8 py-3 font-semibold rounded hover:opacity-90 transition-colors"
-            style={{ backgroundColor: theme.primary.light, color: theme.background.dark }}
-          >
-            Learn more about the options
-          </a>
         </div>
       </div>
     </section>

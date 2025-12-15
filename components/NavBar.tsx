@@ -18,24 +18,27 @@ export default function NavBar() {
   return (
     <header className="relative z-50 bg-transparent">
       <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="flex items-center gap-x-12">
-          <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">can(RE)volution</span>
-            <img
-              alt="can(RE)volution"
-              src="/images/logo.png"
-              className="h-16 w-auto"
-            />
-          </Link>
-          <div className="hidden lg:flex lg:gap-x-12">
-            {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm/6 font-semibold transition-colors" style={{ color: theme.text.onDark }}>
-                {item.name}
-              </a>
-            ))}
-          </div>
+        {/* Logo on left */}
+        <Link href="/" className="-m-1.5 p-1.5">
+          <span className="sr-only">can(RE)volution</span>
+          <img
+            alt="can(RE)volution"
+            src="/images/logo.png"
+            className="h-16 w-auto"
+          />
+        </Link>
+
+        {/* Center navigation */}
+        <div className="hidden lg:flex lg:gap-x-12 absolute left-1/2 transform -translate-x-1/2">
+          {navigation.map((item) => (
+            <a key={item.name} href={item.href} className="text-sm/6 font-semibold transition-colors hover:opacity-75" style={{ color: theme.text.onDark }}>
+              {item.name}
+            </a>
+          ))}
         </div>
-        <div className="flex lg:hidden">
+
+        {/* Right side - Mobile menu + Book a Demo */}
+        <div className="flex lg:hidden gap-x-4">
           <button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
@@ -46,8 +49,10 @@ export default function NavBar() {
             <Menu aria-hidden="true" size={24} />
           </button>
         </div>
+
+        {/* Book a Demo on right (desktop) */}
         <div className="hidden lg:flex">
-          <Link href="/appointments" className="text-sm/6 font-semibold transition-colors" style={{ color: theme.text.onDark }}>
+          <Link href="/appointments" className="text-sm/6 font-semibold transition-colors hover:opacity-75" style={{ color: theme.text.onDark }}>
             Book a Demo <span aria-hidden="true">→</span>
           </Link>
         </div>
@@ -76,7 +81,8 @@ export default function NavBar() {
             </button>
           </div>
           <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y" style={{ borderTopColor: theme.border.dark, borderBottomColor: theme.border.dark }}>
+            <div className="-my-6 divide-y flex flex-col h-[calc(100vh-150px)]" style={{ borderTopColor: theme.border.dark, borderBottomColor: theme.border.dark }}>
+              {/* Navigation links at top */}
               <div className="space-y-2 py-6">
                 {navigation.map((item) => (
                   <a
@@ -90,11 +96,13 @@ export default function NavBar() {
                   </a>
                 ))}
               </div>
-              <div className="py-6">
+
+              {/* Book a Demo at bottom */}
+              <div className="py-6 mt-auto">
                 <Link
                   href="/appointments"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold hover:bg-white/5 transition-colors"
-                  style={{ color: theme.text.onDark }}
+                  className="block w-full rounded-lg px-4 py-3 text-center text-base/7 font-semibold transition-colors hover:opacity-90"
+                  style={{ backgroundColor: theme.primary.light, color: theme.background.dark }}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Book a Demo
