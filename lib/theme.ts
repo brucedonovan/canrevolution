@@ -15,7 +15,7 @@
 // ============================================================================
 // CURRENT THEME SELECTION - CHANGE THIS ONE LINE TO SWITCH THEMES!
 // ============================================================================
-const CURRENT_THEME = 'summer' as const
+const CURRENT_THEME = 'canrevolution' as const
 
 // ============================================================================
 // THEME DEFINITIONS
@@ -313,6 +313,60 @@ const themes = {
     gradient: {
       from: '#059669',
       to: '#10b981',
+    },
+  },
+  canrevolution: {
+    name: 'CanRevolution',
+    description: 'Warm earth tones with rich charcoal accents - Premium brand aesthetic',
+    primary: {
+      50: '#faf8f3',
+      100: '#f5f0e8',
+      200: '#e8dfd1',
+      300: '#d4c4ad',
+      400: '#b8a08a',
+      500: '#a08770',
+      light: '#a08770',
+      dark: '#c9b39f',
+      accent: '#d4c4ad',
+      hover: '#8b7055',
+    },
+    secondary: {
+      50: '#2a2825',
+      100: '#3d3a34',
+      200: '#4a4640',
+      300: '#54504a',
+      400: '#5f5952',
+      500: '#68615b',
+      600: '#72685f',
+      700: '#7a6f66',
+      800: '#82776d',
+      900: '#3d3a34',
+    },
+    neutral: {
+      white: '#faf8f3',
+      black: '#2a2825',
+      lightGray: '#f5f0e8',
+      darkGray: '#3d3a34',
+    },
+    text: {
+      onLight: '#2a2825',
+      onDark: '#faf8f3',
+      muted: '#68615b',
+      mutedDark: '#d4c4ad',
+    },
+    background: {
+      light: '#faf8f3',
+      dark: '#2a2825',
+      lightCard: '#f5f0e8',
+      darkCard: 'rgba(58, 55, 50, 0.6)',
+    },
+    border: {
+      light: '#e8ddf5',
+      dark: '#4a4640',
+    },
+    gradient: {
+      from: '#a08770',
+      to: '#c9b39f',
     },
   },
   summer: {

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useCallback, useMemo } from 'react'
-import { Check } from 'lucide-react'
+import { Check, AlertCircle } from 'lucide-react'
 import { theme } from '@/lib/theme'
 
 interface Plan {
@@ -231,30 +231,31 @@ const ProfitHighlight: React.FC<{ result: CalculationResult }> = ({ result }) =>
 const Recommendations: React.FC<{ result: CalculationResult }> = ({ result }) => {
   if (result.recommendations.length > 0) {
     return (
-      <div
-        className="rounded-lg p-4 border-l-4"
-        style={{
-          backgroundColor: theme.background.light,
-          borderLeftColor: theme.primary.light,
-        }}
-      >
-        <p style={{ color: theme.text.onLight }} className="font-semibold mb-2">
-          💡 Recommendations
-        </p>
-        {result.recommendations.map((rec: string, idx: number) => (
-          <p key={idx} style={{ color: theme.text.muted }} className="text-sm">
-            • {rec}
-          </p>
-        ))}
+      <div className="border-l-4 p-4 rounded-lg" style={{ borderLeftColor: theme.primary.light, backgroundColor: theme.primary.light + '10' }}>
+        <div className="flex gap-3">
+          <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: theme.primary.light }} />
+          <div>
+            <p style={{ color: theme.text.onLight }} className="font-semibold mb-3">
+              💡 We found a better plan for you
+            </p>
+            <ul className="space-y-2">
+              {result.recommendations.map((rec: string, idx: number) => (
+                <li key={idx} style={{ color: theme.text.muted }} className="text-sm">
+                  • {rec}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="rounded-lg p-4 flex items-start gap-3" style={{ backgroundColor: theme.background.light }}>
+    <div className="border-l-4 p-4 rounded-lg flex gap-3" style={{ borderLeftColor: theme.primary.light, backgroundColor: theme.primary.light + '10' }}>
       <Check className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: theme.primary.light }} />
-      <p style={{ color: theme.text.muted }} className="text-sm">
-        This is the most cost-effective plan for your volume
+      <p style={{ color: theme.text.onLight }} className="text-sm font-medium">
+        ✓ This is the most cost-effective plan for your volume
       </p>
     </div>
   )
