@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { theme } from '@/lib/theme';
 
 const BookDemo = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -27,8 +28,8 @@ const BookDemo = () => {
     const animate = () => {
       const elapsed = (Date.now() - startTime) * 0.001; // Convert to seconds
 
-      // Clear canvas
-      ctx.fillStyle = '#000000';
+      // Clear canvas with theme-based dark color
+      ctx.fillStyle = theme.background.dark
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Create radial gradient with animation
@@ -73,33 +74,39 @@ const BookDemo = () => {
   }, []);
 
   return (
-    <section className="relative w-full py-24 md:py-32 overflow-hidden">
+    <section className="relative w-full py-24 md:py-32 overflow-hidden" style={{ backgroundColor: theme.background.dark }}>
       {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-slate-900">
+      <div className="absolute inset-0" style={{ backgroundColor: theme.background.dark }}>
         <canvas
           ref={canvasRef}
           className="absolute inset-0 w-full h-full opacity-100"
           style={{ mixBlendMode: 'multiply' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/40 to-slate-900/60" />
+        <div
+          className="absolute inset-0 bg-gradient-to-b"
+          style={{
+            backgroundImage: `linear-gradient(to bottom, rgba(15,23,42,0.4), rgba(15,23,42,0.6))`
+          }}
+        />
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 md:px-8 max-w-4xl h-full flex flex-col justify-center items-center text-center">
         {/* Heading */}
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-50 mb-6 leading-tight">
+        <h1 style={{ color: theme.text.onDark }} className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
           Book a demo session
         </h1>
 
         {/* Description */}
-        <p className="text-lg md:text-xl text-slate-200 mb-12 max-w-2xl leading-relaxed">
+        <p style={{ color: theme.text.mutedDark }} className="text-lg md:text-xl mb-12 max-w-2xl leading-relaxed">
           Let's discuss the options and how can(RE)volution machines can transform your business.
         </p>
 
         {/* CTA Button */}
         <a
           href="/appointments"
-          className="inline-block px-10 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 active:scale-95"
+          className="inline-block px-10 py-4 font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95"
+          style={{ backgroundColor: theme.primary.light, color: theme.background.dark }}
         >
           Book now
         </a>

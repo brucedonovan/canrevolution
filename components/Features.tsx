@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { theme } from '@/lib/theme';
 
 interface AccordionItem {
   title: string;
@@ -33,24 +34,23 @@ const AccordionItem: React.FC<{
   isFirst?: boolean;
 }> = ({ item, isOpen, onToggle, isFirst = false }) => {
   return (
-    <div className="border-b border-blue-300">
+    <div style={{ borderBottomColor: `var(--primary-light, ${theme.primary.light})` }} className="border-b">
       <button
         onClick={onToggle}
         className="w-full py-4 px-0 flex items-center justify-between text-left hover:opacity-70 transition-opacity"
       >
-        <h3 className="text-lg md:text-xl font-bold text-slate-900">
+        <h3 style={{ color: theme.text.onLight }} className="text-lg md:text-xl font-bold">
           {item.title}
         </h3>
         <ChevronDown
           size={18}
-          className={`text-blue-600 transition-transform ${
-            isOpen ? 'rotate-180' : ''
-          }`}
+          className="transition-transform"
+          style={{ rotate: isOpen ? '180deg' : '0deg', color: theme.primary.light }}
         />
       </button>
       {isOpen && (
         <div className="pb-6 pr-8">
-          <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+          <p style={{ color: theme.text.muted }} className="text-sm md:text-base leading-relaxed">
             {item.description}
           </p>
         </div>
@@ -67,15 +67,15 @@ export default function Features() {
   };
 
   return (
-    <section className="relative w-full bg-white text-slate-900 py-16 md:py-24 lg:py-32">
+    <section className="relative w-full text-slate-900 py-16 md:py-24 lg:py-32" style={{ backgroundColor: theme.background.light }}>
       <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-16">
         {/* Section title */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-slate-900">
+        <h2 style={{ color: theme.text.onLight }} className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
           What you can offer your customers
         </h2>
 
         {/* Subtitle */}
-        <p className="text-base md:text-lg text-slate-700 mb-12 max-w-2xl">
+        <p style={{ color: theme.text.muted }} className="text-base md:text-lg mb-12 max-w-2xl">
           Unlock a new level of service and stand out from the crowd. With{' '}
           <strong>Can(Re)volution</strong> solutions, your café becomes more
           than a place to grab a drink, it becomes an experience your customers
@@ -84,7 +84,7 @@ export default function Features() {
 
         {/* Accordion */}
         <div className="max-w-3xl">
-          <div className="border-t border-blue-300">
+          <div style={{ borderTopColor: theme.primary.light }} className="border-t">
             {accordionItems.map((item, index) => (
               <AccordionItem
                 key={index}

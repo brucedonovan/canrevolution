@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { ChevronDown, Check } from 'lucide-react';
+import { theme } from '@/lib/theme';
 
 interface Plan {
   limit: number;
@@ -89,12 +90,12 @@ const ProfitCalculator = () => {
   };
 
   return (
-    <section className="w-full bg-blue-50 py-16 md:py-24">
+    <section className="w-full py-16 md:py-24" style={{ backgroundColor: theme.background.lightCard }}>
       <div className="container mx-auto px-4 md:px-8 max-w-5xl">
         {/* Title */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Quick Profitability Calculator</h2>
-          <p className="text-slate-700 text-lg">
+          <h2 style={{ color: theme.text.onLight }} className="text-3xl md:text-4xl font-bold mb-4">Quick Profitability Calculator</h2>
+          <p style={{ color: theme.text.muted }} className="text-lg">
             Discover your potential profit with our flexible subscription plans
           </p>
         </div>
@@ -102,14 +103,14 @@ const ProfitCalculator = () => {
         {/* Calculator Grid */}
         <div className="grid md:grid-cols-2 gap-8 md:gap-12">
           {/* Form Section */}
-          <div className="bg-white rounded-lg p-8 shadow-sm border border-blue-200">
+          <div className="rounded-lg p-8 shadow-sm border" style={{ backgroundColor: theme.background.light, borderColor: theme.border.light }}>
             <form className="space-y-6">
               {/* Subscription Package */}
               <div>
-                <label className="block text-sm font-semibold text-slate-900 mb-3">
+                <label style={{ color: theme.text.onLight }} className="block text-sm font-semibold mb-3">
                   Subscription Package
                 </label>
-                <p className="text-sm text-slate-700 mb-4">
+                <p style={{ color: theme.text.muted }} className="text-sm mb-4">
                   Choose the subscription you are interested in
                 </p>
                 <div className="space-y-3">
@@ -125,9 +126,10 @@ const ProfitCalculator = () => {
                         value={option.id}
                         checked={selectedPackage === option.id}
                         onChange={(e) => setSelectedPackage(e.target.value)}
-                        className="w-4 h-4 text-blue-600"
+                        className="w-4 h-4"
+                        style={{ accentColor: theme.primary.light }}
                       />
-                      <span className="ml-3 text-slate-900">{option.label}</span>
+                      <span style={{ color: theme.text.onLight }} className="ml-3">{option.label}</span>
                     </label>
                   ))}
                 </div>
@@ -135,31 +137,35 @@ const ProfitCalculator = () => {
 
               {/* Extra Charge Per Can */}
               <div>
-                <label htmlFor="extra-charge" className="block text-sm font-semibold text-slate-900 mb-2">
+                <label htmlFor="extra-charge" style={{ color: theme.text.onLight }} className="block text-sm font-semibold mb-2">
                   Extra Charge Per Can
                 </label>
-                <p className="text-sm text-slate-700 mb-3">
+                <p style={{ color: theme.text.muted }} className="text-sm mb-3">
                   How much do you intend to increase your beverage price for the to-go can?
                 </p>
                 <div className="relative">
-                  <span className="absolute left-3 top-3 text-gray-600">€</span>
+                  <span style={{ color: theme.text.muted }}>€</span>
                   <input
                     id="extra-charge"
                     type="text"
                     value={extraCharge}
                     onChange={(e) => setExtraCharge(e.target.value)}
                     placeholder="0.00"
-                    className="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full pl-8 pr-4 py-2 rounded-lg focus:outline-none focus:ring-2"
+                    style={{
+                      borderColor: theme.border.light,
+                      borderWidth: '1px',
+                    }}
                   />
                 </div>
               </div>
 
               {/* Cans Per Month */}
               <div>
-                <label htmlFor="cans-month" className="block text-sm font-semibold text-gray-900 mb-2">
+                <label htmlFor="cans-month" style={{ color: theme.text.onLight }} className="block text-sm font-semibold mb-2">
                   Cans Per Month
                 </label>
-                <p className="text-sm text-gray-600 mb-3">
+                <p style={{ color: theme.text.muted }} className="text-sm mb-3">
                   How many cans do you expect to sell every month?
                 </p>
                 <input
@@ -168,7 +174,11 @@ const ProfitCalculator = () => {
                   value={cansPerMonth}
                   onChange={(e) => setCansPerMonth(e.target.value)}
                   placeholder="500"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2"
+                  style={{
+                    borderColor: theme.border.light,
+                    borderWidth: '1px',
+                  }}
                 />
               </div>
             </form>
@@ -177,64 +187,63 @@ const ProfitCalculator = () => {
           {/* Results Section */}
           <div className="flex flex-col">
             {!showResults ? (
-              <div className="bg-gray-100 rounded-lg p-8 h-full flex items-center justify-center">
-                <p className="text-gray-600 text-center font-medium">
+              <div className="rounded-lg p-8 h-full flex items-center justify-center" style={{ backgroundColor: theme.background.lightCard }}>
+                <p style={{ color: theme.text.muted }} className="text-center font-medium">
                   ✓ Fill in all fields to see your profit calculation
                 </p>
               </div>
             ) : (
               <div
-                className={`rounded-lg p-8 h-full ${
-                  results.isPositive
-                    ? 'bg-green-50 border-l-4 border-green-600'
-                    : 'bg-red-50 border-l-4 border-red-600'
-                }`}
+                className="rounded-lg p-8 h-full border-l-4"
+                style={{
+                  backgroundColor: results.isPositive ? theme.background.lightCard : theme.background.light,
+                  borderLeftColor: results.isPositive ? theme.primary.light : '#ef4444',
+                }}
               >
-                <h3 className="text-lg font-bold mb-6 text-gray-900">Results</h3>
+                <h3 style={{ color: theme.text.onLight }} className="text-lg font-bold mb-6">Results</h3>
 
                 {/* Metrics Grid */}
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between items-start">
-                    <span className="text-gray-700">Extra revenue from cans:</span>
-                    <span className="font-semibold text-gray-900">{formatMoney(results.extraRevenue)}</span>
+                    <span style={{ color: theme.text.muted }}>Extra revenue from cans:</span>
+                    <span style={{ color: theme.text.onLight }} className="font-semibold">{formatMoney(results.extraRevenue)}</span>
                   </div>
                   <div className="flex justify-between items-start">
-                    <span className="text-gray-700">Subscription cost:</span>
-                    <span className="font-semibold text-gray-900">{formatMoney(results.subscriptionCost)}</span>
+                    <span style={{ color: theme.text.muted }}>Subscription cost:</span>
+                    <span style={{ color: theme.text.onLight }} className="font-semibold">{formatMoney(results.subscriptionCost)}</span>
                   </div>
                   <div className="flex justify-between items-start">
-                    <span className="text-gray-700">Extra cans over limit:</span>
-                    <span className="font-semibold text-gray-900">{results.extraCans}</span>
+                    <span style={{ color: theme.text.muted }}>Extra cans over limit:</span>
+                    <span style={{ color: theme.text.onLight }} className="font-semibold">{results.extraCans}</span>
                   </div>
                   <div className="flex justify-between items-start">
-                    <span className="text-gray-700">Extra cans cost:</span>
-                    <span className="font-semibold text-gray-900">{formatMoney(results.extraCansCost)}</span>
+                    <span style={{ color: theme.text.muted }}>Extra cans cost:</span>
+                    <span style={{ color: theme.text.onLight }} className="font-semibold">{formatMoney(results.extraCansCost)}</span>
                   </div>
 
                   {/* Divider */}
-                  <div className="h-px bg-gray-300 my-4"></div>
+                  <div style={{ backgroundColor: theme.border.light }} className="h-px my-4"></div>
 
                   {/* Profit Summary */}
-                  <div className="bg-white rounded p-4 space-y-3">
+                  <div className="rounded p-4 space-y-3" style={{ backgroundColor: theme.background.light }}>
                     <div className="flex justify-between items-start">
-                      <span className="text-gray-700 font-semibold">Net Profit (Monthly):</span>
+                      <span style={{ color: theme.text.muted }} className="font-semibold">Net Profit (Monthly):</span>
                       <span
-                        className={`text-xl font-bold ${
-                          results.isPositive ? 'text-green-700' : 'text-red-700'
-                        }`}
+                        className="text-xl font-bold"
+                        style={{ color: results.isPositive ? theme.primary.light : '#dc2626' }}
                       >
                         {formatMoney(Math.abs(results.profit))}
                       </span>
                     </div>
-                    <div className="flex justify-between items-start pt-2 border-t border-gray-200">
-                      <span className="text-gray-700">Per-can profit:</span>
-                      <span className="font-semibold text-gray-900">
+                    <div style={{ borderTopColor: theme.border.light }} className="flex justify-between items-start pt-2 border-t">
+                      <span style={{ color: theme.text.muted }}>Per-can profit:</span>
+                      <span style={{ color: theme.text.onLight }} className="font-semibold">
                         {formatMoney(results.profitPerCan)}
                       </span>
                     </div>
                     <div className="flex justify-between items-start">
-                      <span className="text-gray-700">Estimated yearly net:</span>
-                      <span className="font-semibold text-gray-900">
+                      <span style={{ color: theme.text.muted }}>Estimated yearly net:</span>
+                      <span style={{ color: theme.text.onLight }} className="font-semibold">
                         {formatMoney(results.yearlyProfit)}
                       </span>
                     </div>
@@ -242,20 +251,20 @@ const ProfitCalculator = () => {
                 </div>
 
                 {/* Recommendations */}
-                <div className="mt-6 pt-6 border-t border-gray-300">
+                <div style={{ borderTopColor: theme.border.light }} className="mt-6 pt-6 border-t">
                   {results.recommendations.length > 0 ? (
                     <div className="space-y-2">
-                      <p className="text-sm font-semibold text-gray-900 mb-3">💡 Recommendations:</p>
+                      <p style={{ color: theme.text.onLight }} className="text-sm font-semibold mb-3">💡 Recommendations:</p>
                       {results.recommendations.map((rec: string, idx: number) => (
-                        <p key={idx} className="text-sm text-gray-700 flex items-start">
+                        <p key={idx} style={{ color: theme.text.muted }} className="text-sm flex items-start">
                           <span className="mr-2">→</span>
                           {rec}
                         </p>
                       ))}
                     </div>
                   ) : (
-                    <p className="text-sm text-gray-700 flex items-center">
-                      <Check className="w-4 h-4 mr-2 text-green-600" />
+                    <p style={{ color: theme.text.muted }} className="text-sm flex items-center">
+                      <Check className="w-4 h-4 mr-2" style={{ color: theme.primary.light }} />
                       This is the most cost-effective plan at this volume.
                     </p>
                   )}
@@ -267,12 +276,16 @@ const ProfitCalculator = () => {
 
         {/* CTA Section */}
         <div className="mt-12 text-center">
-          <p className="text-gray-600 text-sm mb-4">
+          <p style={{ color: theme.text.muted }} className="text-sm mb-4">
             Like what you see, or want to discuss a custom package?
           </p>
           <a
             href="/contact"
-            className="inline-block px-8 py-3 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors"
+            className="inline-block px-8 py-3 rounded-lg font-semibold transition-colors"
+            style={{
+              backgroundColor: theme.background.dark,
+              color: 'white',
+            }}
           >
             Get in touch
           </a>

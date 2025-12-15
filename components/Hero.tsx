@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { theme } from '@/lib/theme';
 
 interface HeroProps {
   title?: string;
@@ -45,7 +46,7 @@ export default function Hero({
   backgroundImageAlt = "Hero background"
 }: HeroProps) {
   return (
-    <section className="relative w-full overflow-hidden bg-slate-900">
+    <section className="relative w-full overflow-hidden" style={{ backgroundColor: theme.background.dark }}>
       {/* Background image with overlay */}
       <div className="relative w-full min-h-[500px] md:min-h-[600px] lg:min-h-screen overflow-hidden">
         {/* Background image */}
@@ -66,20 +67,20 @@ export default function Hero({
           {/* Content max-width (50% wide on desktop) */}
           <div className="w-full max-w-xl md:max-w-2xl text-left">
             {/* Title */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6" style={{ color: theme.text.onDark }}>
               {title}
             </h1>
 
             {/* Description */}
-            <p className="text-sm md:text-base lg:text-lg text-gray-100 leading-relaxed">
+            <p className="text-sm md:text-base lg:text-lg leading-relaxed" style={{ color: theme.text.mutedDark }}>
               {description}
             </p>
           </div>
         </div>
       </div>
 
-      {/* White section divider with curved top */}
-      <div className="relative w-full bg-white pt-12 md:pt-16">
+      {/* Section divider with curved top */}
+      <div className="relative w-full pt-12 md:pt-16" style={{ backgroundColor: theme.background.light }}>
         {/* Optional: Add curve accent if needed */}
       </div>
     </section>

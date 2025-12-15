@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { theme } from '@/lib/theme';
 
 interface AccordionItem {
   title: string;
@@ -43,27 +44,26 @@ const AccordionItem: React.FC<{
   isFirst?: boolean;
 }> = ({ item, isOpen, onToggle, isFirst = false }) => {
   return (
-    <div className="border-b border-blue-800/50">
+    <div style={{ borderBottomColor: theme.border.dark }} className="border-b">
       <button
         onClick={onToggle}
         className="w-full py-4 px-0 flex items-center justify-between text-left hover:opacity-70 transition-opacity"
       >
-        <h3 className="text-lg md:text-xl font-semibold text-slate-50">
+        <h3 style={{ color: theme.text.onDark }} className="text-lg md:text-xl font-semibold">
           {item.title}
         </h3>
         <ChevronDown
           size={18}
-          className={`text-cyan-400 transition-transform flex-shrink-0 ${
-            isOpen ? 'rotate-180' : ''
-          }`}
+          style={{ color: theme.primary.dark, rotate: isOpen ? '180deg' : '0deg' }}
+          className="transition-transform flex-shrink-0"
         />
       </button>
       {isOpen && (
         <div className="pb-6 pr-8">
-          <ul className="space-y-3 text-sm md:text-base text-slate-200">
+          <ul className="space-y-3 text-sm md:text-base" style={{ color: theme.text.mutedDark }}>
             {item.content.map((point, idx) => (
               <li key={idx} className="flex gap-3">
-                <span className="text-cyan-400 font-bold flex-shrink-0">•</span>
+                <span style={{ color: theme.primary.dark }} className="font-bold flex-shrink-0">•</span>
                 <span>{point}</span>
               </li>
             ))}
@@ -82,10 +82,10 @@ export default function MachineSpecs() {
   };
 
   return (
-    <section className="relative w-full bg-slate-900 text-slate-50 py-16 md:py-24 lg:py-32">
+    <section className="relative w-full text-slate-50 py-16 md:py-24 lg:py-32" style={{ backgroundColor: theme.background.dark }}>
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         {/* Section Title */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-12 md:mb-16 text-slate-50">
+        <h2 style={{ color: theme.text.onDark }} className="text-3xl md:text-4xl lg:text-5xl font-bold mb-12 md:mb-16">
           What makes our machines unique?
         </h2>
 
@@ -105,7 +105,8 @@ export default function MachineSpecs() {
             {/* Demo Button */}
             <a
               href="/demo-video"
-              className="px-8 py-3 bg-white text-black font-semibold rounded hover:bg-gray-200 transition-colors inline-block"
+              className="px-8 py-3 font-semibold rounded hover:opacity-90 transition-opacity inline-block"
+              style={{ backgroundColor: theme.primary.light, color: theme.background.dark }}
             >
               🍿 Demo
             </a>
@@ -113,7 +114,7 @@ export default function MachineSpecs() {
 
           {/* Right Column - Accordion */}
           <div className="flex flex-col">
-            <div className="border-t border-white/20">
+            <div style={{ borderTopColor: 'rgba(255,255,255,0.2)' }} className="border-t">
               {accordionItems.map((item, index) => (
                 <AccordionItem
                   key={index}
