@@ -87,7 +87,7 @@ export default function Pricing() {
   }
 
   return (
-    <div id="pricing" style={{ backgroundColor: theme.background.light }}>
+    <div id="pricing" style={{ backgroundColor: theme.background.medium }}>
       <div className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
@@ -109,7 +109,7 @@ export default function Pricing() {
                   tierIdx === tiers.length - 1 ? '-ml-px lg:rounded-l-none' : ''
                 }`}
                 style={{
-                  backgroundColor: tier.mostPopular ? theme.background.dark : theme.background.lightCard,
+                  backgroundColor: tier.mostPopular ? theme.background.dark : theme.background.light,
                   borderColor: tier.mostPopular ? theme.border.dark : theme.border.light,
                   color: tier.mostPopular ? theme.text.onDark : theme.text.onLight,
                 }}

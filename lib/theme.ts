@@ -70,6 +70,7 @@ const themes = {
     },
     background: {
       light: '#ffffff',
+      medium: '#e0f2fe',
       dark: '#0f172a',
       lightCard: '#eff6ff',
       darkCard: 'rgba(30, 41, 59, 0.4)',
@@ -128,6 +129,7 @@ const themes = {
     },
     background: {
       light: '#ffffff',
+      medium: '#fff5eb',
       dark: '#451a03',
       lightCard: '#fffbeb',
       darkCard: 'rgba(120, 53, 15, 0.4)',
@@ -186,6 +188,7 @@ const themes = {
     },
     background: {
       light: '#ffffff',
+      medium: '#e0fdf4',
       dark: '#0f172a',
       lightCard: '#f0fdfa',
       darkCard: 'rgba(30, 41, 59, 0.4)',
@@ -244,9 +247,10 @@ const themes = {
     },
     background: {
       light: '#ffffff',
-      dark: '#000000',
+      medium: '#f3f4f6',
+      dark: '#1f2937',
       lightCard: '#f3f4f6',
-      darkCard: 'rgba(31, 41, 55, 0.5)',
+      darkCard: 'rgba(31, 41, 55, 0.4)',
     },
     border: {
       light: '#e5e7eb',
@@ -302,6 +306,7 @@ const themes = {
     },
     background: {
       light: '#ffffff',
+      medium: '#f3f4f6',
       dark: '#000000',
       lightCard: '#f3f4f6',
       darkCard: 'rgba(31, 41, 55, 0.5)',
@@ -356,6 +361,7 @@ const themes = {
     },
     background: {
       light: '#faf8f3',
+      medium: '#f5f0e8',
       dark: '#2a2825',
       lightCard: '#f5f0e8',
       darkCard: 'rgba(58, 55, 50, 0.6)',
@@ -414,6 +420,7 @@ const themes = {
     },
     background: {
       light: '#ffffff',
+      medium: '#fef9e7',
       dark: '#451a03',
       lightCard: '#fefce8',
       darkCard: 'rgba(120, 53, 15, 0.4)',

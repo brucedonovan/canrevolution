@@ -66,7 +66,7 @@ export default function Features() {
   };
 
   return (
-    <section id="features" className="w-full py-16 md:py-24 lg:py-32" style={{ backgroundColor: theme.background.light }}>
+    <section id="features" className="w-full py-16 md:py-24 lg:py-32" style={{ backgroundColor: theme.background.medium }}>
       <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-16">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left column - Text */}

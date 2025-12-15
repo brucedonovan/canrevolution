@@ -44,7 +44,7 @@ const carouselItems: CarouselItem[] = [
 
 export default function ProductCarousel() {
   return (
-    <section style={{ backgroundColor: theme.background.light }} className="py-8 md:py-12 lg:py-16">
+    <section style={{ backgroundColor: theme.background.medium }} className="py-8 md:py-12 lg:py-16">
       <style>{`
         .swiper-button-next,
         .swiper-button-prev {
