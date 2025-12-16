@@ -97,7 +97,7 @@ export default function Pricing() {
             </p>
           </div>
           <p style={{ color: theme.text.muted }} className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty sm:text-xl/8">
-            Choose an affordable plan that's packed with the best features for your beverage business. Scale up anytime or downsize with just one month's notice.
+            Choose an affordable plan that&rsquo;s packed with the best features for your beverage business. Scale up anytime or downsize with just one month&rsquo;s notice.
           </p>
           <div className="isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             {tiers.map((tier, tierIdx) => (

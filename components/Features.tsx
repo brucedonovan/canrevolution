@@ -81,7 +81,7 @@ export default function Features() {
               Unlock a new level of service and stand out from the crowd. With{' '}
               <strong>Can(Re)volution</strong> solutions, your café becomes more
               than a place to grab a drink, it becomes an experience your customers
-              can take anywhere. Here's what you can offer:
+              can take anywhere. Here&rsquo;s what you can offer:
             </p>
           </div>
 

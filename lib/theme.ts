@@ -21,9 +21,6 @@ const CURRENT_THEME = 'canrevolution' as const
 // THEME DEFINITIONS
 // ============================================================================
 
-type ThemeName = typeof CURRENT_THEME
-type ThemeColors = typeof themes.winter
-
 const themes = {
   winter: {
     name: 'Winter',

@@ -41,8 +41,7 @@ const AccordionItem: React.FC<{
   item: AccordionItem;
   isOpen: boolean;
   onToggle: () => void;
-  isFirst?: boolean;
-}> = ({ item, isOpen, onToggle, isFirst = false }) => {
+}> = ({ item, isOpen, onToggle }) => {
   return (
     <div style={{ borderBottomColor: theme.border.dark }} className="border-b">
       <button
@@ -144,7 +143,6 @@ export default function MachineSpecs() {
                   item={item}
                   isOpen={openIndex === index}
                   onToggle={() => handleToggle(index)}
-                  isFirst={index === 0}
                 />
               ))}
             </div>

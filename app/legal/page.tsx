@@ -85,7 +85,7 @@ export default function Legal() {
                   1. Introduction
                 </h2>
                 <p className="mb-4 leading-relaxed">
-                  can(RE)volution ("we," "us," "our," or "Company") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.
+                  can(RE)volution (&quot;we,&quot; &quot;us,&quot; &quot;our,&quot; or &quot;Company&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.
                 </p>
                 <p className="leading-relaxed">
                   Please read this Privacy Policy carefully. If you do not agree with our policies and practices, please do not use our site.
@@ -198,7 +198,7 @@ export default function Legal() {
                   <li>Right to data portability</li>
                 </ul>
                 <p className="leading-relaxed">
-                  To exercise these rights, please contact us using the information provided in the "Contact Us" section.
+                  To exercise these rights, please contact us using the information provided in the &quot;Contact Us&quot; section.
                 </p>
               </section>
 
@@ -213,10 +213,10 @@ export default function Legal() {
 
               <section className="mb-8">
                 <h2 className="text-2xl font-bold mb-4" style={{ color: theme.primary.light }}>
-                  8. Children's Privacy
+                  8. Children&rsquo;s Privacy
                 </h2>
                 <p className="leading-relaxed">
-                  Our website is not directed to children under the age of 13, and we do not knowingly collect personal information from children. If we become aware that a child has provided us with personal information, we will take steps to delete such information and terminate the child's account.
+                  Our website is not directed to children under the age of 13, and we do not knowingly collect personal information from children. If we become aware that a child has provided us with personal information, we will take steps to delete such information and terminate the child&rsquo;s account.
                 </p>
               </section>
 
@@ -225,7 +225,7 @@ export default function Legal() {
                   9. Changes to This Privacy Policy
                 </h2>
                 <p className="mb-4 leading-relaxed">
-                  We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. We will notify you of any material changes by updating the "Last Updated" date at the top of this page.
+                  We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. We will notify you of any material changes by updating the &quot;Last Updated&quot; date at the top of this page.
                 </p>
               </section>
 
@@ -261,14 +261,14 @@ export default function Legal() {
                   2. Use License
                 </h2>
                 <p className="mb-4 leading-relaxed">
-                  Permission is granted to temporarily download one copy of the materials (information or software) on can(RE)volution's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
+                  Permission is granted to temporarily download one copy of the materials (information or software) on can(RE)volution&rsquo;s website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
                 </p>
                 <ul className="list-disc list-inside space-y-2 mb-4">
                   <li>Modify or copy the materials</li>
                   <li>Use the materials for any commercial purpose or for any public display (commercial or non-commercial)</li>
                   <li>Attempt to decompile or reverse engineer any software contained on the website</li>
                   <li>Remove any copyright or other proprietary notations from the materials</li>
-                  <li>Transfer the materials to another person or "mirror" the materials on any other server</li>
+                  <li>Transfer the materials to another person or &quot;mirror&quot; the materials on any other server</li>
                   <li>Violate any applicable laws or regulations</li>
                   <li>Conduct any systematic or automated data collection activities</li>
                 </ul>
@@ -279,7 +279,7 @@ export default function Legal() {
                   3. Disclaimer
                 </h2>
                 <p className="mb-4 leading-relaxed">
-                  The materials on can(RE)volution's website are provided on an "as is" basis. can(RE)volution makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
+                  The materials on can(RE)volution&rsquo;s website are provided on an &quot;as is&quot; basis. can(RE)volution makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
                 </p>
                 <p className="leading-relaxed">
                   Further, can(RE)volution does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its website or otherwise relating to such materials or on any sites linked to this site.
@@ -291,7 +291,7 @@ export default function Legal() {
                   4. Limitations
                 </h2>
                 <p className="leading-relaxed">
-                  In no event shall can(RE)volution or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on can(RE)volution's website, even if can(RE)volution or an authorized representative has been notified orally or in writing of the possibility of such damage.
+                  In no event shall can(RE)volution or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on can(RE)volution&rsquo;s website, even if can(RE)volution or an authorized representative has been notified orally or in writing of the possibility of such damage.
                 </p>
               </section>
 
@@ -300,7 +300,7 @@ export default function Legal() {
                   5. Accuracy of Materials
                 </h2>
                 <p className="mb-4 leading-relaxed">
-                  The materials appearing on can(RE)volution's website could include technical, typographical, or photographic errors. can(RE)volution does not warrant that any of the materials on its website are accurate, complete, or current. can(RE)volution may make changes to the materials contained on its website at any time without notice.
+                  The materials appearing on can(RE)volution&rsquo;s website could include technical, typographical, or photographic errors. can(RE)volution does not warrant that any of the materials on its website are accurate, complete, or current. can(RE)volution may make changes to the materials contained on its website at any time without notice.
                 </p>
               </section>
 
@@ -309,7 +309,7 @@ export default function Legal() {
                   6. Links
                 </h2>
                 <p className="mb-4 leading-relaxed">
-                  can(RE)volution has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by can(RE)volution of the site. Use of any such linked website is at the user's own risk.
+                  can(RE)volution has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by can(RE)volution of the site. Use of any such linked website is at the user&rsquo;s own risk.
                 </p>
               </section>
 
