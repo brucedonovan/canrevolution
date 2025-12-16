@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import NavBar from './NavBar'
 import { theme } from '@/lib/theme'
 
@@ -8,11 +9,13 @@ export default function Header() {
   return (
     <div className="relative overflow-hidden">
       {/* Background Image - Behind everything */}
-      <img
+      <Image
         alt="can(RE)volution hero background"
         src="/images/hero-bg.png"
-        className="absolute inset-0 -z-20 size-full object-cover"
+        fill
+        className="absolute inset-0 -z-20 object-cover"
         style={{ objectPosition: '80% 50%' }}
+        priority
       />
       <div className="absolute inset-0 -z-20 bg-black/40" />
 

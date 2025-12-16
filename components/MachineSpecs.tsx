@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ChevronDown, X, Play, Square } from 'lucide-react';
+import Image from 'next/image';
 import { theme } from '@/lib/theme';
 
 interface AccordionItem {
@@ -96,10 +97,11 @@ export default function MachineSpecs() {
             {/* Circular Image/Video with Overlaid Button */}
             <div className="w-full max-w-sm aspect-square rounded-full overflow-visible flex items-center justify-center relative" style={{ backgroundColor: theme.background.dark }}>
               {!showDemo ? (
-                <img
+                <Image
                   src="/images/machine.png"
                   alt="Coffee vending machine with a display screen showing coffee beans, dispensing a clear glass cup"
-                  className="w-full h-full object-cover rounded-full"
+                  fill
+                  className="object-cover rounded-full"
                 />
               ) : (
                 <div className="relative w-full h-full flex items-center justify-center rounded-full overflow-hidden">

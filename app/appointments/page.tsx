@@ -1,5 +1,6 @@
 import Script from 'next/script'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowLeft } from 'lucide-react'
 
 export const metadata = {
@@ -12,11 +13,13 @@ export default function AppointmentsPage() {
     <>
       <div className="relative overflow-hidden">
         {/* Background Image - Same as header */}
-        <img
+        <Image
           alt="can(RE)volution appointments background"
           src="/images/hero-bg.png"
-          className="fixed inset-0 -z-20 size-full object-cover"
+          fill
+          className="fixed inset-0 -z-20 object-cover"
           style={{ objectPosition: '80% 50%' }}
+          priority
         />
         <div className="fixed inset-0 -z-20 bg-black/40" />
 

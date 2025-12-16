@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Menu, X } from 'lucide-react'
 import { theme } from '@/lib/theme'
@@ -31,9 +32,11 @@ export default function NavBar() {
         {/* Logo on left */}
         <Link href="/" className="-m-1.5 p-1.5">
           <span className="sr-only">can(RE)volution</span>
-          <img
+          <Image
             alt="can(RE)volution"
             src="/images/logo.png"
+            width={64}
+            height={64}
             className="h-16 w-auto"
           />
         </Link>
@@ -74,9 +77,11 @@ export default function NavBar() {
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">can(RE)volution</span>
-              <img
+              <Image
                 alt="can(RE)volution"
                 src="/images/logo.png"
+                width={32}
+                height={32}
                 className="h-8 w-auto"
               />
             </Link>

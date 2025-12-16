@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -96,10 +97,11 @@ export default function ProductCarousel() {
             {carouselItems.map((item, index) => (
               <SwiperSlide key={index}>
                 <div className="relative w-full aspect-square sm:aspect-[4/5] lg:aspect-[3/4] rounded-lg overflow-hidden">
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.imageAlt}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                 </div>
               </SwiperSlide>

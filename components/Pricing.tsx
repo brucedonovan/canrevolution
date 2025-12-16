@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { Check, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 import { theme } from '@/lib/theme'
@@ -117,11 +118,12 @@ export default function Pricing() {
                 <div>
                   {/* Pricing Tier Image */}
                   <div className="mb-6 flex justify-center">
-                    <div className="h-48 w-48 overflow-hidden rounded-full bg-gray-200">
-                      <img
+                    <div className="h-48 w-48 overflow-hidden rounded-full bg-gray-200 relative">
+                      <Image
                         src={tier.image}
                         alt={tier.name}
-                        className="h-full w-full object-cover"
+                        fill
+                        className="object-cover"
                       />
                     </div>
                   </div>
