@@ -59,22 +59,13 @@ const Footer = () => {
             <div className="flex flex-col items-center md:items-end gap-2 text-xs" style={{ color: theme.text.mutedDark }}>
               <div className="flex gap-6">
                 <a
-                  href="/privacy"
+                  href="/legal"
                   className="transition-colors duration-200"
                   style={{ color: theme.text.mutedDark }}
                   onMouseEnter={handleLinkHoverEnter}
                   onMouseLeave={handleLinkHoverLeave}
                 >
-                  Privacy Policy
-                </a>
-                <a
-                  href="/terms"
-                  className="transition-colors duration-200"
-                  style={{ color: theme.text.mutedDark }}
-                  onMouseEnter={handleLinkHoverEnter}
-                  onMouseLeave={handleLinkHoverLeave}
-                >
-                  Terms of Service
+                  Privacy & Terms
                 </a>
               </div>
               <div>© {currentYear} can(RE)volution. All rights reserved.</div>
