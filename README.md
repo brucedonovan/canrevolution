@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# can(RE)volution
 
-## Getting Started
+Professional beverage canning solutions for craft breweries and beverage brands.
 
-First, run the development server:
+## 📚 Documentation
+
+**[→ View full documentation in `/docs` folder](./docs/README.md)**
+
+- **[Getting Started](./docs/README.md)** - Installation and development setup
+- **[Index](./docs/INDEX.md)** - Complete documentation overview
+- **[Theme System](./docs/THEME_SYSTEM.md)** - Color themes and customization
+- **[Deployment](./docs/DEPLOYMENT.md)** - Netlify deployment guide
+- **[Security](./docs/SECURITY.md)** - Security audit and best practices
+- **[SEO](./docs/SEO.md)** - Search engine optimization
+
+## 🚀 Quick Start
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+/app              - Next.js pages and layout
+/components       - React components
+/lib              - Utilities and theme system
+/public           - Static assets
+/docs             - Documentation
+```
 
-## Learn More
+## 🎨 Theme System
 
-To learn more about Next.js, take a look at the following resources:
+6 professional themes included:
+- canrevolution (default)
+- autumn
+- nature
+- dark
+- noir
+- sunshine
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Change themes in `lib/theme.ts`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📝 License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+All rights reserved.
