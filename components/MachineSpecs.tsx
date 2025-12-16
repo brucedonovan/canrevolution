@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import { ChevronDown, X, Play, Square } from 'lucide-react';
 import Image from 'next/image';
+import React, { useState } from 'react';
+import { ChevronDown, Play, Square, X } from 'lucide-react';
 import { theme } from '@/lib/theme';
 
 interface AccordionItem {
@@ -63,7 +63,9 @@ const AccordionItem: React.FC<{
           <ul className="space-y-3 text-sm md:text-base" style={{ color: theme.text.mutedDark }}>
             {item.content.map((point, idx) => (
               <li key={idx} className="flex gap-3">
-                <span style={{ color: theme.primary.dark }} className="font-bold flex-shrink-0">•</span>
+                <span style={{ color: theme.primary.dark }} className="font-bold flex-shrink-0">
+                  •
+                </span>
                 <span>{point}</span>
               </li>
             ))}
@@ -83,10 +85,16 @@ export default function MachineSpecs() {
   };
 
   return (
-    <section className="relative w-full text-slate-50 py-16 md:py-24 lg:py-32" style={{ backgroundColor: theme.background.dark }}>
+    <section
+      className="relative w-full text-slate-50 py-16 md:py-24 lg:py-32"
+      style={{ backgroundColor: theme.background.dark }}
+    >
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         {/* Section Title */}
-        <h2 style={{ color: theme.text.onDark }} className="text-3xl md:text-4xl lg:text-5xl font-bold mb-12 md:mb-16">
+        <h2
+          style={{ color: theme.text.onDark }}
+          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-12 md:mb-16"
+        >
           What makes our machines unique?
         </h2>
 
@@ -95,7 +103,10 @@ export default function MachineSpecs() {
           {/* Left Column - Image and Button */}
           <div className="flex flex-col items-center gap-6">
             {/* Circular Image/Video with Overlaid Button */}
-            <div className="w-full max-w-sm aspect-square rounded-full overflow-visible flex items-center justify-center relative" style={{ backgroundColor: theme.background.dark }}>
+            <div
+              className="w-full max-w-sm aspect-square rounded-full overflow-visible flex items-center justify-center relative"
+              style={{ backgroundColor: theme.background.dark }}
+            >
               {!showDemo ? (
                 <Image
                   src="/images/machine.png"
@@ -123,7 +134,7 @@ export default function MachineSpecs() {
                   </button>
                 </div>
               )}
-              
+
               {/* Overlaid Demo/Stop Button */}
               <button
                 onClick={() => setShowDemo(!showDemo)}
@@ -131,7 +142,11 @@ export default function MachineSpecs() {
                 style={{ backgroundColor: theme.primary.light, color: theme.background.dark }}
                 aria-label={showDemo ? 'Stop video' : 'Play demo'}
               >
-                {showDemo ? <Square size={28} fill="currentColor" /> : <Play size={28} fill="currentColor" />}
+                {showDemo ? (
+                  <Square size={28} fill="currentColor" />
+                ) : (
+                  <Play size={28} fill="currentColor" />
+                )}
               </button>
             </div>
           </div>

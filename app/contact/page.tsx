@@ -1,24 +1,22 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Link from "next/link";
-import { ArrowLeft, Building2, Phone, Mail } from "lucide-react";
-import { theme } from "@/lib/theme";
+import Link from 'next/link';
+import { useState } from 'react';
+import { ArrowLeft, Building2, Mail, Phone } from 'lucide-react';
+import { theme } from '@/lib/theme';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    message: "",
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    message: '',
   });
 
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -29,15 +27,15 @@ export default function ContactPage() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Here you would typically send the form data to a server
-    console.log("Form submitted:", formData);
+    console.log('Form submitted:', formData);
     setSubmitted(true);
     setTimeout(() => {
       setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        message: "",
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        message: '',
       });
       setSubmitted(false);
     }, 3000);
@@ -46,16 +44,13 @@ export default function ContactPage() {
   return (
     <>
       {/* Header with Back Button */}
-      <header
-        className="relative"
-        style={{ backgroundColor: theme.background.dark }}
-      >
+      <header className="relative" style={{ backgroundColor: theme.background.dark }}>
         <div
           className="absolute inset-0 opacity-40"
           style={{
-            backgroundImage: "url(/images/hero-bg.jpg)",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+            backgroundImage: 'url(/images/hero-bg.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
           }}
         />
         <div
@@ -76,10 +71,7 @@ export default function ContactPage() {
       </header>
 
       {/* Contact Section */}
-      <div
-        className="relative isolate"
-        style={{ backgroundColor: theme.background.dark }}
-      >
+      <div className="relative isolate" style={{ backgroundColor: theme.background.dark }}>
         <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
           {/* Left Side */}
           <div className="relative px-6 pt-24 pb-20 sm:pt-32 lg:static lg:px-8 lg:py-48">
@@ -90,19 +82,12 @@ export default function ContactPage() {
               >
                 Get in touch
               </h2>
-              <p
-                style={{ color: theme.text.mutedDark }}
-                className="mt-6 text-lg/8"
-              >
-                Have questions about our canning solutions? We&apos;d love to hear
-                from you. Reach out and let&apos;s discuss how we can help your
-                beverage business.
+              <p style={{ color: theme.text.mutedDark }} className="mt-6 text-lg/8">
+                Have questions about our canning solutions? We&apos;d love to hear from you. Reach
+                out and let&apos;s discuss how we can help your beverage business.
               </p>
 
-              <dl
-                className="mt-10 space-y-4 text-base/7"
-                style={{ color: theme.text.mutedDark }}
-              >
+              <dl className="mt-10 space-y-4 text-base/7" style={{ color: theme.text.mutedDark }}>
                 <div className="flex gap-x-4">
                   <dt className="flex-none">
                     <span className="sr-only">Address</span>
@@ -172,8 +157,7 @@ export default function ContactPage() {
           >
             <p className="hidden">
               <label>
-                Don’t fill this out if you’re human:{" "}
-                <input name="bot-field" type="text" />
+                Don’t fill this out if you’re human: <input name="bot-field" type="text" />
               </label>
             </p>
             <input type="hidden" name="form-name" value="pizzaOrder" />
@@ -183,14 +167,11 @@ export default function ContactPage() {
                 <div
                   className="mb-6 p-4 rounded-lg"
                   style={{
-                    backgroundColor: theme.primary.light + "20",
+                    backgroundColor: theme.primary.light + '20',
                     borderLeft: `2px solid ${theme.primary.light}`,
                   }}
                 >
-                  <p
-                    style={{ color: theme.primary.light }}
-                    className="font-semibold"
-                  >
+                  <p style={{ color: theme.primary.light }} className="font-semibold">
                     Thank you! We&apos;ll get back to you soon.
                   </p>
                 </div>

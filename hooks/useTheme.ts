@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { theme } from '@/lib/theme'
+import { theme } from '@/lib/theme';
 
 /**
  * Hook to access theme colors throughout the app
@@ -35,5 +35,5 @@ export function useTheme() {
 
     // All theme object
     all: theme,
-  }
+  };
 }

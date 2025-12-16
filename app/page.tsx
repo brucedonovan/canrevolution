@@ -1,14 +1,14 @@
 import { Metadata } from 'next';
-import Header from '@/components/Header';
+import BookDemo from '@/components/BookDemo';
 import Features from '@/components/Features';
-import ProductCarousel from '@/components/ProductCarousel';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 import MachineSpecs from '@/components/MachineSpecs';
 import Pricing from '@/components/Pricing';
+import ProductCarousel from '@/components/ProductCarousel';
 import ProfitCalculator from '@/components/ProfitCalculator';
-import BookDemo from '@/components/BookDemo';
-import Footer from '@/components/Footer';
-import { generateHomeMetadata } from '@/lib/metadata';
 import StructuredData from '@/components/StructuredData';
+import { generateHomeMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = generateHomeMetadata();
 

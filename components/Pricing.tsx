@@ -1,20 +1,20 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
-import { Check, ChevronDown } from 'lucide-react'
-import { useState } from 'react'
-import { theme } from '@/lib/theme'
+import Image from 'next/image';
+import { useState } from 'react';
+import { Check, ChevronDown } from 'lucide-react';
+import { theme } from '@/lib/theme';
 
 interface PricingTier {
-  name: string
-  id: string
-  href: string
-  priceMonthly: string
-  description: string
-  features: string[]
-  details: string[]
-  image: string
-  mostPopular: boolean
+  name: string;
+  id: string;
+  href: string;
+  priceMonthly: string;
+  description: string;
+  features: string[];
+  details: string[];
+  image: string;
+  mostPopular: boolean;
 }
 
 const tiers: PricingTier[] = [
@@ -25,14 +25,8 @@ const tiers: PricingTier[] = [
     priceMonthly: '€500',
     description: 'Perfect for cafés and small shops just getting started with beverage canning.',
     image: '/images/pricing-starter.png',
-    features: [
-      'Machine Rental including installation',
-      '500 cans and lids delivered monthly',
-    ],
-    details: [
-      'Month-to-month contracts',
-      '1 month notice when cancelling',
-    ],
+    features: ['Machine Rental including installation', '500 cans and lids delivered monthly'],
+    details: ['Month-to-month contracts', '1 month notice when cancelling'],
     mostPopular: false,
   },
   {
@@ -78,27 +72,36 @@ const tiers: PricingTier[] = [
     ],
     mostPopular: false,
   },
-]
+];
 
 export default function Pricing() {
-  const [expandedTier, setExpandedTier] = useState<string | null>(null)
+  const [expandedTier, setExpandedTier] = useState<string | null>(null);
 
   const toggleTier = (tierId: string) => {
-    setExpandedTier(expandedTier === tierId ? null : tierId)
-  }
+    setExpandedTier(expandedTier === tierId ? null : tierId);
+  };
 
   return (
     <div id="pricing" style={{ backgroundColor: theme.background.medium }}>
       <div className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            <h2 style={{ color: theme.primary.light }} className="text-base/7 font-semibold">Pricing</h2>
-            <p style={{ color: theme.text.onLight }} className="mt-2 text-5xl font-semibold tracking-tight text-balance sm:text-6xl">
+            <h2 style={{ color: theme.primary.light }} className="text-base/7 font-semibold">
+              Pricing
+            </h2>
+            <p
+              style={{ color: theme.text.onLight }}
+              className="mt-2 text-5xl font-semibold tracking-tight text-balance sm:text-6xl"
+            >
               Flexible subscription models
             </p>
           </div>
-          <p style={{ color: theme.text.muted }} className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty sm:text-xl/8">
-            Choose an affordable plan that&rsquo;s packed with the best features for your beverage business. Scale up anytime or downsize with just one month&rsquo;s notice.
+          <p
+            style={{ color: theme.text.muted }}
+            className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty sm:text-xl/8"
+          >
+            Choose an affordable plan that&rsquo;s packed with the best features for your beverage
+            business. Scale up anytime or downsize with just one month&rsquo;s notice.
           </p>
           <div className="isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             {tiers.map((tier, tierIdx) => (
@@ -110,7 +113,9 @@ export default function Pricing() {
                   tierIdx === tiers.length - 1 ? '-ml-px lg:rounded-l-none' : ''
                 }`}
                 style={{
-                  backgroundColor: tier.mostPopular ? theme.background.dark : theme.background.light,
+                  backgroundColor: tier.mostPopular
+                    ? theme.background.dark
+                    : theme.background.light,
                   borderColor: tier.mostPopular ? theme.border.dark : theme.border.light,
                   color: tier.mostPopular ? theme.text.onDark : theme.text.onLight,
                 }}
@@ -119,12 +124,7 @@ export default function Pricing() {
                   {/* Pricing Tier Image */}
                   <div className="mb-6 flex justify-center">
                     <div className="h-48 w-48 overflow-hidden rounded-full bg-gray-200 relative">
-                      <Image
-                        src={tier.image}
-                        alt={tier.name}
-                        fill
-                        className="object-cover"
-                      />
+                      <Image src={tier.image} alt={tier.name} fill className="object-cover" />
                     </div>
                   </div>
                   <div className="flex items-center justify-between gap-x-4">
@@ -136,20 +136,51 @@ export default function Pricing() {
                       {tier.name}
                     </h3>
                     {tier.mostPopular ? (
-                      <p style={{ backgroundColor: theme.primary.light + '20', color: theme.primary.light }} className="rounded-full px-2.5 py-1 text-xs/5 font-semibold">
+                      <p
+                        style={{
+                          backgroundColor: theme.primary.light + '20',
+                          color: theme.primary.light,
+                        }}
+                        className="rounded-full px-2.5 py-1 text-xs/5 font-semibold"
+                      >
                         Most popular
                       </p>
                     ) : null}
                   </div>
-                  <p style={{ color: tier.mostPopular ? theme.text.onDark : theme.text.muted }} className="mt-4 text-sm/6">{tier.description}</p>
-                  <p className="mt-6 flex items-baseline gap-x-1">
-                    <span style={{ color: tier.mostPopular ? theme.text.onDark : theme.text.onLight }} className="text-4xl font-semibold tracking-tight">{tier.priceMonthly}</span>
-                    <span style={{ color: tier.mostPopular ? theme.text.onDark : theme.text.muted }} className="text-sm/6 font-semibold">/month</span>
+                  <p
+                    style={{ color: tier.mostPopular ? theme.text.onDark : theme.text.muted }}
+                    className="mt-4 text-sm/6"
+                  >
+                    {tier.description}
                   </p>
-                  <ul role="list" className="mt-8 space-y-3 text-sm/6" style={{ color: tier.mostPopular ? theme.text.onDark : theme.text.muted }}>
+                  <p className="mt-6 flex items-baseline gap-x-1">
+                    <span
+                      style={{ color: tier.mostPopular ? theme.text.onDark : theme.text.onLight }}
+                      className="text-4xl font-semibold tracking-tight"
+                    >
+                      {tier.priceMonthly}
+                    </span>
+                    <span
+                      style={{ color: tier.mostPopular ? theme.text.onDark : theme.text.muted }}
+                      className="text-sm/6 font-semibold"
+                    >
+                      /month
+                    </span>
+                  </p>
+                  <ul
+                    role="list"
+                    className="mt-8 space-y-3 text-sm/6"
+                    style={{ color: tier.mostPopular ? theme.text.onDark : theme.text.muted }}
+                  >
                     {tier.features.map((feature) => (
                       <li key={feature} className="flex gap-x-3">
-                        <Check aria-hidden="true" size={24} style={{ color: tier.mostPopular ? theme.primary.dark : theme.primary.light }} />
+                        <Check
+                          aria-hidden="true"
+                          size={24}
+                          style={{
+                            color: tier.mostPopular ? theme.primary.dark : theme.primary.light,
+                          }}
+                        />
                         {feature}
                       </li>
                     ))}
@@ -172,10 +203,23 @@ export default function Pricing() {
                   </button>
 
                   {expandedTier === tier.id && (
-                    <ul role="list" className="mt-4 space-y-2 text-sm/6 border-t pt-4" style={{ color: tier.mostPopular ? theme.text.onDark : theme.text.muted, borderTopColor: tier.mostPopular ? theme.border.dark : theme.border.light }}>
+                    <ul
+                      role="list"
+                      className="mt-4 space-y-2 text-sm/6 border-t pt-4"
+                      style={{
+                        color: tier.mostPopular ? theme.text.onDark : theme.text.muted,
+                        borderTopColor: tier.mostPopular ? theme.border.dark : theme.border.light,
+                      }}
+                    >
                       {tier.details.map((detail) => (
                         <li key={detail} className="flex gap-x-3">
-                          <span style={{ color: tier.mostPopular ? theme.primary.dark : theme.primary.light }}>•</span>
+                          <span
+                            style={{
+                              color: tier.mostPopular ? theme.primary.dark : theme.primary.light,
+                            }}
+                          >
+                            •
+                          </span>
                           {detail}
                         </li>
                       ))}
@@ -188,5 +232,5 @@ export default function Pricing() {
         </div>
       </div>
     </div>
-  )
+  );
 }

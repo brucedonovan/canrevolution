@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import Image from 'next/image'
-import NavBar from './NavBar'
-import { theme } from '@/lib/theme'
+import Image from 'next/image';
+import Link from 'next/link';
+import { theme } from '@/lib/theme';
+import NavBar from './NavBar';
 
 export default function Header() {
   return (
@@ -26,21 +26,36 @@ export default function Header() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
             <div className="text-left">
-              <h1 className="text-5xl font-semibold tracking-tight text-balance sm:text-7xl" style={{ color: theme.text.onDark }}>
+              <h1
+                className="text-5xl font-semibold tracking-tight text-balance sm:text-7xl"
+                style={{ color: theme.text.onDark }}
+              >
                 Revolutionary Beverage Canning Machines
               </h1>
-              <p className="mt-8 text-lg font-medium text-pretty sm:text-xl/8" style={{ color: theme.text.mutedDark }}>
-                Seal fresh drinks in seconds. Perfect for cafés, shops, and businesses looking to offer grab-and-go beverages with custom branding.
+              <p
+                className="mt-8 text-lg font-medium text-pretty sm:text-xl/8"
+                style={{ color: theme.text.mutedDark }}
+              >
+                Seal fresh drinks in seconds. Perfect for cafés, shops, and businesses looking to
+                offer grab-and-go beverages with custom branding.
               </p>
               <div className="mt-10 flex items-center gap-x-6">
                 <Link
                   href="/appointments"
                   className="rounded-md px-3.5 py-2.5 text-sm font-semibold shadow-sm hover:opacity-90 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
-                  style={{ backgroundColor: theme.primary.light, color: theme.background.dark, outlineColor: theme.primary.light }}
+                  style={{
+                    backgroundColor: theme.primary.light,
+                    color: theme.background.dark,
+                    outlineColor: theme.primary.light,
+                  }}
                 >
                   Book a Demo
                 </Link>
-                <a href="#features" className="text-sm/6 font-semibold transition-colors hover:opacity-75" style={{ color: theme.text.onDark }}>
+                <a
+                  href="#features"
+                  className="text-sm/6 font-semibold transition-colors hover:opacity-75"
+                  style={{ color: theme.text.onDark }}
+                >
                   Learn more <span aria-hidden="true">→</span>
                 </a>
               </div>
@@ -62,5 +77,5 @@ export default function Header() {
         </svg>
       </div>
     </div>
-  )
+  );
 }

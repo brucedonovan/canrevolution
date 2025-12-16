@@ -1,13 +1,13 @@
 /**
  * CENTRALIZED THEME CONFIGURATION
  * ================================
- * 
+ *
  * TO CHANGE THE ENTIRE APP THEME:
  * 1. Find the section below marked "CURRENT THEME SELECTION"
  * 2. Replace 'summer' with one of: 'coffee', 'winter', 'ocean', 'indigo', 'emerald'
  * 3. All colors throughout the app will update automatically!
  * 4. Run: npm run build
- * 
+ *
  * Example: Change from 'summer' to 'coffee'
  *   const CURRENT_THEME = 'coffee'
  */
@@ -15,7 +15,7 @@
 // ============================================================================
 // CURRENT THEME SELECTION - CHANGE THIS ONE LINE TO SWITCH THEMES!
 // ============================================================================
-const CURRENT_THEME = 'canrevolution' as const
+const CURRENT_THEME = 'canrevolution' as const;
 
 // ============================================================================
 // THEME DEFINITIONS
@@ -431,10 +431,10 @@ const themes = {
       to: '#fbbf24',
     },
   },
-} as const
+} as const;
 
 // Export the current theme
-export const theme = themes[CURRENT_THEME]
+export const theme = themes[CURRENT_THEME];
 
 /**
  * Helper function to get theme-aware color classes
@@ -449,7 +449,7 @@ export function getThemeColors(isDark: boolean = false) {
     card: isDark ? theme.background.darkCard : theme.background.lightCard,
     border: isDark ? theme.border.dark : theme.border.light,
     muted: isDark ? theme.text.mutedDark : theme.text.muted,
-  }
+  };
 }
 
 /**
@@ -460,7 +460,7 @@ export function getAvailableThemes() {
     id: key,
     name: value.name,
     description: value.description,
-  }))
+  }));
 }
 
-export type ThemeOption = keyof typeof themes
+export type ThemeOption = keyof typeof themes;

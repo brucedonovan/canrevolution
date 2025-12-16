@@ -114,9 +114,9 @@ const tailwindToHex: Record<string, string> = {
   'emerald-900': '#134e4a',
 
   // Neutrals
-  'white': '#ffffff',
-  'black': '#000000',
-}
+  white: '#ffffff',
+  black: '#000000',
+};
 
 /**
  * Convert a Tailwind color name to hex
@@ -124,13 +124,18 @@ const tailwindToHex: Record<string, string> = {
 export function tailwindToCSS(colorName: string): string {
   // Handle opacity modifiers like 'slate-900/40'
   if (colorName.includes('/')) {
-    const [color, opacity] = colorName.split('/')
-    const hex = tailwindToHex[color] || colorName
-    const opacityPercent = parseInt(opacity) / 100
-    return hex + Math.round(opacityPercent * 255).toString(16).padStart(2, '0')
+    const [color, opacity] = colorName.split('/');
+    const hex = tailwindToHex[color] || colorName;
+    const opacityPercent = parseInt(opacity) / 100;
+    return (
+      hex +
+      Math.round(opacityPercent * 255)
+        .toString(16)
+        .padStart(2, '0')
+    );
   }
 
-  return tailwindToHex[colorName] || colorName
+  return tailwindToHex[colorName] || colorName;
 }
 
 /**
@@ -141,9 +146,9 @@ export function rgbToHex(r: number, g: number, b: number): string {
     '#' +
     [r, g, b]
       .map((x) => {
-        const hex = x.toString(16)
-        return hex.length === 1 ? '0' + hex : hex
+        const hex = x.toString(16);
+        return hex.length === 1 ? '0' + hex : hex;
       })
       .join('')
-  )
+  );
 }

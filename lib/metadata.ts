@@ -27,7 +27,7 @@ export const defaultMetadata: Metadata = {
   authors: [{ name: 'can(RE)volution' }],
   creator: 'can(RE)volution',
   publisher: 'can(RE)volution',
-  
+
   openGraph: {
     type: 'website',
     locale: 'en_US',
