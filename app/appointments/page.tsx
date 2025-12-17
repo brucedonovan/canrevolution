@@ -49,7 +49,7 @@ export default function AppointmentsPage() {
             {/* Calendly inline widget */}
             <div
               className="calendly-inline-widget"
-              data-url="https://calendly.com/bruce-canrevolution"
+              data-url="https://calendly.com/kasimir-canrevolution"
               style={{ minWidth: '320px', height: '630px' }}
             />
           </div>

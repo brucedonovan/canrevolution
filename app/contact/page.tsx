@@ -103,7 +103,7 @@ export default function ContactPage() {
                     Europe
                   </dd>
                 </div>
-                <div className="flex gap-x-4">
+                {/* <div className="flex gap-x-4">
                   <dt className="flex-none">
                     <span className="sr-only">Telephone</span>
                     <Phone
@@ -121,7 +121,7 @@ export default function ContactPage() {
                       +351 (XXX) XXX-XXXX
                     </a>
                   </dd>
-                </div>
+                </div> */}
                 <div className="flex gap-x-4">
                   <dt className="flex-none">
                     <span className="sr-only">Email</span>
