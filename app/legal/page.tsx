@@ -21,20 +21,29 @@ export default function Legal() {
   });
 
   return (
-    <>
+    <div
+      className="min-h-screen"
+      style={{
+        backgroundImage: 'url(/images/hero-bg.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}
+    >
+      <>
       {/* Header with Back Button */}
-      <header className="relative" style={{ backgroundColor: theme.background.dark }}>
+      <header className="relative" style={{ backgroundColor: 'transparent' }}>
         <div
-          className="absolute inset-0 opacity-40"
+          className="absolute inset-0 opacity-40 z-0"
           style={{
-            backgroundImage: 'url(/images/hero-bg.jpg)',
+            backgroundImage: 'none',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         />
         <div
-          className="absolute inset-0"
-          style={{ backgroundColor: theme.background.dark, opacity: 0.6 }}
+          className="absolute inset-0 z-0"
+          style={{ backgroundColor: 'transparent' }}
         />
 
         <nav className="relative z-10 flex items-center p-6 lg:px-8 max-w-7xl mx-auto">
@@ -50,7 +59,7 @@ export default function Legal() {
       </header>
 
       {/* Content */}
-      <div style={{ backgroundColor: theme.background.dark, minHeight: '100vh' }}>
+      <div style={{ backgroundColor: 'transparent', minHeight: '100vh' }}>
         <div className="max-w-4xl mx-auto px-4 py-12 lg:px-8">
           {/* Tab Navigation */}
           <div className="border-b mb-12" style={{ borderColor: theme.border.dark }}>
@@ -474,6 +483,7 @@ export default function Legal() {
           </div>
         </div>
       </div>
-    </>
+      </>
+    </div>
   );
 }

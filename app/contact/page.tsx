@@ -98,20 +98,29 @@ export default function ContactPage() {
   };
 
   return (
-    <>
+    <div
+      className="min-h-screen"
+      style={{
+        backgroundImage: 'url(/images/hero-bg.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}
+    >
+      <>
       {/* Header */}
-      <header className="relative" style={{ backgroundColor: theme.background.dark }}>
+      <header className="relative" style={{ backgroundColor: 'transparent' }}>
         <div
-          className="absolute inset-0 opacity-40"
+          className="absolute inset-0 opacity-40 z-0"
           style={{
-            backgroundImage: 'url(/images/hero-bg.jpg)',
+            backgroundImage: 'none',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         />
         <div
-          className="absolute inset-0"
-          style={{ backgroundColor: theme.background.dark, opacity: 0.6 }}
+          className="absolute inset-0 z-0"
+          style={{ backgroundColor: 'transparent' }}
         />
 
         <nav className="relative z-10 flex items-center p-6 lg:px-8 max-w-7xl mx-auto">
@@ -127,7 +136,7 @@ export default function ContactPage() {
       </header>
 
       {/* Content */}
-      <div className="relative isolate" style={{ backgroundColor: theme.background.dark }}>
+      <div className="relative isolate" style={{ backgroundColor: 'transparent' }}>
         <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
           {/* Left: Info */}
           <div className="relative px-6 pt-24 pb-20 sm:pt-32 lg:static lg:px-8 lg:py-48">
@@ -279,6 +288,7 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-    </>
+      </>
+    </div>
   );
 }
