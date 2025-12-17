@@ -13,11 +13,12 @@ const nextConfig: NextConfig = {
   // Image optimization
   images: {
     remotePatterns: [],
+    unoptimized: true, // Disable image optimization on Netlify
   },
 
   // Environment variables
   env: {
-    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com',
+    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'https://canrevolution.com',
   },
 };
 
