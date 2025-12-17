@@ -10,8 +10,9 @@ const nextConfig: NextConfig = {
   // Don't expose source maps in production
   productionBrowserSourceMaps: false,
 
-  // Image optimization
+  // Image optimization - disable for Netlify compatibility
   images: {
+    unoptimized: true,
     remotePatterns: [],
   },
 
