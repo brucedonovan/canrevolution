@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { ArrowLeft, Building2, Mail, CheckCircle } from 'lucide-react';
 import { theme } from '@/lib/theme';
 
-const FORM_TIMEOUT_MS = 7000;
 const INPUT_STYLE = {
   backgroundColor: theme.background.lightCard,
   color: theme.text.onLight,
@@ -14,6 +13,16 @@ const INPUT_STYLE = {
   outlineColor: theme.primary.light,
 };
 
+interface FormInputProps {
+  id: string;
+  name: string;
+  label: string;
+  type?: string;
+  autoComplete?: string;
+  required?: boolean;
+  isTextarea?: boolean;
+}
+
 const FormInput = ({
   id,
   name,
@@ -21,18 +30,8 @@ const FormInput = ({
   type = 'text',
   autoComplete,
   required = false,
-  disabled = false,
   isTextarea = false,
-}: {
-  id: string;
-  name: string;
-  label: string;
-  type?: string;
-  autoComplete?: string;
-  required?: boolean;
-  disabled?: boolean;
-  isTextarea?: boolean;
-}) => (
+}: FormInputProps) => (
   <div className={name === 'email' || name === 'message' ? 'sm:col-span-2' : ''}>
     <label
       htmlFor={id}
@@ -40,6 +39,7 @@ const FormInput = ({
       className="block text-sm/6 font-semibold"
     >
       {label}
+      {required && <span className="text-red-500">*</span>}
     </label>
     <div className="mt-2.5">
       {isTextarea ? (
@@ -48,8 +48,7 @@ const FormInput = ({
           name={name}
           rows={4}
           required={required}
-          disabled={disabled}
-          className="block w-full rounded-md px-3.5 py-2 text-base focus:outline-none focus:ring-2 transition-all disabled:opacity-50"
+          className="block w-full rounded-md px-3.5 py-2 text-base focus:outline-none focus:ring-2 transition-all"
           style={INPUT_STYLE}
         />
       ) : (
@@ -59,8 +58,7 @@ const FormInput = ({
           type={type}
           autoComplete={autoComplete}
           required={required}
-          disabled={disabled}
-          className="block w-full rounded-md px-3.5 py-2 text-base focus:outline-none focus:ring-2 transition-all disabled:opacity-50"
+          className="block w-full rounded-md px-3.5 py-2 text-base focus:outline-none focus:ring-2 transition-all"
           style={INPUT_STYLE}
         />
       )}
@@ -70,43 +68,17 @@ const FormInput = ({
 
 export default function ContactPage() {
   const [showSuccess, setShowSuccess] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    const form = e.currentTarget;
 
-    try {
-      const form = e.currentTarget;
-      if (!form) {
-        throw new Error('Form reference is null');
-      }
+    // Show success message and reset form
+    setShowSuccess(true);
+    form.reset();
 
-      const formData = new FormData(form);
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(
-          Array.from(formData.entries()) as [string, string][]
-        ).toString(),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || `Form submission failed with status ${response.status}`);
-      }
-
-      setShowSuccess(true);
-      if (form) {
-        form.reset();
-      }
-      setTimeout(() => setShowSuccess(false), FORM_TIMEOUT_MS);
-    } catch (error) {
-      console.error('Form submission error:', error);
-      alert('There was an error submitting your form. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Reset after 5 seconds
+    setTimeout(() => setShowSuccess(false), 5000);
   };
 
   return (
@@ -225,7 +197,7 @@ export default function ContactPage() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} name="contact-form">
+                <form onSubmit={handleSubmit} name="contact-form" method="POST">
                   <input type="hidden" name="form-name" value="contact-form" />
 
                   <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
@@ -235,7 +207,6 @@ export default function ContactPage() {
                       label="First name"
                       autoComplete="given-name"
                       required
-                      disabled={isSubmitting}
                     />
                     <FormInput
                       id="lastName"
@@ -243,7 +214,6 @@ export default function ContactPage() {
                       label="Last name"
                       autoComplete="family-name"
                       required
-                      disabled={isSubmitting}
                     />
                     <FormInput
                       id="email"
@@ -252,7 +222,6 @@ export default function ContactPage() {
                       type="email"
                       autoComplete="email"
                       required
-                      disabled={isSubmitting}
                     />
                     <FormInput
                       id="phone"
@@ -260,7 +229,6 @@ export default function ContactPage() {
                       label="Phone number"
                       type="tel"
                       autoComplete="tel"
-                      disabled={isSubmitting}
                     />
                     <FormInput
                       id="message"
@@ -268,21 +236,19 @@ export default function ContactPage() {
                       label="Message"
                       isTextarea
                       required
-                      disabled={isSubmitting}
                     />
                   </div>
 
                   <div className="mt-8 flex justify-end">
                     <button
                       type="submit"
-                      disabled={isSubmitting}
-                      className="rounded-md px-3.5 py-2.5 text-center text-sm font-semibold shadow-xs hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="rounded-md px-3.5 py-2.5 text-center text-sm font-semibold shadow-xs hover:opacity-90 transition-opacity"
                       style={{
                         backgroundColor: theme.primary.light,
                         color: theme.background.dark,
                       }}
                     >
-                      {isSubmitting ? 'Sending...' : 'Send message'}
+                      Send message
                     </button>
                   </div>
                 </form>
