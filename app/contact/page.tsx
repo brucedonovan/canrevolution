@@ -1,109 +1,10 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
-import { ArrowLeft, Building2, CheckCircle, Mail } from 'lucide-react';
+import { ArrowLeft, Building2, Mail } from 'lucide-react';
+import ContactForm from '@/components/ContactForm';
 import { theme } from '@/lib/theme';
 
-const INPUT_STYLE = {
-  backgroundColor: theme.background.lightCard,
-  color: theme.text.onLight,
-  borderColor: theme.border.light,
-  border: `1px solid ${theme.border.light}`,
-  outlineColor: theme.primary.light,
-};
-
-interface FormInputProps {
-  id: string;
-  name: string;
-  label: string;
-  type?: string;
-  autoComplete?: string;
-  required?: boolean;
-  isTextarea?: boolean;
-}
-
-const FormInput = ({
-  id,
-  name,
-  label,
-  type = 'text',
-  autoComplete,
-  required = false,
-  isTextarea = false,
-}: FormInputProps) => (
-  <div className={name === 'email' || name === 'message' ? 'sm:col-span-2' : ''}>
-    <label
-      htmlFor={id}
-      style={{ color: theme.text.onDark }}
-      className="block text-sm/6 font-semibold"
-    >
-      {label}
-      {required && <span className="text-red-500">*</span>}
-    </label>
-    <div className="mt-2.5">
-      {isTextarea ? (
-        <textarea
-          id={id}
-          name={name}
-          rows={4}
-          required={required}
-          className="block w-full rounded-md px-3.5 py-2 text-base focus:outline-none focus:ring-2 transition-all"
-          style={INPUT_STYLE}
-        />
-      ) : (
-        <input
-          id={id}
-          name={name}
-          type={type}
-          autoComplete={autoComplete}
-          required={required}
-          className="block w-full rounded-md px-3.5 py-2 text-base focus:outline-none focus:ring-2 transition-all"
-          style={INPUT_STYLE}
-        />
-      )}
-    </div>
-  </div>
-);
-
 export default function ContactPage() {
-  const [showSuccess, setShowSuccess] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-
-    // Encode form data for Netlify
-    const formData = new FormData(form);
-    const encoded = new URLSearchParams(formData as unknown as Record<string, string>).toString();
-
-    // Submit to Netlify forms
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encoded,
-    })
-      .then((response) => {
-        if (response.ok || response.status === 404) {
-          // Show success message and reset form
-          // (404 is expected in dev mode, but form still submits)
-          setShowSuccess(true);
-          form.reset();
-
-          // Reset after 5 seconds
-          setTimeout(() => setShowSuccess(false), 5000);
-        }
-      })
-      .catch((error) => {
-        console.error('Form submission error:', error);
-        // Still show success message for UX
-        setShowSuccess(true);
-        form.reset();
-        setTimeout(() => setShowSuccess(false), 5000);
-      });
-  };
-
   return (
     <>
       <div className="relative overflow-hidden">
@@ -186,85 +87,10 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Right: Form or Success */}
+            {/* Right: Form */}
             <div className="px-6 pt-20 pb-24 sm:pb-32 lg:px-8 lg:py-48">
               <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
-                {showSuccess ? (
-                  <div className="text-center">
-                    <CheckCircle
-                      size={80}
-                      style={{ color: theme.primary.light }}
-                      className="mx-auto mb-6"
-                    />
-                    <h3 className="text-3xl font-bold mb-3" style={{ color: theme.text.onDark }}>
-                      Thank You!
-                    </h3>
-                    <p style={{ color: theme.text.mutedDark }} className="text-lg mb-6">
-                      Your message has been sent successfully. We&apos;ll get back to you as soon as
-                      possible.
-                    </p>
-                    <button
-                      onClick={() => setShowSuccess(false)}
-                      className="rounded-md px-4 py-2 text-sm font-semibold hover:opacity-90 transition-opacity"
-                      style={{
-                        backgroundColor: theme.primary.light,
-                        color: theme.background.dark,
-                      }}
-                    >
-                      Send Another Message
-                    </button>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} name="contact-form" method="POST">
-                    <input type="hidden" name="form-name" value="contact-form" />
-
-                    <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-                      <FormInput
-                        id="firstName"
-                        name="firstName"
-                        label="First name"
-                        autoComplete="given-name"
-                        required
-                      />
-                      <FormInput
-                        id="lastName"
-                        name="lastName"
-                        label="Last name"
-                        autoComplete="family-name"
-                        required
-                      />
-                      <FormInput
-                        id="email"
-                        name="email"
-                        label="Email"
-                        type="email"
-                        autoComplete="email"
-                        required
-                      />
-                      <FormInput
-                        id="phone"
-                        name="phone"
-                        label="Phone number"
-                        type="tel"
-                        autoComplete="tel"
-                      />
-                      <FormInput id="message" name="message" label="Message" isTextarea required />
-                    </div>
-
-                    <div className="mt-8 flex justify-end">
-                      <button
-                        type="submit"
-                        className="rounded-md px-3.5 py-2.5 text-center text-sm font-semibold shadow-xs hover:opacity-90 transition-opacity"
-                        style={{
-                          backgroundColor: theme.primary.light,
-                          color: theme.background.dark,
-                        }}
-                      >
-                        Send message
-                      </button>
-                    </div>
-                  </form>
-                )}
+                <ContactForm />
               </div>
             </div>
           </div>
