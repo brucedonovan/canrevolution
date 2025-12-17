@@ -6,12 +6,8 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# NextJS Runtime Configuration
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-  [plugins.inputs]
-    skipStaticOptimization = false
-    skipImageOptimization = false
 
 # Security headers for all routes
 [[headers]]
