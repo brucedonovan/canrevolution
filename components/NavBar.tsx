@@ -132,7 +132,7 @@ export default function NavBar() {
               </div>
 
               {/* Book a Demo at bottom */}
-              <div className="py-6 mt-auto">
+              <div className="py-6 mt-auto space-y-3">
                 <Link
                   href="/appointments"
                   className="block w-full rounded-lg px-4 py-3 text-center text-base/7 font-semibold transition-colors hover:opacity-90"
@@ -140,6 +140,14 @@ export default function NavBar() {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Book a Demo
+                </Link>
+                <Link
+                  href="/contact"
+                  className="block w-full rounded-lg px-4 py-3 text-center text-base/7 font-semibold transition-colors hover:opacity-90 border-2"
+                  style={{ borderColor: theme.primary.light, color: theme.primary.light, backgroundColor: 'transparent' }}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Contact us
                 </Link>
               </div>
             </div>
