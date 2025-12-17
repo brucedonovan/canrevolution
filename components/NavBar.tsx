@@ -144,7 +144,11 @@ export default function NavBar() {
                 <Link
                   href="/contact"
                   className="block w-full rounded-lg px-4 py-3 text-center text-base/7 font-semibold transition-colors hover:opacity-90 border-2"
-                  style={{ borderColor: theme.primary.light, color: theme.primary.light, backgroundColor: 'transparent' }}
+                  style={{
+                    borderColor: theme.primary.light,
+                    color: theme.primary.light,
+                    backgroundColor: 'transparent',
+                  }}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Contact us

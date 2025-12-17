@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import { ArrowLeft, Building2, Mail, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Building2, CheckCircle, Mail } from 'lucide-react';
 import { theme } from '@/lib/theme';
 
 const INPUT_STYLE = {
@@ -76,7 +76,7 @@ export default function ContactPage() {
 
     // Encode form data for Netlify
     const formData = new FormData(form);
-    const encoded = new URLSearchParams(formData as any).toString();
+    const encoded = new URLSearchParams(formData as unknown as Record<string, string>).toString();
 
     // Submit to Netlify forms
     fetch('/', {
@@ -134,149 +134,140 @@ export default function ContactPage() {
         {/* Content */}
         <div className="relative isolate px-6 md:px-12">
           <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
-          {/* Left: Info */}
-          <div className="relative px-6 pt-24 pb-20 sm:pt-32 lg:static lg:px-8 lg:py-48">
-            <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
-              <h2
-                style={{ color: theme.text.onDark }}
-                className="text-4xl font-semibold tracking-tight sm:text-5xl"
-              >
-                Get in touch
-              </h2>
-              <p style={{ color: theme.text.mutedDark }} className="mt-6 text-lg/8">
-                Have questions about our canning solutions? We&apos;d love to hear from you. Reach
-                out and let&apos;s discuss how we can help your beverage business.
-              </p>
+            {/* Left: Info */}
+            <div className="relative px-6 pt-24 pb-20 sm:pt-32 lg:static lg:px-8 lg:py-48">
+              <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
+                <h2
+                  style={{ color: theme.text.onDark }}
+                  className="text-4xl font-semibold tracking-tight sm:text-5xl"
+                >
+                  Get in touch
+                </h2>
+                <p style={{ color: theme.text.mutedDark }} className="mt-6 text-lg/8">
+                  Have questions about our canning solutions? We&apos;d love to hear from you. Reach
+                  out and let&apos;s discuss how we can help your beverage business.
+                </p>
 
-              <dl className="mt-10 space-y-4 text-base/7" style={{ color: theme.text.mutedDark }}>
-                <div className="flex gap-x-4">
-                  <dt className="flex-none">
-                    <span className="sr-only">Address</span>
-                    <Building2
-                      aria-hidden="true"
-                      className="h-7 w-6"
-                      style={{ color: theme.primary.light }}
-                    />
-                  </dt>
-                  <dd style={{ color: theme.text.onDark }}>
-                    Lisbon, Portugal <br /> Europe
-                  </dd>
-                </div>
-
-                <div className="flex gap-x-4">
-                  <dt className="flex-none">
-                    <span className="sr-only">Email</span>
-                    <Mail
-                      aria-hidden="true"
-                      className="h-7 w-6"
-                      style={{ color: theme.primary.light }}
-                    />
-                  </dt>
-                  <dd>
-                    <a
-                      href="mailto:hello@canrevolution.com"
-                      className="hover:opacity-75 transition-opacity"
-                      style={{ color: theme.text.onDark }}
-                    >
-                      hello@canrevolution.com
-                    </a>
-                  </dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-
-          {/* Right: Form or Success */}
-          <div className="px-6 pt-20 pb-24 sm:pb-32 lg:px-8 lg:py-48">
-            <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
-              {showSuccess ? (
-                <div className="text-center">
-                  <CheckCircle
-                    size={80}
-                    style={{ color: theme.primary.light }}
-                    className="mx-auto mb-6"
-                  />
-                  <h3
-                    className="text-3xl font-bold mb-3"
-                    style={{ color: theme.text.onDark }}
-                  >
-                    Thank You!
-                  </h3>
-                  <p style={{ color: theme.text.mutedDark }} className="text-lg mb-6">
-                    Your message has been sent successfully. We&apos;ll get back to you as soon as
-                    possible.
-                  </p>
-                  <button
-                    onClick={() => setShowSuccess(false)}
-                    className="rounded-md px-4 py-2 text-sm font-semibold hover:opacity-90 transition-opacity"
-                    style={{
-                      backgroundColor: theme.primary.light,
-                      color: theme.background.dark,
-                    }}
-                  >
-                    Send Another Message
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} name="contact-form" method="POST">
-                  <input type="hidden" name="form-name" value="contact-form" />
-
-                  <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-                    <FormInput
-                      id="firstName"
-                      name="firstName"
-                      label="First name"
-                      autoComplete="given-name"
-                      required
-                    />
-                    <FormInput
-                      id="lastName"
-                      name="lastName"
-                      label="Last name"
-                      autoComplete="family-name"
-                      required
-                    />
-                    <FormInput
-                      id="email"
-                      name="email"
-                      label="Email"
-                      type="email"
-                      autoComplete="email"
-                      required
-                    />
-                    <FormInput
-                      id="phone"
-                      name="phone"
-                      label="Phone number"
-                      type="tel"
-                      autoComplete="tel"
-                    />
-                    <FormInput
-                      id="message"
-                      name="message"
-                      label="Message"
-                      isTextarea
-                      required
-                    />
+                <dl className="mt-10 space-y-4 text-base/7" style={{ color: theme.text.mutedDark }}>
+                  <div className="flex gap-x-4">
+                    <dt className="flex-none">
+                      <span className="sr-only">Address</span>
+                      <Building2
+                        aria-hidden="true"
+                        className="h-7 w-6"
+                        style={{ color: theme.primary.light }}
+                      />
+                    </dt>
+                    <dd style={{ color: theme.text.onDark }}>
+                      Lisbon, Portugal <br /> Europe
+                    </dd>
                   </div>
 
-                  <div className="mt-8 flex justify-end">
+                  <div className="flex gap-x-4">
+                    <dt className="flex-none">
+                      <span className="sr-only">Email</span>
+                      <Mail
+                        aria-hidden="true"
+                        className="h-7 w-6"
+                        style={{ color: theme.primary.light }}
+                      />
+                    </dt>
+                    <dd>
+                      <a
+                        href="mailto:hello@canrevolution.com"
+                        className="hover:opacity-75 transition-opacity"
+                        style={{ color: theme.text.onDark }}
+                      >
+                        hello@canrevolution.com
+                      </a>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+
+            {/* Right: Form or Success */}
+            <div className="px-6 pt-20 pb-24 sm:pb-32 lg:px-8 lg:py-48">
+              <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
+                {showSuccess ? (
+                  <div className="text-center">
+                    <CheckCircle
+                      size={80}
+                      style={{ color: theme.primary.light }}
+                      className="mx-auto mb-6"
+                    />
+                    <h3 className="text-3xl font-bold mb-3" style={{ color: theme.text.onDark }}>
+                      Thank You!
+                    </h3>
+                    <p style={{ color: theme.text.mutedDark }} className="text-lg mb-6">
+                      Your message has been sent successfully. We&apos;ll get back to you as soon as
+                      possible.
+                    </p>
                     <button
-                      type="submit"
-                      className="rounded-md px-3.5 py-2.5 text-center text-sm font-semibold shadow-xs hover:opacity-90 transition-opacity"
+                      onClick={() => setShowSuccess(false)}
+                      className="rounded-md px-4 py-2 text-sm font-semibold hover:opacity-90 transition-opacity"
                       style={{
                         backgroundColor: theme.primary.light,
                         color: theme.background.dark,
                       }}
                     >
-                      Send message
+                      Send Another Message
                     </button>
                   </div>
-                </form>
-              )}
+                ) : (
+                  <form onSubmit={handleSubmit} name="contact-form" method="POST">
+                    <input type="hidden" name="form-name" value="contact-form" />
+
+                    <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+                      <FormInput
+                        id="firstName"
+                        name="firstName"
+                        label="First name"
+                        autoComplete="given-name"
+                        required
+                      />
+                      <FormInput
+                        id="lastName"
+                        name="lastName"
+                        label="Last name"
+                        autoComplete="family-name"
+                        required
+                      />
+                      <FormInput
+                        id="email"
+                        name="email"
+                        label="Email"
+                        type="email"
+                        autoComplete="email"
+                        required
+                      />
+                      <FormInput
+                        id="phone"
+                        name="phone"
+                        label="Phone number"
+                        type="tel"
+                        autoComplete="tel"
+                      />
+                      <FormInput id="message" name="message" label="Message" isTextarea required />
+                    </div>
+
+                    <div className="mt-8 flex justify-end">
+                      <button
+                        type="submit"
+                        className="rounded-md px-3.5 py-2.5 text-center text-sm font-semibold shadow-xs hover:opacity-90 transition-opacity"
+                        style={{
+                          backgroundColor: theme.primary.light,
+                          color: theme.background.dark,
+                        }}
+                      >
+                        Send message
+                      </button>
+                    </div>
+                  </form>
+                )}
+              </div>
             </div>
           </div>
-        </div>
         </div>
       </div>
     </>

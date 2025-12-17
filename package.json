@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "eslint --fix . && prettier --write ."
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",
