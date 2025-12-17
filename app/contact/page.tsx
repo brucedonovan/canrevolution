@@ -77,8 +77,13 @@ export default function ContactPage() {
     setIsSubmitting(true);
 
     try {
-      const formData = new FormData(e.currentTarget);
-      await fetch('/', {
+      const form = e.currentTarget;
+      if (!form) {
+        throw new Error('Form reference is null');
+      }
+
+      const formData = new FormData(form);
+      const response = await fetch('/.netlify/functions/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(
@@ -86,8 +91,15 @@ export default function ContactPage() {
         ).toString(),
       });
 
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `Form submission failed with status ${response.status}`);
+      }
+
       setShowSuccess(true);
-      e.currentTarget.reset();
+      if (form) {
+        form.reset();
+      }
       setTimeout(() => setShowSuccess(false), FORM_TIMEOUT_MS);
     } catch (error) {
       console.error('Form submission error:', error);
