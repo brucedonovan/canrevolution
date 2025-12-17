@@ -44,6 +44,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 ## 🎨 Theme System
 
 6 professional themes included:
+
 - canrevolution (default)
 - autumn
 - nature

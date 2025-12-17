@@ -18,7 +18,10 @@ All pages include proper meta tags:
 // app/layout.tsx
 <head>
   <title>can(RE)volution - Professional Beverage Canning Solutions</title>
-  <meta name="description" content="Affordable, reliable beverage canning machines for craft breweries and brands." />
+  <meta
+    name="description"
+    content="Affordable, reliable beverage canning machines for craft breweries and brands."
+  />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta charset="UTF-8" />
 </head>
@@ -27,6 +30,7 @@ All pages include proper meta tags:
 ### 2. Structure ✅
 
 **Site Structure:**
+
 ```
 /                 - Landing page (highest priority)
 /contact          - Contact form page
@@ -45,6 +49,7 @@ All pages include proper meta tags:
 ### 4. Page Speed ✅
 
 **Performance Metrics:**
+
 - Static site generation (very fast)
 - Image optimization via Next.js
 - CSS minification
@@ -56,17 +61,20 @@ All pages include proper meta tags:
 ### 1. Title Tags
 
 **Current:**
+
 ```html
 <title>can(RE)volution - Professional Beverage Canning Solutions</title>
 ```
 
 **Best Practices:**
+
 - Keep under 60 characters
 - Include primary keyword
 - Put brand name at end
 - Make it clickable in search results
 
 **Example:**
+
 ```html
 <title>Beverage Canning Machines | can(RE)volution - Affordable, Reliable</title>
 ```
@@ -74,24 +82,31 @@ All pages include proper meta tags:
 ### 2. Meta Descriptions
 
 **Current:**
+
 ```html
 <meta name="description" content="Affordable, reliable beverage canning machines." />
 ```
 
 **Best Practices:**
+
 - Keep 155-160 characters
 - Include primary keyword
 - Call-to-action if possible
 - Unique for each page
 
 **Example:**
+
 ```html
-<meta name="description" content="Professional beverage canning machines for craft breweries. Affordable, reliable, and easy to operate. Get your business canning today with can(RE)volution." />
+<meta
+  name="description"
+  content="Professional beverage canning machines for craft breweries. Affordable, reliable, and easy to operate. Get your business canning today with can(RE)volution."
+/>
 ```
 
 ### 3. Heading Structure
 
 **Recommended Hierarchy:**
+
 ```html
 <h1>Professional Beverage Canning for Your Brand</h1>
 <h2>Why Choose can(RE)volution?</h2>
@@ -112,27 +127,25 @@ All pages include proper meta tags:
   type="application/ld+json"
   dangerouslySetInnerHTML={{
     __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "can(RE)volution",
-      "description": "Professional beverage canning solutions",
-      "url": "https://canrevolution.com",
-      "logo": "https://canrevolution.com/logo.png",
-      "sameAs": [
-        "https://instagram.com/canrevolution",
-        "https://linkedin.com/company/canrevolution"
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+1-XXX-XXX-XXXX",
-        "contactType": "Customer Service"
-      }
-    })
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'can(RE)volution',
+      description: 'Professional beverage canning solutions',
+      url: 'https://canrevolution.com',
+      logo: 'https://canrevolution.com/logo.png',
+      sameAs: ['https://instagram.com/canrevolution', 'https://linkedin.com/company/canrevolution'],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: '+1-XXX-XXX-XXXX',
+        contactType: 'Customer Service',
+      },
+    }),
   }}
 />
 ```
 
 **Benefits:**
+
 - Improves rich snippets
 - Helps Google understand content
 - May show knowledge panel
@@ -200,6 +213,7 @@ Sitemap: https://canrevolution.com/sitemap.xml
 ### 8. Keywords & Content
 
 **Target Keywords:**
+
 - beverage canning machines
 - craft brewery canning
 - professional canning equipment
@@ -207,6 +221,7 @@ Sitemap: https://canrevolution.com/sitemap.xml
 - beverage bottling equipment
 
 **Implementation:**
+
 - Include in headings
 - Use in first 100 words
 - Include in meta descriptions
@@ -215,11 +230,13 @@ Sitemap: https://canrevolution.com/sitemap.xml
 ### 9. Internal Linking
 
 **Strategy:**
+
 - Link related sections
 - Use descriptive anchor text
 - Create content hub approach
 
 **Example:**
+
 ```tsx
 <p>
   We offer <a href="/#pricing">affordable pricing plans</a> for
@@ -230,6 +247,7 @@ Sitemap: https://canrevolution.com/sitemap.xml
 ### 10. External Linking
 
 **Best Practices:**
+
 - Link to authoritative sources
 - Use descriptive anchor text
 - Open external links in new tab
@@ -246,16 +264,19 @@ Sitemap: https://canrevolution.com/sitemap.xml
 ### Free SEO Tools
 
 **Keyword Research:**
+
 - [Google Keyword Planner](https://ads.google.com/intl/en_us/home/tools/keyword-planner/)
 - [Ubersuggest](https://ubersuggest.com/)
 - [AnswerThePublic](https://answerthepublic.com/)
 
 **Site Analysis:**
+
 - [Google Search Console](https://search.google.com/search-console)
 - [Google PageSpeed Insights](https://pagespeed.web.dev/)
 - [Lighthouse](https://developers.google.com/web/tools/lighthouse)
 
 **Competitors:**
+
 - [Ahrefs](https://ahrefs.com/free-seo-tools)
 - [SEMrush](https://www.semrush.com/)
 
@@ -284,6 +305,7 @@ Sitemap: https://canrevolution.com/sitemap.xml
 ### Blog Content (Recommended)
 
 **Future Blog Posts:**
+
 - "How to Choose the Right Canning Machine"
 - "10 Benefits of Professional Canning for Your Brewery"
 - "Beverage Canning Best Practices"
@@ -291,6 +313,7 @@ Sitemap: https://canrevolution.com/sitemap.xml
 - "Sustainability in Beverage Packaging"
 
 **SEO Benefits:**
+
 - Increased page count
 - Target long-tail keywords
 - Build authority
@@ -299,6 +322,7 @@ Sitemap: https://canrevolution.com/sitemap.xml
 ### High-Quality Content
 
 **Guidelines:**
+
 - Minimum 300 words per page
 - Original, unique content
 - User-focused and helpful
@@ -320,6 +344,7 @@ Next.js provides:
 ```
 
 **Monitor:**
+
 - Core Web Vitals (Google)
 - Lighthouse scores
 - Mobile performance
@@ -328,6 +353,7 @@ Next.js provides:
 ### Canonicalization
 
 **Add Canonical Tag:**
+
 ```tsx
 <link rel="canonical" href="https://canrevolution.com/" />
 ```
@@ -341,6 +367,7 @@ Next.js provides:
 ### XML Sitemap
 
 **Status:** Need to create
+
 - Create `public/sitemap.xml`
 - Submit to Google Search Console
 - Update monthly
@@ -348,6 +375,7 @@ Next.js provides:
 ### URL Structure
 
 **Current:**
+
 ```
 canrevolution.com/
 canrevolution.com/contact
@@ -355,6 +383,7 @@ canrevolution.com/appointments
 ```
 
 **Good practices:**
+
 - Simple, descriptive URLs
 - Hyphens for word separation
 - Avoid parameters if possible
@@ -402,6 +431,7 @@ Build authority by linking between pages:
 ### External Links
 
 **Opportunities:**
+
 - Submit to business directories
 - Get listed on industry sites
 - Partner with complementary businesses
@@ -410,6 +440,7 @@ Build authority by linking between pages:
 ### Backlinks
 
 **High-Value Targets:**
+
 - Industry blogs
 - Business directories
 - Local chambers of commerce
@@ -437,6 +468,7 @@ Build authority by linking between pages:
 **Current Status:** ✅ Implemented
 
 **Mobile SEO:**
+
 - Responsive design
 - Fast load times
 - Touch-friendly buttons
@@ -444,6 +476,7 @@ Build authority by linking between pages:
 - No interstitials blocking content
 
 **Test:**
+
 - [Mobile-Friendly Test](https://search.google.com/test/mobile-friendly)
 
 ## Monitoring & Reporting
@@ -460,13 +493,13 @@ Build authority by linking between pages:
 
 ### Key Metrics to Track
 
-| Metric | Target | Tools |
-|--------|--------|-------|
-| Organic traffic | +10% monthly | Google Analytics |
-| Keyword rankings | Top 10 for primary | SEMrush, Ahrefs |
-| Impressions (GSC) | Growing | Google Search Console |
-| Click-through rate | > 5% | Google Search Console |
-| Bounce rate | < 50% | Google Analytics |
+| Metric             | Target             | Tools                 |
+| ------------------ | ------------------ | --------------------- |
+| Organic traffic    | +10% monthly       | Google Analytics      |
+| Keyword rankings   | Top 10 for primary | SEMrush, Ahrefs       |
+| Impressions (GSC)  | Growing            | Google Search Console |
+| Click-through rate | > 5%               | Google Search Console |
+| Bounce rate        | < 50%              | Google Analytics      |
 
 ## Quick Start
 

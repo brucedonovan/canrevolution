@@ -9,6 +9,7 @@ Comprehensive security analysis and hardening measures for can(RE)volution.
 **Status:** ✅ Ready for production deployment with recommended enhancements
 
 **Key Strengths:**
+
 - Static site (minimal attack surface)
 - No backend database or API
 - Security headers configured
@@ -16,6 +17,7 @@ Comprehensive security analysis and hardening measures for can(RE)volution.
 - Dependencies regularly updated
 
 **Recommendations:**
+
 - Implement contact form submission
 - Add error tracking (Sentry)
 - Enable analytics
@@ -28,6 +30,7 @@ Comprehensive security analysis and hardening measures for can(RE)volution.
 **Status:** Safe
 
 **Analysis:**
+
 ```
 npm audit: 0 vulnerabilities
 npm outdated: Current versions maintained
@@ -40,6 +43,7 @@ Critical packages:
 ```
 
 **Recommendations:**
+
 - Run `npm audit` monthly
 - Keep dependencies up-to-date
 - Review new versions before updating
@@ -52,12 +56,14 @@ Critical packages:
 **Status:** Protected
 
 **Methods:**
+
 - React auto-escapes all text content
 - Next.js sanitizes URLs
 - No `dangerouslySetInnerHTML` used
 - No inline `eval()` or `Function()`
 
 **Safe Examples:**
+
 ```typescript
 // Safe - text auto-escaped
 <h1>{userInput}</h1>
@@ -90,18 +96,21 @@ Critical packages:
 #### Form Inputs
 
 **Calculator Form:**
+
 - Numeric fields: 0.50-2.50 EUR (strict range)
 - Decimal places: Limited to 2
 - Type: Number input (browser validation)
 - Frontend validation only (acceptable for non-sensitive data)
 
 **Contact Form:**
+
 - Email validation: Standard format check
 - Phone: Basic format validation
 - Text fields: Length limits enforced
 - No special characters in name/email
 
 **Code Example:**
+
 ```typescript
 // Safe numeric input with constraints
 <input
@@ -119,6 +128,7 @@ const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 #### Data Validation Best Practices
 
 **DO ✅**
+
 - Validate on both client and server
 - Use type checking (TypeScript)
 - Limit input lengths
@@ -126,6 +136,7 @@ const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 - Escape output in templates
 
 **DON'T ❌**
+
 - Trust client-side validation alone
 - Use regex for complex validation
 - Allow arbitrary special characters
@@ -137,12 +148,14 @@ const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 **Status:** Not Applicable (Public Site)
 
 **Analysis:**
+
 - No user accounts
 - No login system
 - No protected content
 - Public data only
 
 **If adding auth in future:**
+
 1. Use established library (NextAuth.js, Auth0)
 2. Never store plaintext passwords
 3. Use HTTPS only (enforced)
@@ -154,11 +167,13 @@ const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 #### Data Stored
 
 **Currently Stored:**
+
 - None (static site)
 - No backend database
 - No server logs containing PII
 
 **Forms (Contact/Demo Requests):**
+
 - Currently: Console logging only
 - Future: Email via service like Formspree/Netlify Forms
 - Recommendation: Implement email notification with encryption
@@ -176,6 +191,7 @@ const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 **Status:** Secured
 
 **Environment Variables:**
+
 ```bash
 # Current .env.local (no secrets)
 NODE_ENV=development
@@ -187,6 +203,7 @@ NODE_VERSION=20
 ```
 
 **Best Practices:**
+
 - Never commit `.env.local` (in `.gitignore`)
 - Never log environment variables
 - Rotate secrets monthly
@@ -198,12 +215,14 @@ NODE_VERSION=20
 **Status:** Enforced
 
 **Implementation:**
+
 - Netlify: Free automatic SSL
 - Let's Encrypt certificate
 - Auto-renewal enabled
 - HTTP → HTTPS redirect
 
 **Verification:**
+
 ```bash
 # Check SSL certificate
 openssl s_client -connect yourdomain.com:443
@@ -265,14 +284,14 @@ geolocation=(), microphone=(), camera=()
 **Current:** No cookies required
 
 **If Adding Cookies:**
+
 ```typescript
 // Set secure cookies
-res.setHeader('Set-Cookie', [
-  'sessionId=value; HttpOnly; Secure; SameSite=Strict; Path=/',
-]);
+res.setHeader('Set-Cookie', ['sessionId=value; HttpOnly; Secure; SameSite=Strict; Path=/']);
 ```
 
 **Secure Cookie Attributes:**
+
 - `HttpOnly`: Not accessible via JavaScript
 - `Secure`: HTTPS only
 - `SameSite=Strict`: CSRF protection
@@ -283,6 +302,7 @@ res.setHeader('Set-Cookie', [
 **Status:** Minimal third-party code
 
 **Dependencies:**
+
 - lucide-react: Icon library (safe)
 - tailwindcss: CSS framework (safe)
 - next.js: Web framework (safe)
@@ -290,6 +310,7 @@ res.setHeader('Set-Cookie', [
 **External Services:** None currently used
 
 **If Adding Services:**
+
 1. Evaluate privacy policy
 2. Check subprocessor agreements
 3. Review data handling practices
@@ -299,29 +320,32 @@ res.setHeader('Set-Cookie', [
 ### 11. Build & Deployment Security ✅
 
 **Next.js Configuration:**
+
 ```typescript
 // next.config.ts
 export default {
-  compress: true,           // Gzip compression
-  productionBrowserSourceMaps: false,  // No source maps exposed
+  compress: true, // Gzip compression
+  productionBrowserSourceMaps: false, // No source maps exposed
   headers: async () => [
     // Security headers
-  ]
-}
+  ],
+};
 ```
 
 **Netlify Configuration:**
+
 ```toml
 # netlify.toml
 [build]
   command = "npm run build"
   publish = ".next"
-  
+
 [build.environment]
   NODE_VERSION = "20"
 ```
 
 **Security Measures:**
+
 - Source maps disabled in production
 - Compression enabled
 - Static analysis on build
@@ -332,18 +356,21 @@ export default {
 **Status:** Basic error handling in place
 
 **Current Implementation:**
+
 - Try-catch blocks in forms
 - Console error logging
 - User-friendly error messages
 - No sensitive info in errors
 
 **Recommended:**
+
 - Implement Sentry for error tracking
 - Monitor for unusual patterns
 - Alert on critical errors
 - Log errors server-side (when backend exists)
 
 **Example:**
+
 ```typescript
 // Safe error handling
 try {
@@ -363,6 +390,7 @@ try {
 **Current:** Static site, no rate limiting needed
 
 **When Needed:** If form submission or contact feature added
+
 ```
 // Recommended: Use service like Netlify Functions
 // Or implement with middleware
@@ -377,12 +405,14 @@ const rateLimiter = rateLimit({
 **Status:** Basic compliance
 
 **Current Compliance:**
+
 - No cookies used
 - No tracking
 - No personal data collected (yet)
 - Static site only
 
 **Recommendations:**
+
 1. Create Privacy Policy page
 2. Implement consent for analytics (if added)
 3. Document data retention policy
@@ -394,6 +424,7 @@ const rateLimiter = rateLimit({
 **Status:** Manual testing only
 
 **Recommended Tools:**
+
 - **OWASP ZAP**: Automated security scanning
 - **Snyk**: Dependency vulnerability scanning
 - **npm audit**: Built-in dependency check
@@ -401,6 +432,7 @@ const rateLimiter = rateLimit({
 - **SSL Labs**: SSL certificate testing
 
 **Run Security Scan:**
+
 ```bash
 # Check dependencies
 npm audit
@@ -467,17 +499,20 @@ npm run type-check
 ## Security Resources
 
 ### Documentation
+
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/)
 - [Next.js Security](https://nextjs.org/docs/advanced-features/security)
 - [React Security](https://react.dev/reference/react-dom#dangerouslysetinnerhtml)
 
 ### Tools
+
 - [npm audit](https://docs.npmjs.com/cli/v8/commands/npm-audit)
 - [Snyk](https://snyk.io/)
 - [OWASP ZAP](https://www.zaproxy.org/)
 - [SSL Labs](https://www.ssllabs.com/ssltest/)
 
 ### Services
+
 - [Sentry](https://sentry.io/) - Error tracking
 - [Cloudflare](https://www.cloudflare.com/) - DDoS protection
 - [Auth0](https://auth0.com/) - Authentication (future)
@@ -485,11 +520,13 @@ npm run type-check
 ## Contact & Support
 
 **Security Issues:**
+
 - Report privately to: [your-email@example.com]
 - Do not open public issues
 - Allow 48 hours for response
 
 **Questions:**
+
 - See DEPLOYMENT.md for deployment security
 - See THEME_SYSTEM.md for code examples
 - See README.md for getting started

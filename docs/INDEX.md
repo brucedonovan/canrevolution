@@ -47,6 +47,7 @@ Development server runs at: http://localhost:3000
 ## 🎨 Theme System
 
 The app includes 6 pre-built color themes:
+
 - **canrevolution** (default) - Blue/professional
 - **autumn** - Orange/warm
 - **nature** - Teal/nature
@@ -69,6 +70,7 @@ See [SECURITY.md](./SECURITY.md) for full audit.
 ## 🌐 Deployment
 
 Deploy to Netlify with:
+
 ```bash
 npm run build
 ```
@@ -78,6 +80,7 @@ See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions.
 ## 📞 Contact & Support
 
 For questions about the canning solutions, visit the contact page or check out:
+
 - Website: https://canrevolution.com
 - Instagram: @can.revolution
 - Email: hello@canrevolution.com

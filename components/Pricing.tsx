@@ -40,7 +40,7 @@ const tiers: PricingTier[] = [
       'Machine Rental (including installation)',
       '1500 cans and lids delivered monthly',
       'Cans professionally branded with your logo (12+ month contract)',
-      'Machine screen customisable with branding (12+ month contract)'
+      'Machine screen customisable with branding (12+ month contract)',
     ],
     details: [
       'Month-to-month or 12+ month contracts',

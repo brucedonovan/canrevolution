@@ -11,6 +11,7 @@ The theme system provides a single source of truth for all colors used throughou
 Each theme includes these color categories:
 
 ### Primary Colors
+
 ```typescript
 primary: {
   light: '#...',    // Main accent color (bright)
@@ -19,6 +20,7 @@ primary: {
 ```
 
 ### Text Colors
+
 ```typescript
 text: {
   onDark: '#...',      // Text on dark backgrounds
@@ -29,6 +31,7 @@ text: {
 ```
 
 ### Background Colors
+
 ```typescript
 background: {
   light: '#ffffff',    // White background
@@ -40,6 +43,7 @@ background: {
 ```
 
 ### Border Colors
+
 ```typescript
 border: {
   light: '#...',       // Light borders
@@ -48,6 +52,7 @@ border: {
 ```
 
 ### Gradients (optional)
+
 ```typescript
 gradient: {
   from: '#...',        // Gradient start
@@ -58,21 +63,27 @@ gradient: {
 ## Available Themes
 
 ### 1. canrevolution (Default)
+
 Professional blue theme - suited for corporate/business use.
 
 ### 2. autumn
+
 Warm orange theme - energetic and inviting.
 
 ### 3. nature
+
 Natural teal theme - eco-friendly vibes.
 
 ### 4. dark
+
 Modern gray theme - sophisticated and minimalist.
 
 ### 5. noir
+
 Elegant black theme - premium and bold.
 
 ### 6. sunshine
+
 Bright yellow theme - cheerful and optimistic.
 
 ## Switching Themes
@@ -80,6 +91,7 @@ Bright yellow theme - cheerful and optimistic.
 ### Method 1: Change Default Theme
 
 Edit `lib/theme.ts`:
+
 ```typescript
 export const defaultTheme = 'autumn'; // Change to desired theme
 ```
@@ -87,6 +99,7 @@ export const defaultTheme = 'autumn'; // Change to desired theme
 ### Method 2: Runtime Theme Switching (Future)
 
 To implement runtime switching, use a context provider:
+
 ```typescript
 const ThemeContext = createContext<{ currentTheme: string }>({ currentTheme: 'canrevolution' });
 
@@ -149,10 +162,12 @@ export function MyComponent() {
 When creating a new theme, consider:
 
 ### Contrast Ratios
+
 - Text on background should have 4.5:1 contrast minimum
 - Use [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
 
 ### Color Psychology
+
 - Blue: Trust, corporate, calm
 - Orange: Energy, warmth, creativity
 - Green/Teal: Nature, growth, eco-friendly
@@ -161,6 +176,7 @@ When creating a new theme, consider:
 - Yellow: Happiness, optimism, warmth
 
 ### Accessibility
+
 - Avoid color-only information
 - Ensure sufficient contrast
 - Test with color blindness simulators
@@ -175,31 +191,32 @@ When creating a new theme, consider:
 5. **Update `defaultTheme`** in `lib/theme.ts`
 
 Example:
+
 ```typescript
 const themes = {
   customTheme: {
     primary: {
       light: '#FF6B6B',
-      dark: '#C92A2A'
+      dark: '#C92A2A',
     },
     text: {
       onDark: '#FFFFFF',
       onLight: '#1C1C1C',
       muted: '#666666',
-      mutedDark: '#CCCCCC'
+      mutedDark: '#CCCCCC',
     },
     background: {
       light: '#FFFFFF',
       medium: '#F8F8F8',
       dark: '#1A1A1A',
       lightCard: '#F0F0F0',
-      darkCard: 'rgba(26, 26, 26, 0.8)'
+      darkCard: 'rgba(26, 26, 26, 0.8)',
     },
     border: {
       light: '#E0E0E0',
-      dark: '#444444'
-    }
-  }
+      dark: '#444444',
+    },
+  },
 };
 ```
 
@@ -208,24 +225,28 @@ const themes = {
 ### Sections Using Each Color
 
 **Primary Colors**
+
 - Buttons (CTAs, primary actions)
 - Links and hover states
 - Highlights and emphasis
 - Icons and accents
 
 **Text Colors**
+
 - Body text
 - Headings
 - Labels and descriptions
 - Muted secondary text
 
 **Background Colors**
+
 - Page background
 - Section backgrounds
 - Card backgrounds
 - Modal/overlay backgrounds
 
 **Border Colors**
+
 - Dividing lines
 - Input borders
 - Card borders
@@ -234,6 +255,7 @@ const themes = {
 ## Best Practices
 
 ### DO ✅
+
 - Use theme colors consistently
 - Test contrast ratios
 - Consider dark/light mode usage
@@ -241,6 +263,7 @@ const themes = {
 - Test all components with new theme
 
 ### DON'T ❌
+
 - Hardcode color hex values
 - Use arbitrary colors outside theme
 - Forget about accessibility
@@ -250,16 +273,19 @@ const themes = {
 ## Troubleshooting
 
 ### Colors not updating
+
 1. Verify theme is imported: `import { theme } from '@/lib/theme'`
 2. Check style prop syntax: `style={{ backgroundColor: ... }}`
 3. Rebuild: `npm run build`
 
 ### Contrast too low
+
 1. Use [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
 2. Darken light colors or lighten dark colors
 3. Verify both light/dark variants
 
 ### Theme not switching
+
 1. Verify `defaultTheme` is set correctly
 2. Restart dev server: `npm run dev`
 3. Clear `.next` folder: `rm -rf .next`
@@ -297,7 +323,7 @@ const customStyle = {
   backgroundColor: theme.background.light,
   borderColor: theme.border.light,
   color: theme.text.onLight,
-  ...baseStyles
+  ...baseStyles,
 };
 ```
 
