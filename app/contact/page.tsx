@@ -104,7 +104,7 @@ export default function ContactPage() {
         <div
           className="absolute inset-0 opacity-40"
           style={{
-            backgroundImage: 'url(/images/hero-bg.jpg)',
+            backgroundImage: 'url(/images/hero-bg.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
