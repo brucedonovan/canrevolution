@@ -45,8 +45,7 @@ const StructuredData = () => {
     '@type': 'LocalBusiness',
     name: 'can(RE)volution',
     image: 'https://canrevolution.com/images/logo.png',
-    description:
-      'Beverage canning machine solutions for cafés, shops, and businesses.',
+    description: 'Beverage canning machine solutions for cafés, shops, and businesses.',
     url: 'https://canrevolution.com',
     telephone: '+351-XXX-XXXX',
     priceRange: '€€€',
@@ -88,12 +87,7 @@ const StructuredData = () => {
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify([
-          organizationSchema,
-          productSchema,
-          localBusinessSchema,
-          faqSchema,
-        ]),
+        __html: JSON.stringify([organizationSchema, productSchema, localBusinessSchema, faqSchema]),
       }}
     />
   );

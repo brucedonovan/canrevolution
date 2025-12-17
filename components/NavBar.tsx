@@ -1,39 +1,45 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { Dialog, DialogPanel } from '@headlessui/react'
-import { Menu, X } from 'lucide-react'
-import { theme } from '@/lib/theme'
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
+import { Dialog, DialogPanel } from '@headlessui/react';
+import { Menu, X } from 'lucide-react';
+import { theme } from '@/lib/theme';
 
 const navigation = [
   { name: 'Features', href: '#features' },
   { name: 'Pricing', href: '#pricing' },
   { name: 'Feasability Calculator', href: '#calculator' },
-]
+];
 
 export default function NavBar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith('#')) {
-      e.preventDefault()
-      const element = document.querySelector(href)
+      e.preventDefault();
+      const element = document.querySelector(href);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
+        element.scrollIntoView({ behavior: 'smooth' });
       }
     }
-  }
+  };
 
   return (
     <header className="relative z-50 bg-transparent">
-      <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8 max-w-7xl mx-auto">
+      <nav
+        aria-label="Global"
+        className="flex items-center justify-between p-6 lg:px-8 max-w-7xl mx-auto"
+      >
         {/* Logo on left */}
         <Link href="/" className="-m-1.5 p-1.5">
           <span className="sr-only">can(RE)volution</span>
-          <img
+          <Image
             alt="can(RE)volution"
             src="/images/logo.png"
+            width={64}
+            height={64}
             className="h-16 w-auto"
           />
         </Link>
@@ -41,7 +47,13 @@ export default function NavBar() {
         {/* Center navigation */}
         <div className="hidden lg:flex lg:gap-x-12 absolute left-1/2 transform -translate-x-1/2">
           {navigation.map((item) => (
-            <a key={item.name} href={item.href} onClick={(e) => handleNavClick(e, item.href)} className="text-sm/6 font-semibold transition-colors hover:opacity-75" style={{ color: theme.text.onDark }}>
+            <a
+              key={item.name}
+              href={item.href}
+              onClick={(e) => handleNavClick(e, item.href)}
+              className="text-sm/6 font-semibold transition-colors hover:opacity-75"
+              style={{ color: theme.text.onDark }}
+            >
               {item.name}
             </a>
           ))}
@@ -62,7 +74,11 @@ export default function NavBar() {
 
         {/* Book a Demo on right (desktop) */}
         <div className="hidden lg:flex">
-          <Link href="/appointments" className="text-sm/6 font-semibold transition-colors hover:opacity-75" style={{ color: theme.text.onDark }}>
+          <Link
+            href="/appointments"
+            className="text-sm/6 font-semibold transition-colors hover:opacity-75"
+            style={{ color: theme.text.onDark }}
+          >
             Book a Demo <span aria-hidden="true">→</span>
           </Link>
         </div>
@@ -70,13 +86,18 @@ export default function NavBar() {
 
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
         <div className="fixed inset-0 z-40" />
-        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto p-6 sm:max-w-sm sm:ring-1" style={{ backgroundColor: theme.background.dark, borderLeftColor: theme.border.dark }}>
+        <DialogPanel
+          className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto p-6 sm:max-w-sm sm:ring-1"
+          style={{ backgroundColor: theme.background.dark, borderLeftColor: theme.border.dark }}
+        >
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">can(RE)volution</span>
-              <img
+              <Image
                 alt="can(RE)volution"
                 src="/images/logo.png"
+                width={32}
+                height={32}
                 className="h-8 w-auto"
               />
             </Link>
@@ -99,8 +120,8 @@ export default function NavBar() {
                     key={item.name}
                     href={item.href}
                     onClick={(e) => {
-                      handleNavClick(e, item.href)
-                      setMobileMenuOpen(false)
+                      handleNavClick(e, item.href);
+                      setMobileMenuOpen(false);
                     }}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:bg-white/5 transition-colors"
                     style={{ color: theme.text.onDark }}
@@ -126,5 +147,5 @@ export default function NavBar() {
         </DialogPanel>
       </Dialog>
     </header>
-  )
+  );
 }

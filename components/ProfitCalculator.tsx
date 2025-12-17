@@ -1,9 +1,8 @@
-"use client";
+'use client';
 
-import { useState, useCallback, useMemo } from "react";
-import { Check, AlertCircle, Plus, Minus } from "lucide-react";
-import { theme } from "@/lib/theme";
-import { collectRoutesUsingEdgeRuntime } from "next/dist/build/utils";
+import { useCallback, useMemo, useState } from 'react';
+import { AlertCircle, Check, Minus, Plus } from 'lucide-react';
+import { theme } from '@/lib/theme';
 
 interface Plan {
   limit: number;
@@ -30,9 +29,9 @@ const PLANS: Record<string, Plan> = {
 };
 
 const formatMoney = (value: number): string => {
-  return value.toLocaleString("en-GB", {
-    style: "currency",
-    currency: "EUR",
+  return value.toLocaleString('en-GB', {
+    style: 'currency',
+    currency: 'EUR',
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
@@ -40,7 +39,7 @@ const formatMoney = (value: number): string => {
 
 const parseNumber = (raw: string): number => {
   if (!raw) return NaN;
-  return parseFloat(raw.replace(/[^\d.,]/g, "").replace(",", "."));
+  return parseFloat(raw.replace(/[^\d.,]/g, '').replace(',', '.'));
 };
 
 // Form Input Component
@@ -73,15 +72,13 @@ const FormInput: React.FC<{
 
   const clampAndFormat = (val: number): string => {
     const clamped = Math.max(min, Math.min(max, val));
-    return decimals > 0
-      ? clamped.toFixed(decimals)
-      : String(Math.round(clamped));
+    return decimals > 0 ? clamped.toFixed(decimals) : String(Math.round(clamped));
   };
 
   const handleIncrement = () => {
     if (isNumeric) {
       const current = numValue || 0;
-      const step = id.includes("charge") ? 0.05 : 100;
+      const step = id.includes('charge') ? 0.05 : 100;
       const newValue = current + step;
       onChange(clampAndFormat(newValue));
     }
@@ -90,7 +87,7 @@ const FormInput: React.FC<{
   const handleDecrement = () => {
     if (isNumeric) {
       const current = numValue || 0;
-      const step = id.includes("charge") ? 0.05 : 100;
+      const step = id.includes('charge') ? 0.05 : 100;
       const newValue = current - step;
       onChange(clampAndFormat(newValue));
     }
@@ -126,8 +123,8 @@ const FormInput: React.FC<{
               borderColor: theme.border.light,
               color: theme.text.onLight,
               backgroundColor: theme.background.light,
-              paddingLeft: prefix ? "1.75rem" : "1rem",
-              paddingRight: isNumeric ? "3.5rem" : "1rem",
+              paddingLeft: prefix ? '1.75rem' : '1rem',
+              paddingRight: isNumeric ? '3.5rem' : '1rem',
             }}
           />
         </div>
@@ -169,17 +166,14 @@ const PlanSelector: React.FC<{
   onChange: (plan: string) => void;
 }> = ({ selected, onChange }) => {
   const plans = [
-    { id: "small", name: "Small Plan", limit: "500 cans", fee: "€500/mo" },
-    { id: "medium", name: "Medium Plan", limit: "1500 cans", fee: "€1000/mo" },
-    { id: "large", name: "Large Plan", limit: "4000 cans", fee: "€2000/mo" },
+    { id: 'small', name: 'Small Plan', limit: '500 cans', fee: '€500/mo' },
+    { id: 'medium', name: 'Medium Plan', limit: '1500 cans', fee: '€1000/mo' },
+    { id: 'large', name: 'Large Plan', limit: '4000 cans', fee: '€2000/mo' },
   ];
 
   return (
     <div>
-      <label
-        style={{ color: theme.text.mutedDark }}
-        className="block text-sm font-semibold mb-4"
-      >
+      <label style={{ color: theme.text.mutedDark }} className="block text-sm font-semibold mb-4">
         Subscription Plan
       </label>
       <fieldset aria-label="Plan selection" className="space-y-3">
@@ -190,12 +184,8 @@ const PlanSelector: React.FC<{
             aria-description={`${plan.limit}, ${plan.fee}`}
             className="group relative block rounded-lg border px-6 py-4 cursor-pointer transition-all has-checked:outline-2 has-checked:-outline-offset-2 has-focus-visible:outline-3 has-focus-visible:-outline-offset-1"
             style={{
-              borderColor:
-                selected === plan.id ? theme.primary.light : theme.border.light,
-              backgroundColor:
-                selected === plan.id
-                  ? theme.primary.light + "10"
-                  : "transparent",
+              borderColor: selected === plan.id ? theme.primary.light : theme.border.light,
+              backgroundColor: selected === plan.id ? theme.primary.light + '10' : 'transparent',
               outlineColor: theme.primary.light,
             }}
           >
@@ -215,20 +205,14 @@ const PlanSelector: React.FC<{
                 <span
                   className="font-medium"
                   style={{
-                    color:
-                      selected === plan.id
-                        ? theme.text.onDark
-                        : theme.text.mutedDark,
+                    color: selected === plan.id ? theme.text.onDark : theme.text.mutedDark,
                   }}
                 >
                   {plan.name}
                 </span>
                 <span
                   style={{
-                    color:
-                      selected === plan.id
-                        ? theme.text.mutedDark
-                        : theme.text.muted,
+                    color: selected === plan.id ? theme.text.mutedDark : theme.text.muted,
                   }}
                   className="text-xs mt-1"
                 >
@@ -238,17 +222,11 @@ const PlanSelector: React.FC<{
               <span
                 className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0"
                 style={{
-                  borderColor:
-                    selected === plan.id
-                      ? theme.primary.light
-                      : theme.border.light,
-                  backgroundColor:
-                    selected === plan.id ? theme.primary.light : "transparent",
+                  borderColor: selected === plan.id ? theme.primary.light : theme.border.light,
+                  backgroundColor: selected === plan.id ? theme.primary.light : 'transparent',
                 }}
               >
-                {selected === plan.id && (
-                  <span className="w-2 h-2 bg-white rounded-full" />
-                )}
+                {selected === plan.id && <span className="w-2 h-2 bg-white rounded-full" />}
               </span>
             </div>
           </label>
@@ -304,10 +282,7 @@ const FormSection: React.FC<{
 // Results Summary Cards Component
 const SummaryCards: React.FC<{ result: CalculationResult }> = ({ result }) => (
   <div className="grid md:grid-cols-2 gap-4">
-    <div
-      className="rounded-lg p-4"
-      style={{ backgroundColor: theme.background.light }}
-    >
+    <div className="rounded-lg p-4" style={{ backgroundColor: theme.background.light }}>
       <p style={{ color: theme.text.muted }} className="text-sm mb-1">
         Monthly Revenue
       </p>
@@ -316,10 +291,7 @@ const SummaryCards: React.FC<{ result: CalculationResult }> = ({ result }) => (
       </p>
     </div>
 
-    <div
-      className="rounded-lg p-4"
-      style={{ backgroundColor: theme.background.light }}
-    >
+    <div className="rounded-lg p-4" style={{ backgroundColor: theme.background.light }}>
       <p style={{ color: theme.text.muted }} className="text-sm mb-1">
         Monthly Costs
       </p>
@@ -331,27 +303,25 @@ const SummaryCards: React.FC<{ result: CalculationResult }> = ({ result }) => (
 );
 
 // Profit Highlight Component
-const ProfitHighlight: React.FC<{ result: CalculationResult }> = ({
-  result,
-}) => (
+const ProfitHighlight: React.FC<{ result: CalculationResult }> = ({ result }) => (
   <div
     className="rounded-lg p-6"
     style={{
-      backgroundColor: result.isPositive ? "#dcfce7" : "#fee2e2",
+      backgroundColor: result.isPositive ? '#dcfce7' : '#fee2e2',
     }}
   >
     <p
       className="text-sm mb-2 font-medium"
       style={{
-        color: result.isPositive ? "#15803d" : "#991b1b",
+        color: result.isPositive ? '#15803d' : '#991b1b',
       }}
     >
-      {result.isPositive ? "Net Profit" : "Net Loss"}
+      {result.isPositive ? 'Net Profit' : 'Net Loss'}
     </p>
     <p
       className="text-4xl font-bold"
       style={{
-        color: result.isPositive ? "#16a34a" : "#dc2626",
+        color: result.isPositive ? '#16a34a' : '#dc2626',
       }}
     >
       {formatMoney(Math.abs(result.profit))}
@@ -359,26 +329,23 @@ const ProfitHighlight: React.FC<{ result: CalculationResult }> = ({
     <p
       className="text-sm mt-3"
       style={{
-        color: result.isPositive ? "#22c55e" : "#fca5a5",
+        color: result.isPositive ? '#22c55e' : '#fca5a5',
       }}
     >
-      {formatMoney(result.profitPerCan)} per can •{" "}
-      {formatMoney(result.yearlyProfit)}/year
+      {formatMoney(result.profitPerCan)} per can • {formatMoney(result.yearlyProfit)}/year
     </p>
   </div>
 );
 
 // Recommendations Component
-const Recommendations: React.FC<{ result: CalculationResult }> = ({
-  result,
-}) => {
+const Recommendations: React.FC<{ result: CalculationResult }> = ({ result }) => {
   if (result.recommendations.length > 0) {
     return (
       <div
         className="border-l-4 p-4 rounded-lg"
         style={{
           borderLeftColor: theme.primary.light,
-          backgroundColor: theme.primary.light + "10",
+          backgroundColor: theme.primary.light + '10',
         }}
       >
         <div className="flex gap-3">
@@ -387,19 +354,12 @@ const Recommendations: React.FC<{ result: CalculationResult }> = ({
             style={{ color: theme.primary.light }}
           />
           <div>
-            <p
-              style={{ color: theme.text.onLight }}
-              className="font-semibold mb-3"
-            >
+            <p style={{ color: theme.text.onLight }} className="font-semibold mb-3">
               We found a better plan for you
             </p>
             <ul className="space-y-2">
               {result.recommendations.map((rec: string, idx: number) => (
-                <li
-                  key={idx}
-                  style={{ color: theme.text.muted }}
-                  className="text-sm"
-                >
+                <li key={idx} style={{ color: theme.text.muted }} className="text-sm">
                   • {rec}
                 </li>
               ))}
@@ -415,13 +375,10 @@ const Recommendations: React.FC<{ result: CalculationResult }> = ({
       className="border-l-4 p-4 rounded-lg flex gap-3"
       style={{
         borderLeftColor: theme.primary.light,
-        backgroundColor: theme.primary.light + "10",
+        backgroundColor: theme.primary.light + '10',
       }}
     >
-      <Check
-        className="w-5 h-5 flex-shrink-0 mt-0.5"
-        style={{ color: theme.primary.light }}
-      />
+      <Check className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: theme.primary.light }} />
       <p style={{ color: theme.text.onLight }} className="text-sm font-medium">
         This is the most cost-effective plan for your volume
       </p>
@@ -430,9 +387,7 @@ const Recommendations: React.FC<{ result: CalculationResult }> = ({
 };
 
 // Results Section Component
-const ResultsSection: React.FC<{ result: CalculationResult | null }> = ({
-  result,
-}) => {
+const ResultsSection: React.FC<{ result: CalculationResult | null }> = ({ result }) => {
   if (!result) {
     return (
       <div
@@ -440,13 +395,10 @@ const ResultsSection: React.FC<{ result: CalculationResult | null }> = ({
         style={{
           backgroundColor: theme.background.lightCard,
           borderColor: theme.border.light,
-          borderStyle: "dashed",
+          borderStyle: 'dashed',
         }}
       >
-        <p
-          style={{ color: theme.text.muted }}
-          className="text-center text-lg font-medium"
-        >
+        <p style={{ color: theme.text.muted }} className="text-center text-lg font-medium">
           Complete all fields to see your profit calculation
         </p>
       </div>
@@ -458,7 +410,7 @@ const ResultsSection: React.FC<{ result: CalculationResult | null }> = ({
       className="rounded-2xl p-8 border-2 lg:mt-10 h-full flex flex-col"
       style={{
         backgroundColor: theme.background.lightCard,
-        borderColor: result.isPositive ? theme.primary.light : "#ef4444",
+        borderColor: result.isPositive ? theme.primary.light : '#ef4444',
       }}
     >
       <div className="space-y-6">
@@ -472,9 +424,9 @@ const ResultsSection: React.FC<{ result: CalculationResult | null }> = ({
 
 // Main Calculator Component
 const ProfitCalculator = () => {
-  const [selectedPackage, setSelectedPackage] = useState<string>("medium");
-  const [extraCharge, setExtraCharge] = useState<string>("0.85");
-  const [cansPerMonth, setCansPerMonth] = useState<string>("1500");
+  const [selectedPackage, setSelectedPackage] = useState<string>('medium');
+  const [extraCharge, setExtraCharge] = useState<string>('0.85');
+  const [cansPerMonth, setCansPerMonth] = useState<string>('1500');
 
   // Memoized calculation
   const result = useMemo<CalculationResult | null>(() => {
@@ -546,16 +498,10 @@ const ProfitCalculator = () => {
       <div className="container mx-auto px-4 md:px-8 max-w-6xl">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2
-            style={{ color: theme.text.onDark }}
-            className="text-4xl md:text-5xl font-bold mb-4"
-          >
+          <h2 style={{ color: theme.text.onDark }} className="text-4xl md:text-5xl font-bold mb-4">
             Quick Profitability Calculator
           </h2>
-          <p
-            style={{ color: theme.text.mutedDark }}
-            className="text-lg max-w-2xl mx-auto"
-          >
+          <p style={{ color: theme.text.mutedDark }} className="text-lg max-w-2xl mx-auto">
             Discover your potential profit with our flexible subscription plans
           </p>
         </div>

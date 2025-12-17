@@ -33,7 +33,9 @@ const Footer = () => {
 
               {/* Social section */}
               <div className="flex flex-col items-center gap-1">
-                <p style={{ color: theme.primary.dark }} className="font-medium text-xs h-4">Follow us</p>
+                <p style={{ color: theme.primary.dark }} className="font-medium text-xs h-4">
+                  Follow us
+                </p>
                 <a
                   href="https://www.instagram.com/can.revolution"
                   target="_blank"
@@ -56,25 +58,19 @@ const Footer = () => {
             </div>
 
             {/* Right - Legal links and Copyright (stacked) */}
-            <div className="flex flex-col items-center md:items-end gap-2 text-xs" style={{ color: theme.text.mutedDark }}>
+            <div
+              className="flex flex-col items-center md:items-end gap-2 text-xs"
+              style={{ color: theme.text.mutedDark }}
+            >
               <div className="flex gap-6">
                 <a
-                  href="/privacy"
+                  href="/legal"
                   className="transition-colors duration-200"
                   style={{ color: theme.text.mutedDark }}
                   onMouseEnter={handleLinkHoverEnter}
                   onMouseLeave={handleLinkHoverLeave}
                 >
-                  Privacy Policy
-                </a>
-                <a
-                  href="/terms"
-                  className="transition-colors duration-200"
-                  style={{ color: theme.text.mutedDark }}
-                  onMouseEnter={handleLinkHoverEnter}
-                  onMouseLeave={handleLinkHoverLeave}
-                >
-                  Terms of Service
+                  Privacy & Terms
                 </a>
               </div>
               <div>© {currentYear} can(RE)volution. All rights reserved.</div>
