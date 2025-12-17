@@ -1,0 +1,18 @@
+<!-- This file exists solely for Netlify form detection during build -->
+<!-- It is not served to users, but helps Netlify register the form -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form</title>
+</head>
+<body>
+    <form name="contact-form" method="POST" netlify>
+        <input type="hidden" name="form-name" value="contact-form" />
+        <input type="text" name="firstName" />
+        <input type="text" name="lastName" />
+        <input type="email" name="email" />
+        <input type="tel" name="phone" />
+        <textarea name="message"></textarea>
+    </form>
+</body>
+</html>
