@@ -28,8 +28,8 @@
     # Disable certain browser features
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
     
-    # Content Security Policy
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+    # Content Security Policy (Production - no unsafe-eval)
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://assets.calendly.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://calendly.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
     
     # Cache control
     Cache-Control = "public, max-age=3600, must-revalidate"
