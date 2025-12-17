@@ -22,36 +22,23 @@ export default function Legal() {
 
   return (
     <>
-      {/* Header with Back Button */}
-      <header className="relative" style={{ backgroundColor: theme.background.dark }}>
-        <div
-          className="absolute inset-0 opacity-40"
-          style={{
-            backgroundImage: 'url(/images/hero-bg.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{ backgroundColor: theme.background.dark, opacity: 0.6 }}
-        />
+      <div className="relative overflow-hidden" style={{ backgroundColor: theme.background.dark }}>
+        {/* Back button header */}
+        <header className="relative z-50 bg-transparent">
+          <nav className="flex items-center justify-between p-6 lg:px-8 max-w-7xl mx-auto">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 transition-colors hover:opacity-75 text-white"
+            >
+              <ArrowLeft size={20} />
+              <span className="font-semibold">Back</span>
+            </Link>
+          </nav>
+        </header>
 
-        <nav className="relative z-10 flex items-center p-6 lg:px-8 max-w-7xl mx-auto">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 transition-colors hover:opacity-75"
-            style={{ color: theme.text.onDark }}
-          >
-            <ArrowLeft size={24} />
-            <span className="text-sm/6 font-semibold">Back</span>
-          </Link>
-        </nav>
-      </header>
-
-      {/* Content */}
-      <div style={{ backgroundColor: theme.background.dark, minHeight: '100vh' }}>
-        <div className="max-w-4xl mx-auto px-4 py-12 lg:px-8">
+        {/* Content */}
+        <div className="relative min-h-screen py-12 md:py-24">
+          <div className="max-w-4xl mx-auto px-4 py-12 lg:px-8">
           {/* Tab Navigation */}
           <div className="border-b mb-12" style={{ borderColor: theme.border.dark }}>
             <div className="flex gap-0">
@@ -472,6 +459,7 @@ export default function Legal() {
               </>
             )}
           </div>
+        </div>
         </div>
       </div>
     </>

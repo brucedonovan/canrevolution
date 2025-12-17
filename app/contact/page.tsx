@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { ArrowLeft, Building2, Mail, CheckCircle } from 'lucide-react';
@@ -83,36 +84,34 @@ export default function ContactPage() {
 
   return (
     <>
-      {/* Header */}
-      <header className="relative" style={{ backgroundColor: theme.background.dark }}>
-        <div
-          className="absolute inset-0 opacity-40"
-          style={{
-            backgroundImage: 'url(/images/hero-bg.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
+      <div className="relative overflow-hidden">
+        {/* Background Image - Same as header */}
+        <Image
+          alt="can(RE)volution contact background"
+          src="/images/hero-bg.png"
+          fill
+          className="fixed inset-0 -z-20 object-cover"
+          style={{ objectPosition: '80% 50%' }}
+          priority
         />
-        <div
-          className="absolute inset-0"
-          style={{ backgroundColor: theme.background.dark, opacity: 0.6 }}
-        />
+        <div className="fixed inset-0 -z-20 bg-black/40" />
 
-        <nav className="relative z-10 flex items-center p-6 lg:px-8 max-w-7xl mx-auto">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 transition-colors hover:opacity-75"
-            style={{ color: theme.text.onDark }}
-          >
-            <ArrowLeft size={24} />
-            <span className="text-sm/6 font-semibold">Back</span>
-          </Link>
-        </nav>
-      </header>
+        {/* Back button header */}
+        <header className="relative z-50 bg-transparent">
+          <nav className="flex items-center justify-between p-6 lg:px-8 max-w-7xl mx-auto">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 transition-colors hover:opacity-75 text-white"
+            >
+              <ArrowLeft size={20} />
+              <span className="font-semibold">Back</span>
+            </Link>
+          </nav>
+        </header>
 
-      {/* Content */}
-      <div className="relative isolate" style={{ backgroundColor: theme.background.dark }}>
-        <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
+        {/* Content */}
+        <div className="relative isolate px-6 md:px-12">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
           {/* Left: Info */}
           <div className="relative px-6 pt-24 pb-20 sm:pt-32 lg:static lg:px-8 lg:py-48">
             <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
@@ -255,6 +254,7 @@ export default function ContactPage() {
               )}
             </div>
           </div>
+        </div>
         </div>
       </div>
     </>
