@@ -13,23 +13,27 @@ can(RE)volution is a modern Next.js marketing website for commercial beverage ca
 ## Installation
 
 ### Prerequisites
-- Node.js 18+ 
+
+- Node.js 18+
 - npm or yarn
 
 ### Setup
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd canrevolution
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start development server**
+
    ```bash
    npm run dev
    ```
@@ -102,7 +106,9 @@ canrevolution/
 ## Pages
 
 ### Home (/)
+
 Main landing page with:
+
 - Navigation header
 - Hero section with CTA
 - Features showcase
@@ -114,19 +120,24 @@ Main landing page with:
 - Footer
 
 ### Contact (/contact)
+
 Contact form with:
+
 - Business information
 - Contact form fields
 - Map/location (optional)
 - Form submission
 
 ### Appointments (/appointments)
+
 Calendly booking integration for scheduling demos.
 
 ## Key Features
 
 ### Theme System
+
 6 pre-built themes with consistent color palettes:
+
 - **canrevolution** - Professional blue
 - **autumn** - Warm orange
 - **nature** - Natural teal
@@ -139,12 +150,14 @@ Switch themes by changing `defaultTheme` in `lib/theme.ts`.
 ### Components
 
 **Header & Navigation**
+
 - Responsive header with logo
 - Smooth scroll navigation
 - Mobile menu with slide-out
 - Active state indicators
 
 **Calculator**
+
 - Interactive profit calculator
 - Plan selector with radio groups
 - Numeric input with validation
@@ -152,17 +165,20 @@ Switch themes by changing `defaultTheme` in `lib/theme.ts`.
 - Visual results display
 
 **Features**
+
 - Accordion components
 - Smooth animations
 - Responsive grid layout
 
 **Pricing**
+
 - Card-based layout
 - Featured/highlighted plan
 - Expandable details
 - Feature lists
 
 ### SEO
+
 - Meta tags and Open Graph
 - Structured data (JSON-LD)
 - Semantic HTML
@@ -173,6 +189,7 @@ Switch themes by changing `defaultTheme` in `lib/theme.ts`.
 The project uses **Tailwind CSS v4** with custom theme configuration.
 
 ### Adding Styles
+
 ```tsx
 // Use Tailwind classes
 <div className="bg-blue-500 text-white p-4">Content</div>
@@ -186,6 +203,7 @@ The project uses **Tailwind CSS v4** with custom theme configuration.
 No environment variables required for basic functionality.
 
 For Netlify deployment, set:
+
 - `NODE_VERSION=20` (build environment)
 
 ## Browser Support
@@ -204,17 +222,20 @@ For Netlify deployment, set:
 ## Troubleshooting
 
 ### Issue: Port 3000 already in use
+
 ```bash
 npm run dev -- -p 3001
 ```
 
 ### Issue: Dependencies not installing
+
 ```bash
 rm -rf node_modules package-lock.json
 npm install
 ```
 
 ### Issue: Build fails
+
 ```bash
 npm run lint  # Check for errors
 npm run build
@@ -236,6 +257,7 @@ npm run build
 ## Support
 
 For issues or questions:
+
 1. Check existing documentation
 2. Review component comments
 3. Check build errors: `npm run build`

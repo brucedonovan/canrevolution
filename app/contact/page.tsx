@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { ArrowLeft, Building2, Mail, Phone } from 'lucide-react';
+import { ArrowLeft, Building2, Mail } from 'lucide-react';
 import { theme } from '@/lib/theme';
 
 export default function ContactPage() {
@@ -151,16 +151,15 @@ export default function ContactPage() {
             className="px-6 pt-20 pb-24 sm:pb-32 lg:px-8 lg:py-48"
             data-netlify="true"
             netlify-honeypot="bot-field"
-            data-netlify-recaptcha="true"
             name="contact-form"
             method="POST"
           >
             <p className="hidden">
               <label>
-                Don’t fill this out if you’re human: <input name="bot-field" type="text" />
+                Don&rsquo;t fill this out if you&rsquo;re human: <input name="bot-field" type="text" />
               </label>
             </p>
-            <input type="hidden" name="form-name" value="pizzaOrder" />
+            <input type="hidden" name="form-name" value="contact-form" />
 
             <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
               {submitted && (

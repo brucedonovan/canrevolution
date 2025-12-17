@@ -5,6 +5,7 @@ Complete guide to deploying can(RE)volution to Netlify with security configurati
 ## Overview
 
 can(RE)volution is deployed to Netlify with:
+
 - Static site generation via Next.js
 - Security headers and Content Security Policy
 - Optimized image delivery and caching
@@ -35,6 +36,7 @@ can(RE)volution is deployed to Netlify with:
 ### 2. Configure Environment Variables (if needed)
 
 In Netlify Dashboard:
+
 1. Go to Site settings → Environment
 2. Add variables (if any exist in your `.env.local`)
 3. Redeploy
@@ -53,10 +55,11 @@ In Netlify Dashboard:
 The `netlify.toml` file provides:
 
 #### Security Headers
+
 ```toml
 [[headers]]
   for = "/*"
-  
+
   [headers.values]
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;"
     X-Content-Type-Options = "nosniff"
@@ -66,6 +69,7 @@ The `netlify.toml` file provides:
 ```
 
 #### Caching Headers
+
 ```toml
 [[headers]]
   for = "/_next/static/*"
@@ -84,6 +88,7 @@ The `netlify.toml` file provides:
 ```
 
 #### Redirects
+
 ```toml
 [[redirects]]
   from = "/*"
@@ -93,13 +98,13 @@ The `netlify.toml` file provides:
 
 ### Security Features Explained
 
-| Header | Purpose | Value |
-|--------|---------|-------|
-| CSP | Prevents XSS attacks | Restricts script sources |
-| X-Content-Type-Options | Prevents MIME sniffing | `nosniff` |
-| X-Frame-Options | Prevents clickjacking | `DENY` (no embedding) |
-| Referrer-Policy | Controls referrer info | `strict-origin-when-cross-origin` |
-| Permissions-Policy | Restricts browser APIs | Disables geo/mic/camera |
+| Header                 | Purpose                | Value                             |
+| ---------------------- | ---------------------- | --------------------------------- |
+| CSP                    | Prevents XSS attacks   | Restricts script sources          |
+| X-Content-Type-Options | Prevents MIME sniffing | `nosniff`                         |
+| X-Frame-Options        | Prevents clickjacking  | `DENY` (no embedding)             |
+| Referrer-Policy        | Controls referrer info | `strict-origin-when-cross-origin` |
+| Permissions-Policy     | Restricts browser APIs | Disables geo/mic/camera           |
 
 ## Build Process
 
@@ -118,6 +123,7 @@ npm run build
 ### Netlify Build
 
 Netlify automatically:
+
 1. Clones repository
 2. Installs dependencies with npm
 3. Runs `npm run build`
@@ -135,6 +141,7 @@ Netlify automatically:
 ### For Local Development
 
 Create `.env.local`:
+
 ```env
 # No sensitive variables currently required
 # Add future API keys here
@@ -185,6 +192,7 @@ Create `.env.local`:
 ### Build Fails
 
 **Problem:** Build command fails
+
 ```
 Solution:
 1. Check npm dependencies: npm install
@@ -194,6 +202,7 @@ Solution:
 ```
 
 **Problem:** Pages return 404
+
 ```
 Solution:
 1. Verify netlify.toml redirect rule exists
@@ -204,6 +213,7 @@ Solution:
 ### Performance Issues
 
 **Problem:** Slow page loads
+
 ```
 Solution:
 1. Check image sizes in public/
@@ -215,6 +225,7 @@ Solution:
 ### Deployment Stuck
 
 **Problem:** Deployment takes too long
+
 ```
 Solution:
 1. Increase Netlify timeout to 20 minutes
@@ -261,6 +272,7 @@ netlify deploy --prod --dir=.next
 ### Automatic Deploys
 
 Enabled by default when connected to Git:
+
 - Commit to `main` branch → auto-deploy
 - Merge pull request → auto-deploy
 - Preview deploys on pull requests
@@ -298,6 +310,7 @@ Enabled by default when connected to Git:
 ### Custom Build Hooks
 
 In `netlify.toml`:
+
 ```toml
 [build]
   command = "npm run build && npm run ssg"
