@@ -97,7 +97,7 @@ Create `.eslintrc.json`:
 ```tsx
 // ✅ GOOD - Using rel attributes for external links
 <a
-  href="https://www.instagram.com/can.revolution"
+  href="https://www.instagram.com/canrevolution"
   target="_blank"
   rel="noopener noreferrer"
   aria-label="Instagram"

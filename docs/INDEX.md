@@ -82,7 +82,7 @@ See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions.
 For questions about the canning solutions, visit the contact page or check out:
 
 - Website: https://canrevolution.com
-- Instagram: @can.revolution
+- Instagram: @canrevolution
 - Email: hello@canrevolution.com
 
 ---

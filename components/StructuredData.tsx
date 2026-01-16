@@ -7,7 +7,7 @@ const StructuredData = () => {
     logo: 'https://canrevolution.com/images/logo.png',
     description:
       'Revolutionary on-the-spot beverage canning machines for cafés, shops, and businesses.',
-    sameAs: ['https://www.instagram.com/can.revolution'],
+    sameAs: ['https://www.instagram.com/canrevolution'],
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Business Support',
@@ -49,7 +49,7 @@ const StructuredData = () => {
     url: 'https://canrevolution.com',
     telephone: '+351-XXX-XXXX',
     priceRange: '€€€',
-    sameAs: ['https://www.instagram.com/can.revolution'],
+    sameAs: ['https://www.instagram.com/canrevolution'],
   };
 
   const faqSchema = {

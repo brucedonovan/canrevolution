@@ -37,7 +37,7 @@ const Footer = () => {
                   Follow us
                 </p>
                 <a
-                  href="https://www.instagram.com/can.revolution"
+                  href="https://www.instagram.com/canrevolution"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-300 transform hover:scale-110"
