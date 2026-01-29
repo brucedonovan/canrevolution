@@ -105,7 +105,7 @@ export default function ProductCarousel() {
             {carouselItems.map((item, index) => (
               <SwiperSlide key={index}>
                 <div className="relative w-full aspect-square sm:aspect-[4/5] lg:aspect-[3/4] rounded-lg overflow-hidden">
-                  <Image src={item.image} alt={item.imageAlt} fill className="object-cover" />
+                  <Image src={item.image} alt={item.imageAlt} fill className="object-cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
                 </div>
               </SwiperSlide>
             ))}

@@ -124,7 +124,7 @@ export default function Pricing() {
                   {/* Pricing Tier Image */}
                   <div className="mb-6 flex justify-center">
                     <div className="h-48 w-48 overflow-hidden rounded-full bg-gray-200 relative">
-                      <Image src={tier.image} alt={tier.name} fill className="object-cover" />
+                      <Image src={tier.image} alt={tier.name} fill className="object-cover" sizes="200px" />
                     </div>
                   </div>
                   <div className="flex items-center justify-between gap-x-4">

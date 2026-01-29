@@ -113,6 +113,7 @@ export default function MachineSpecs() {
                   alt="Coffee vending machine with a display screen showing coffee beans, dispensing a clear glass cup"
                   fill
                   className="object-cover rounded-full"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 500px"
                 />
               ) : (
                 <div className="relative w-full h-full flex items-center justify-center rounded-full overflow-hidden">

@@ -16,6 +16,7 @@ export default function Header() {
         className="absolute inset-0 -z-20 object-cover"
         style={{ objectPosition: '80% 50%' }}
         priority
+        sizes="100vw"
       />
       <div className="absolute inset-0 -z-20 bg-black/40" />
 
