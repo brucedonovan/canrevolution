@@ -132,7 +132,7 @@ All pages include proper meta tags:
       name: 'can(RE)volution',
       description: 'Professional beverage canning solutions',
       url: 'https://canrevolution.com',
-      logo: 'https://canrevolution.com/logo.png',
+      logo: 'https://canrevolution.com/logo.svg',
       sameAs: ['https://instagram.com/canrevolution', 'https://linkedin.com/company/canrevolution'],
       contactPoint: {
         '@type': 'ContactPoint',

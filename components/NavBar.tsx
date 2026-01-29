@@ -37,7 +37,7 @@ export default function NavBar() {
           <span className="sr-only">can(RE)volution</span>
           <Image
             alt="can(RE)volution"
-            src="/images/logo.png"
+            src="/images/logo.svg"
             width={64}
             height={64}
             className="h-16 w-auto"
@@ -95,7 +95,7 @@ export default function NavBar() {
               <span className="sr-only">can(RE)volution</span>
               <Image
                 alt="can(RE)volution"
-                src="/images/logo.png"
+                src="/images/logo.svg"
                 width={32}
                 height={32}
                 className="h-8 w-auto"

@@ -4,7 +4,7 @@ const StructuredData = () => {
     '@type': 'Organization',
     name: 'can(RE)volution',
     url: 'https://canrevolution.com',
-    logo: 'https://canrevolution.com/images/logo.png',
+    logo: 'https://canrevolution.com/images/logo.svg',
     description:
       'Revolutionary on-the-spot beverage canning machines for cafés, shops, and businesses.',
     sameAs: ['https://www.instagram.com/canrevolution'],
@@ -44,7 +44,7 @@ const StructuredData = () => {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'can(RE)volution',
-    image: 'https://canrevolution.com/images/logo.png',
+    image: 'https://canrevolution.com/images/logo.svg',
     description: 'Beverage canning machine solutions for cafés, shops, and businesses.',
     url: 'https://canrevolution.com',
     telephone: '+351-XXX-XXXX',
