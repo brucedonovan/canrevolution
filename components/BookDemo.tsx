@@ -22,7 +22,7 @@ const BookDemo = () => {
         <a
           href="/appointments"
           className="inline-block px-10 py-4 font-semibold rounded-lg hover:opacity-90 transition-opacity"
-          style={{ backgroundColor: theme.background.dark, color: theme.primary.light }}
+          style={{ backgroundColor: theme.primary.dark, color: theme.background.dark }}
         >
           Book now
         </a>

@@ -26,7 +26,7 @@ const Footer = () => {
               <a
                 href="/contact"
                 className="inline-block px-8 py-3 font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95"
-                style={{ backgroundColor: theme.primary.light, color: theme.background.dark }}
+                style={{ backgroundColor: theme.primary.dark, color: theme.background.dark }}
               >
                 Get in touch
               </a>

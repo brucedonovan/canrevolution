@@ -44,9 +44,9 @@ export default function Header() {
                   href="/appointments"
                   className="rounded-md px-3.5 py-2.5 text-sm font-semibold shadow-sm hover:opacity-90 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
                   style={{
-                    backgroundColor: theme.primary.light,
+                    backgroundColor: theme.primary.dark,
                     color: theme.background.dark,
-                    outlineColor: theme.primary.light,
+                    outlineColor: theme.primary.dark,
                   }}
                 >
                   Book a Demo
@@ -72,7 +72,7 @@ export default function Header() {
         >
           <path
             d="M 0,30 Q 720,60 1440,30 L 1440,60 L 0,60 Z"
-            style={{ fill: theme.background.light }}
+            style={{ fill: theme.background.medium }}
           />
         </svg>
       </div>

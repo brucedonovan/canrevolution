@@ -530,7 +530,7 @@ const ProfitCalculator = () => {
                 href="/contact"
                 className="inline-block px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity"
                 style={{
-                  backgroundColor: theme.primary.light,
+                  backgroundColor: theme.primary.dark,
                   color: theme.background.dark,
                 }}
               >

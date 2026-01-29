@@ -139,7 +139,7 @@ export default function MachineSpecs() {
               <button
                 onClick={() => setShowDemo(!showDemo)}
                 className="absolute bottom-0 right-6 p-4 rounded-full hover:scale-110 transition-transform shadow-lg z-20 flex items-center justify-center"
-                style={{ backgroundColor: theme.primary.light, color: theme.background.dark }}
+                style={{ backgroundColor: theme.primary.dark, color: theme.background.dark }}
                 aria-label={showDemo ? 'Stop video' : 'Play demo'}
               >
                 {showDemo ? (
