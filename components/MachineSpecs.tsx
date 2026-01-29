@@ -109,7 +109,7 @@ export default function MachineSpecs() {
             >
               {!showDemo ? (
                 <Image
-                  src="/images/machine.png"
+                  src="/images/machine.jpg"
                   alt="Coffee vending machine with a display screen showing coffee beans, dispensing a clear glass cup"
                   fill
                   className="object-cover rounded-full"

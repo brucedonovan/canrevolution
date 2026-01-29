@@ -28,7 +28,7 @@ const StructuredData = () => {
     name: 'can(RE)volution Beverage Canning Machine',
     description:
       'Professional on-the-spot beverage canning system that seals fresh drinks in seconds.',
-    image: 'https://canrevolution.com/images/machine.png',
+    image: 'https://canrevolution.com/images/machine.jpg',
     brand: {
       '@type': 'Brand',
       name: 'can(RE)volution',

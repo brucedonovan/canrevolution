@@ -18,31 +18,31 @@ interface CarouselItem {
 const carouselItems: CarouselItem[] = [
   {
     title: 'Smoothies',
-    image: '/images/product-smoothies.png',
+    image: '/images/product-smoothies.jpg',
     imageAlt:
       'Two canned smoothies labeled "Kaktus" with straws, one pink and one green, on a table with cacti and wood logs in the background.',
   },
   {
     title: 'Puddings & Desserts',
-    image: '/images/product-puddings.png',
+    image: '/images/product-puddings.jpg',
     imageAlt:
       'Layered yogurt parfait with granola, blueberries, red currants, mint, in a glass jar with a metal lid, surrounded by red currants and a wooden spoon.',
   },
   {
     title: 'Cocktails',
-    image: '/images/product-cocktails.png',
+    image: '/images/product-cocktails.jpg',
     imageAlt:
       'A can of sparkling water with lemon, lime, strawberry, and cucumber slices inside, and condensation on the outside of the can.',
   },
   {
     title: 'Sodas',
-    image: '/images/product-sodas.png',
+    image: '/images/product-sodas.jpg',
     imageAlt:
       'Two hands holding glass bottles of fruit-flavored soda, one with green soda and lemon slices, the other with orange soda and lemon slices, outdoors with green foliage background.',
   },
   {
     title: 'Cold Brew Coffee',
-    image: '/images/product-coldbrewcoffee.png',
+    image: '/images/product-coldbrewcoffee.jpg',
     imageAlt:
       'Three canned iced coffee drinks with different flavors and colors placed on a pastel-colored surface.',
   },

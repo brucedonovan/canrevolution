@@ -10,13 +10,11 @@ const nextConfig: NextConfig = {
   // Don't expose source maps in production
   productionBrowserSourceMaps: false,
 
-  // Image optimization
+  // Image optimization disabled on Netlify (requires serverless functions)
+  // Keep unoptimized: true but use sizes prop in components for best practices
   images: {
     remotePatterns: [],
-    formats: ['image/webp', 'image/avif'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 31536000, // 1 year cache
+    unoptimized: true,
   },
 
   // Environment variables

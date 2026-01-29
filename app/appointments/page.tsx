@@ -15,7 +15,7 @@ export default function AppointmentsPage() {
         {/* Background Image - Same as header */}
         <Image
           alt="can(RE)volution appointments background"
-          src="/images/hero-bg.png"
+          src="/images/hero-bg.jpg"
           fill
           className="fixed inset-0 -z-20 object-cover"
           style={{ objectPosition: '80% 50%' }}

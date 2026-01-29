@@ -24,7 +24,7 @@ const tiers: PricingTier[] = [
     href: '/appointments',
     priceMonthly: '€500',
     description: 'Perfect for cafés and small shops just getting started with beverage canning.',
-    image: '/images/pricing-starter.png',
+    image: '/images/pricing-starter.jpg',
     features: ['Machine Rental (including installation)', '500 cans and lids delivered monthly'],
     details: ['Month-to-month contracts', '1 month notice when cancelling'],
     mostPopular: false,
@@ -35,7 +35,7 @@ const tiers: PricingTier[] = [
     href: '/appointments',
     priceMonthly: '€1000',
     description: 'Best for established businesses wanting professional branding on cans.',
-    image: '/images/pricing-growth.png',
+    image: '/images/pricing-growth.jpg',
     features: [
       'Machine Rental (including installation)',
       '1500 cans and lids delivered monthly',
@@ -56,7 +56,7 @@ const tiers: PricingTier[] = [
     href: '/appointments',
     priceMonthly: '€2000',
     description: 'Enterprise solution for high-volume operations with full customization.',
-    image: '/images/pricing-scale.png',
+    image: '/images/pricing-scale.jpg',
     features: [
       'Machine Rental (including installation)',
       '4000 cans and lids delivered monthly',

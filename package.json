@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint app components lib",
     "format": "prettier --write .",
-    "prepare": "eslint --fix app components lib && prettier --write ."
+    "prepare": "eslint --fix app components lib && prettier --write .",
+    "compress-images": "node scripts/compress-images-auto.js"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",

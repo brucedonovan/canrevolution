@@ -11,7 +11,7 @@ export default function Header() {
       {/* Background Image - Behind everything */}
       <Image
         alt="can(RE)volution hero background"
-        src="/images/hero-bg.png"
+        src="/images/hero-bg.jpg"
         fill
         className="absolute inset-0 -z-20 object-cover"
         style={{ objectPosition: '80% 50%' }}
