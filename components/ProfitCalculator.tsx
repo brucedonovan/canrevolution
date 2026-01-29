@@ -3,12 +3,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import { AlertCircle, Check, Minus, Plus } from 'lucide-react';
 import { theme } from '@/lib/theme';
-
-interface Plan {
-  limit: number;
-  fee: number;
-  extra: number;
-}
+import { PLANS } from '@/constants/businessInfo';
 
 interface CalculationResult {
   extraRevenue: number;
@@ -21,12 +16,6 @@ interface CalculationResult {
   isPositive: boolean;
   recommendations: string[];
 }
-
-const PLANS: Record<string, Plan> = {
-  small: { limit: 500, fee: 500, extra: 0.6 },
-  medium: { limit: 1500, fee: 1000, extra: 0.55 },
-  large: { limit: 4000, fee: 2000, extra: 0.5 },
-};
 
 const formatMoney = (value: number): string => {
   return value.toLocaleString('en-GB', {
