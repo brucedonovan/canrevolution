@@ -5,7 +5,7 @@
  * - Compresses all PNG files
  * - Converts opaque PNGs to JPG
  * - Automatically updates component imports
- * 
+ *
  * Usage: npm run compress-images
  */
 
@@ -60,14 +60,10 @@ async function compressImage(inputPath, outputPath, format = 'png') {
   const sizeOriginal = getFileSize(inputPath);
 
   if (format === 'jpg') {
-    await sharp(inputPath)
-      .jpeg({ quality: 82, progressive: true })
-      .toFile(outputPath);
+    await sharp(inputPath).jpeg({ quality: 82, progressive: true }).toFile(outputPath);
   } else {
     // PNG compression
-    await sharp(inputPath)
-      .png({ compressionLevel: 9, adaptive: true })
-      .toFile(outputPath);
+    await sharp(inputPath).png({ compressionLevel: 9, adaptive: true }).toFile(outputPath);
   }
 
   const sizeCompressed = getFileSize(outputPath);
@@ -114,8 +110,8 @@ async function main() {
   }
 
   const files = fs.readdirSync(imagesDir);
-  const pngFiles = files.filter(f => f.endsWith('.png'));
-  const svgFiles = files.filter(f => f.endsWith('.svg'));
+  const pngFiles = files.filter((f) => f.endsWith('.png'));
+  const svgFiles = files.filter((f) => f.endsWith('.svg'));
 
   console.log(`📊 Found ${pngFiles.length} PNG files, ${svgFiles.length} SVG files\n`);
 
@@ -146,7 +142,9 @@ async function main() {
           'jpg'
         );
 
-        console.log(`   ${formatBytes(sizeOriginal)} → ${formatBytes(sizeCompressed)} (${savings}% reduction)`);
+        console.log(
+          `   ${formatBytes(sizeOriginal)} → ${formatBytes(sizeCompressed)} (${savings}% reduction)`
+        );
         totalCompressed += sizeCompressed;
         updateMap[`images/${file}`] = `images/${fileName}.jpg`;
 
@@ -160,9 +158,15 @@ async function main() {
         // Just compress PNG
         console.log(`🗜️  Compressing ${file}`);
 
-        const { sizeOriginal, sizeCompressed, savings } = await compressImage(inputPath, inputPath, 'png');
+        const { sizeOriginal, sizeCompressed, savings } = await compressImage(
+          inputPath,
+          inputPath,
+          'png'
+        );
 
-        console.log(`   ${formatBytes(sizeOriginal)} → ${formatBytes(sizeCompressed)} (${savings}% reduction)\n`);
+        console.log(
+          `   ${formatBytes(sizeOriginal)} → ${formatBytes(sizeCompressed)} (${savings}% reduction)\n`
+        );
         totalCompressed += sizeCompressed;
       }
     } catch (error) {
@@ -206,7 +210,7 @@ async function main() {
   console.log('  6. git push           # Netlify auto-deploys\n');
 }
 
-main().catch(error => {
+main().catch((error) => {
   console.error('❌ Fatal error:', error.message);
   process.exit(1);
 });

@@ -23,6 +23,7 @@ images: {
 ```
 
 **Benefits:**
+
 - Automatically converts images to WebP and AVIF (30-40% smaller than JPEG)
 - Serves appropriately-sized images based on device viewport
 - Images are cached for 1 year to reduce re-requests
@@ -65,11 +66,12 @@ High-impact above-the-fold images use `priority`:
 ```tsx
 <Image
   src="/images/hero-bg.png"
-  priority  // Loads immediately instead of lazy-loading
+  priority // Loads immediately instead of lazy-loading
 />
 ```
 
 Applied to:
+
 - Hero background image (`/images/hero-bg.png`)
 - Logo in navigation (`/images/logo.svg`)
 
@@ -79,15 +81,15 @@ Non-critical images automatically lazy-load.
 
 Current images in `/public/images`:
 
-| File | Type | Usage | Optimization |
-|------|------|-------|--------------|
-| `hero-bg.png` | PNG | Full-width hero background | Can be converted to JPG/WebP for smaller size |
-| `logo.svg` | SVG | Navigation logo | Already optimized (vector format) |
-| `machine.png` | PNG | Product showcase | Should be optimized |
-| `pricing-starter.png` | PNG | Pricing tier 1 | Should be optimized |
-| `pricing-growth.png` | PNG | Pricing tier 2 | Should be optimized |
-| `pricing-scale.png` | PNG | Pricing tier 3 | Should be optimized |
-| `product-*.png` | PNG (5 files) | Product carousel | Should be optimized |
+| File                  | Type          | Usage                      | Optimization                                  |
+| --------------------- | ------------- | -------------------------- | --------------------------------------------- |
+| `hero-bg.png`         | PNG           | Full-width hero background | Can be converted to JPG/WebP for smaller size |
+| `logo.svg`            | SVG           | Navigation logo            | Already optimized (vector format)             |
+| `machine.png`         | PNG           | Product showcase           | Should be optimized                           |
+| `pricing-starter.png` | PNG           | Pricing tier 1             | Should be optimized                           |
+| `pricing-growth.png`  | PNG           | Pricing tier 2             | Should be optimized                           |
+| `pricing-scale.png`   | PNG           | Pricing tier 3             | Should be optimized                           |
+| `product-*.png`       | PNG (5 files) | Product carousel           | Should be optimized                           |
 
 ## Optimization Checklist for Images
 
@@ -172,16 +174,19 @@ Serve to User Browser
 ## Troubleshooting
 
 ### Image looks blurry or low quality
+
 - Increase source image quality
 - Check that `sizes` prop is accurate to actual display size
 - Verify image isn't being stretched with CSS
 
 ### Images not caching
+
 - Check CDN cache headers
 - Verify `minimumCacheTTL` is set correctly
 - Ensure images have hash in filename if using static versioning
 
 ### High bandwidth usage
+
 - Run Lighthouse audit to identify large images
 - Check that unoptimized images aren't in public folder
 - Verify all `Image` components have `sizes` prop for responsive images

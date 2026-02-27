@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
 import { CheckCircle } from 'lucide-react';
+import { useContactForm } from '@/hooks/useContactForm';
 import { theme } from '@/lib/theme';
 
 interface FormInputProps {
@@ -68,47 +68,7 @@ function FormInput({
 }
 
 export default function ContactForm() {
-  const [showSuccess, setShowSuccess] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-
-    // Basic validation
-    const formData = new FormData(form);
-    const email = formData.get('email') as string;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailRegex.test(email)) {
-      console.warn('Invalid email format');
-      return;
-    }
-
-    // Encode form data for Netlify
-    const encoded = new URLSearchParams(formData as unknown as Record<string, string>).toString();
-
-    // Submit to Netlify function handler
-    fetch('/.netlify/functions/form-submission', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encoded,
-    })
-      .then(() => {
-        // Show success message and reset form
-        setShowSuccess(true);
-        form.reset();
-
-        // Reset after 5 seconds
-        setTimeout(() => setShowSuccess(false), 5000);
-      })
-      .catch((error) => {
-        console.error('Form submission error:', error);
-        // Still show success message for UX
-        setShowSuccess(true);
-        form.reset();
-        setTimeout(() => setShowSuccess(false), 5000);
-      });
-  };
+  const { showSuccess, handleSubmit, resetSuccess } = useContactForm();
 
   if (showSuccess) {
     return (
@@ -121,7 +81,7 @@ export default function ContactForm() {
           Your message has been sent successfully. We&apos;ll get back to you as soon as possible.
         </p>
         <button
-          onClick={() => setShowSuccess(false)}
+          onClick={resetSuccess}
           className="rounded-md px-4 py-2 text-sm font-semibold hover:opacity-90 transition-opacity"
           style={{
             backgroundColor: theme.primary.light,
@@ -135,7 +95,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} name="contact-form" method="POST">
+    <form onSubmit={handleSubmit} name="contact-form" method="POST" data-netlify="true">
       <input type="hidden" name="form-name" value="contact-form" />
 
       <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">

@@ -14,9 +14,9 @@ export interface Plan {
 }
 
 export const PLANS: Record<string, Plan> = {
-  small: { limit: 500, fee: 500, extra: 0.70 },
-  medium: { limit: 1500, fee: 1000, extra: 0.60 },
-  large: { limit: 4000, fee: 2000, extra: 0.50 },
+  small: { limit: 500, fee: 500, extra: 0.7 },
+  medium: { limit: 1500, fee: 1000, extra: 0.6 },
+  large: { limit: 4000, fee: 2000, extra: 0.5 },
 };
 
 // ============================================
@@ -56,4 +56,3 @@ export const COMPANY = {
   description:
     'Revolutionary on-the-spot beverage canning machines for cafés, shops, and businesses. Seal fresh drinks in seconds, boost your brand, reduce waste.',
 } as const;
-
