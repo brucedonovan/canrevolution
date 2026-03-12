@@ -14,9 +14,9 @@ export interface Plan {
 }
 
 export const PLANS: Record<string, Plan> = {
-  small: { limit: 500, fee: 500, extra: 0.7 },
-  medium: { limit: 1500, fee: 1000, extra: 0.6 },
-  large: { limit: 4000, fee: 2000, extra: 0.5 },
+  small: { limit: 500, fee: 500, extra: 0.9 },
+  medium: { limit: 1500, fee: 1100, extra: 0.8 },
+  large: { limit: 4000, fee: 2500, extra: 0.7 },
 };
 
 // ============================================
