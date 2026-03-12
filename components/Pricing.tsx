@@ -4,17 +4,19 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { Check, ChevronDown } from 'lucide-react';
 import { theme } from '@/lib/theme';
+import { PLANS } from '@/constants/businessInfo';
 
 interface PricingTier {
   name: string;
   id: string;
   href: string;
-  priceMonthly: string;
+  priceMonthly: number;
   description: string;
   features: string[];
   details: string[];
   image: string;
   mostPopular: boolean;
+  limit: number;
 }
 
 const tiers: PricingTier[] = [
@@ -22,23 +24,24 @@ const tiers: PricingTier[] = [
     name: 'Starter Plan',
     id: 'tier-starter',
     href: '/appointments',
-    priceMonthly: '€500',
+    priceMonthly: 500,
     description: 'Perfect for cafés and small shops just getting started with beverage canning.',
     image: '/images/pricing-starter.jpg',
-    features: ['Machine Rental (including installation)', '500 cans and lids delivered monthly'],
+    features: ['Machine Rental (including installation)', `${PLANS.small.limit} cans and lids delivered monthly`],
     details: ['Month-to-month contracts', '1 month notice when cancelling'],
     mostPopular: false,
+    limit: PLANS.small.limit,
   },
   {
     name: 'Growth Plan',
     id: 'tier-growth',
     href: '/appointments',
-    priceMonthly: '€1000',
+    priceMonthly: 1100,
     description: 'Best for established businesses wanting professional branding on cans.',
     image: '/images/pricing-growth.jpg',
     features: [
       'Machine Rental (including installation)',
-      '1500 cans and lids delivered monthly',
+      `${PLANS.medium.limit} cans and lids delivered monthly`,
       'Cans professionally branded with your logo (12+ month contract)',
       'Machine screen customisable with branding (12+ month contract)',
     ],
@@ -49,17 +52,18 @@ const tiers: PricingTier[] = [
       '3 month notice when cancelling for 12+ month contracts',
     ],
     mostPopular: true,
+    limit: PLANS.medium.limit,
   },
   {
     name: 'Scale Plan',
     id: 'tier-scale',
     href: '/appointments',
-    priceMonthly: '€2000',
+    priceMonthly: 2500,
     description: 'Enterprise solution for high-volume operations with full customization.',
     image: '/images/pricing-scale.jpg',
     features: [
       'Machine Rental (including installation)',
-      '4000 cans and lids delivered monthly',
+      `${PLANS.large.limit} cans and lids delivered monthly`,
       'Cans professionally branded with logo',
       'Machine screen fully customisable',
       'Dedicated account manager',
@@ -71,6 +75,7 @@ const tiers: PricingTier[] = [
       'Dedicated account manager included',
     ],
     mostPopular: false,
+    limit: PLANS.large.limit,
   },
 ];
 
@@ -164,7 +169,7 @@ export default function Pricing() {
                       style={{ color: tier.mostPopular ? theme.text.onDark : theme.text.onLight }}
                       className="text-4xl font-semibold tracking-tight"
                     >
-                      {tier.priceMonthly}
+                      €{tier.priceMonthly}
                     </span>
                     <span
                       style={{ color: tier.mostPopular ? theme.text.onDark : theme.text.muted }}

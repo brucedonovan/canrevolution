@@ -8,6 +8,7 @@ import {
   type CalculationResult,
 } from '@/hooks/useProfitCalculator';
 import { theme } from '@/lib/theme';
+import { PLANS } from '@/constants/businessInfo';
 
 // Form Input Component
 const FormInput: React.FC<{
@@ -133,9 +134,9 @@ const PlanSelector: React.FC<{
   onChange: (plan: string) => void;
 }> = ({ selected, onChange }) => {
   const plans = [
-    { id: 'small', name: 'Small Plan', limit: '500 cans', fee: '€500/mo' },
-    { id: 'medium', name: 'Medium Plan', limit: '1500 cans', fee: '€1000/mo' },
-    { id: 'large', name: 'Large Plan', limit: '4000 cans', fee: '€2000/mo' },
+    { id: 'small', name: 'Small Plan', limit: `${PLANS.small.limit} cans`, fee: `€${PLANS.small.fee}/mo` },
+    { id: 'medium', name: 'Medium Plan', limit: `${PLANS.medium.limit} cans`, fee: `€${PLANS.medium.fee}/mo` },
+    { id: 'large', name: 'Large Plan', limit: `${PLANS.large.limit} cans`, fee: `€${PLANS.large.fee}/mo` },
   ];
 
   return (
