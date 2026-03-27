@@ -25,14 +25,19 @@ export function useContactForm(): UseContactFormReturn {
       return;
     }
 
-    // Encode form data for Netlify's built-in form handling
-    const encoded = new URLSearchParams(formData as unknown as Record<string, string>).toString();
+    // Explicitly encode form data to avoid FormData-to-URLSearchParams edge cases
+    const params = new URLSearchParams();
+    formData.forEach((value, key) => {
+      params.append(key, value as string);
+    });
 
-    // Submit to Netlify's built-in form handling (not the custom function)
-    fetch('/', {
+    // POST to the static HTML form page so Netlify's CDN intercepts
+    // the submission (posting to '/' goes through the Next.js runtime
+    // and bypasses Netlify Forms processing entirely)
+    fetch('/contact-form.html', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encoded,
+      body: params.toString(),
     })
       .then((response) => {
         if (!response.ok) {
